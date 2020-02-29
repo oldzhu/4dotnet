@@ -1,0 +1,2 @@
+source "$BR2_EXTERNAL_4dotnet_PATH/package/lldb/Config.in"
+source "$BR2_EXTERNAL_4dotnet_PATH/package/dotnetsdk/Config.in"
