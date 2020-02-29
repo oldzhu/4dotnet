@@ -289,9 +289,9 @@ HOST_LLDB_POST_INSTALL_HOOKS = HOST_LLDB_COPY_LLVM_CONFIG_TO_STAGING_DIR
 # By default llvm-tblgen is built and installed on the target but it is
 # not necessary. Also erase LLVMHello.so from /usr/lib
 define LLDB_DELETE_LLVM_TBLGEN_TARGET
-	rm -f $(TARGET_DIR)/usr/bin/llvm-tblgen $(TARGET_DIR)/usr/lib/LLVMHello.so $(TARGET_DIR)/usr/lib/liblldb.so.11.0.0git
+	rm -f $(TARGET_DIR)/usr/lib/liblldb.so.11.0.0git
 endef
-#LLDB_POST_INSTALL_TARGET_HOOKS = LLDB_DELETE_LLVM_TBLGEN_TARGET
+LLDB_POST_INSTALL_TARGET_HOOKS = LLDB_DELETE_LLVM_TBLGEN_TARGET
 
 $(eval $(cmake-package))
 $(eval $(host-cmake-package))
