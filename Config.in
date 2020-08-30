@@ -1,3 +1,5 @@
 source "$BR2_EXTERNAL_4dotnet_PATH/package/hello/Config.in"
 source "$BR2_EXTERNAL_4dotnet_PATH/package/lldb/Config.in"
+source "$BR2_EXTERNAL_4dotnet_PATH/package/dotnetcore/diagnostics/Config.in"
+source "$BR2_EXTERNAL_4dotnet_PATH/package/dotnetcore/runtime/Config.in"
 source "$BR2_EXTERNAL_4dotnet_PATH/package/dotnetsdk/Config.in"

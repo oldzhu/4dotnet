@@ -1,0 +1,10 @@
+config BR2_PACKAGE_DOTNETRUNTIME
+	bool "dotnetruntime"
+	depends on BR2_PACKAGE_LLDB
+	help
+	  dotnetruntime is .net core runtime package
+
+	  https://github.com/dotnet/runtime
+
+comment "dotnetruntime needs lldb package" 
+	depends on BR2_PACKAGE_LLDB 

@@ -1,0 +1,10 @@
+config BR2_PACKAGE_DIAGNOSTICS
+	bool "diagnostics"
+	depends on BR2_PACKAGE_LLDB
+	help
+	  diagnostics is .net core runtime diagnostics package
+
+	  https://github.com/dotnet/diagnostics
+
+comment "diagnostics needs lldb package" 
+	depends on BR2_PACKAGE_LLDB 
