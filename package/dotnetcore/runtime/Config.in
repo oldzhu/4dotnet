@@ -1,5 +1,16 @@
+config BR2_PACKAGE_DOTNETRUNTIME_ARCH_SUPPORTS
+        bool
+        default y if BR2_aarch64
+        default y if BR2_arm || BR2_armeb
+
+config BR2_PACKAGE_DOTNETRUNTIME_TARGET_ARCH
+        string
+        default "ARM64" if BR2_aarch64
+        default "ARM" if BR2_arm || BR2_armeb
+
 config BR2_PACKAGE_DOTNETRUNTIME
 	bool "dotnetruntime"
+	depends on BR2_PACKAGE_DOTNETRUNTIME_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB
 	help
 	  dotnetruntime is .net core runtime package
@@ -7,4 +18,5 @@ config BR2_PACKAGE_DOTNETRUNTIME
 	  https://github.com/dotnet/runtime
 
 comment "dotnetruntime needs lldb package" 
+	depends on BR2_PACKAGE_DOTNETRUNTIME_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB 

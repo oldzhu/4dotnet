@@ -4,18 +4,17 @@
 #
 #################################################################################
 
-DIAGNOSTICS_VERSION = origin/master
-DIAGNOSTICS_SOURCE =
-DIAGNOSTICS_SITE = git://github.com/dotnet/runtime.git
-DIAGNOSTICS_INSTALL_STAGING = NO
-DIAGNOSTICS_INSTALL_TARGET = YES
+DOTNETRUNTIME_VERSION = origin/master
+DOTNETRUNTIME_SITE = git://github.com/dotnet/runtime.git
+DOTNETRUNTIME_INSTALL_STAGING = NO
+DOTNETRUNTIME_INSTALL_TARGET = YES
 
-define DIAGNOSTICS_BUILD_CMDS
+define DOTNETRUNTIME_BUILD_CMDS
 
-endif
+endef
 
-define DIAGNOSTICS_INSTALL_TARGET_CMDS
+define DOTNETRUNTIME_INSTALL_CMDS
 
-endif
+endef
 
 $(eval $(generic-package))
