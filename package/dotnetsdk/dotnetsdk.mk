@@ -34,8 +34,8 @@ endef
 define DOTNETSDK_INSTALL_TARGET_CMDS
     rsync -auH --exclude '.stamp_*' --exclude '.files-*' --exclude '.applied_patches_list' --exclude 'src' $(@D)/ $(TARGET_DIR)/root/dotnet/
     rsync -auH --exclude 'installer' --exclude 'mono' --exclude 'tests' $(@D)/src/src $(TARGET_DIR)/root/dotnet/
-    echo 'PermitRootLogin yes' >> $(TARGET_DIR)/etc/ssh/sshd_config
-    echo 'PermitEmptyPasswords yes' >> $(TARGET_DIR)/etc/ssh/sshd_config
+#    echo 'PermitRootLogin yes' >> $(TARGET_DIR)/etc/ssh/sshd_config
+#    echo 'PermitEmptyPasswords yes' >> $(TARGET_DIR)/etc/ssh/sshd_config
 #    ls -lR $(TARGET_DIR)/root/dotnet
 endef
 

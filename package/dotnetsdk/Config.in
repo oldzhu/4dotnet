@@ -11,6 +11,7 @@ config BR2_PACKAGE_DOTNETSDK_TARGET_ARCH
 config BR2_PACKAGE_DOTNETSDK
 	bool "dotnetsdk"
 	depends on BR2_PACKAGE_DOTNETSDK_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_LLDB
 	help
 	  The DOTNETSDK is the .NET Core SDK zip package for arm/arm64
 
