@@ -17,6 +17,8 @@ endef
 
 define DIAGNOSTICS_INSTALL_TARGET_CMDS
 	ls $(@D)
+	mkdir -p $(TARGET_DIR)/root/.dotnet/sos
+	cp $(@D)/artifacts/bin/Linux.arm.Debug/{libsos.so,libsosplugin.so,sosdocsunix.txt} $(TARGET_DIR)/root/.dotnet/sos
 endef
 
 $(eval $(generic-package))

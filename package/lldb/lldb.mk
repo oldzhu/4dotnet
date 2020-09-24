@@ -264,8 +264,8 @@ define LLDB_INSTALL_TARGET_CMDS
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/bin/lldb $(TARGET_DIR)/usr/bin
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/bin/lldb-server  $(TARGET_DIR)/usr/bin
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libLLVM*.so $(TARGET_DIR)/usr/lib
-     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libclang-cpp.so $(TARGET_DIR)/usr/lib
-     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/liblldb.so $(TARGET_DIR)/usr/lib
+     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libclang-cpp.so.*git $(TARGET_DIR)/usr/lib
+     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/liblldb.so.*git $(TARGET_DIR)/usr/lib
 #     ln -rsf $(TARGET_DIR)/usr/lib/libclang-cpp.so.11git libclang-cpp.so
 #     ln -rsf $(TARGET_DIR)/usr/lib/liblldb.so.11.0.0git liblldb.so.11git
 #     ln -rsf $(TARGET_DIR)/usr/lib/liblldb.so.11.0.0git liblldb.so
