@@ -1,0 +1,11 @@
+--- /home/oldzhu/buildroot/output/build/diagnostics-origin_master/eng/build.sh	2020-10-15 05:37:55.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/diagnostics/modified/build.sh	2020-10-17 16:07:44.330000000 +0800
+@@ -554,7 +554,7 @@
+         /p:RuntimeSourceFeedKey="$__RuntimeSourceFeedKey" \
+         $__TestArgs
+ 
+-      if [ $? != 0 ]; then
++      if [ ${PIPESTATUS[0]} != 0 ]; then
+           exit 1
+       fi
+    fi

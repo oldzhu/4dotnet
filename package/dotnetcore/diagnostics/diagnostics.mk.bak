@@ -1,0 +1,36 @@
+################################################################################
+#
+## diagnostics 
+#
+#################################################################################
+
+DIAGNOSTICS_VERSION = origin/master
+#DIAGNOSTICS_SOURCE =
+DIAGNOSTICS_SITE = git://github.com/dotnet/diagnostics.git
+#DIAGNOSTICS_SITE_METHOD = git
+#DIAGNOSTICS_INSTALL_STAGING = YES 
+DIAGNOSTICS_INSTALL_TARGET = YES
+
+define DIAGNOSTICS_CONFIGURE_CMDS
+#	patch -d $(@D)/eng -p0 -u -b build.sh -i $(DIAGNOSTICS_PKGDIR)/diag_eng_build.sh.patch
+#	patch -u -b $(@D)/eng/cross/toolchain.cmake -i $(DIAGNOSTICS_PKGDIR)/toolchain.cmake.patch
+	sed -i '557s/*/if\ [\ $${PIPESTATUS[0]}\ !=\ 0\ ];\ then/' $(@D)/eng/build.sh
+endef
+
+define DIAGNOSTICS_BUILD_CMDS
+	$(DIAGNOSTICS_PKGDIR)/build_diag.sh
+endef
+
+define DIAGNOSTICS_INSTALL_TARGET_CMDS
+	ls $(@D)
+	mkdir -p $(TARGET_DIR)/root/.dotnet/sos
+	ifeq ($(BR2_aarch64),y)
+		cp $(@D)/artifacts/bin/Linux.aarch64.Debug/{libsos.so,libsosplugin.so,sosdocsunix.txt} \
+		$(TARGET_DIR)/root/.dotnet/sos
+	else
+		cp $(@D)/artifacts/bin/Linux.arm.Debug/{libsos.so,libsosplugin.so,sosdocsunix.txt} \
+		$(TARGET_DIR)/root/.dotnet/sos
+	endif
+endef
+
+$(eval $(generic-package))
