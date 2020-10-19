@@ -366,7 +366,7 @@ build_native()
     echo "Executing $buildTool install -j $__NumProc"
 
     $buildTool install -j $__NumProc | tee $__LogDir/make.log
-    if [ $? != 0 ]; then
+    if [ ${PIPESTATUS[0]} != 0 ]; then
         echo "Failed to build."
         exit 1
     fi
@@ -554,7 +554,7 @@ if [ $__Test == true ]; then
         /p:RuntimeSourceFeedKey="$__RuntimeSourceFeedKey" \
         $__TestArgs
 
-      if [ ${PIPESTATUS[0]} != 0 ]; then
+      if [ $? != 0 ]; then
           exit 1
       fi
    fi

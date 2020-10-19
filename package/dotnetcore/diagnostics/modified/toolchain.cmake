@@ -156,4 +156,5 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
-link_directories($ENV{HOST_DIR}/lib/gcc/$(TOOLCHAIN)/10.2.0/)
+include_directories($ENV{HOST_DIR}/$(TOOLCHAIN)/include/c++/10.2.0)
+include_directories($ENV{HOST_DIR}/$(TOOLCHAIN)/include/c++/10.2.0/$(TOOLCHAIN))
