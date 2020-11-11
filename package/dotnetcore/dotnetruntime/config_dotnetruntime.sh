@@ -7,10 +7,14 @@
 # p6 [PKGNAME}_PKGDIR
 # p7 TARGET_DIR
 
+patch -N -d $4/eng/common/cross -p0 -u -b toolchain.cmake -i $6/toolchain.cmake.mypatch
 
 if [ $3 == "ARM64" ]; then
-	echo $3
+	cp -u -v $2/lib/gcc/aarch64-buildroot-linux-gnueabihf/10.2.0/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
 else
-	echo $3
+        cp -u -v $2/lib/gcc/arm-buildroot-linux-gnueabihf/10.2.0/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
 fi
 
+mkdir -p -v $5/usr/include/lldb/API
+cp -u -v $2/include/lldb/API/* $5/usr/include/lldb/API
+cp -u -v $2/include/lldb/*.h  $5/usr/include/lldb
