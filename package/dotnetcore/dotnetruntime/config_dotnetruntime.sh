@@ -11,7 +11,7 @@ patch -N -d $4/eng/common/cross -p0 -u -b toolchain.cmake -i $6/toolchain.cmake.
 
 if [ $3 == "ARM64" ]; then
 	mkdir $2/aarch64-buildroot-linux-gnueabihf/myinclude
-	cp $5/usr/include/{features.h,stdc-predef.h} $2/aarch64-buildroot-linux-gnueabihf/myinclude
+	cp -r $5/usr/include/{features.h,stdc-predef.h,sys,bits,gnu} $2/aarch64-buildroot-linux-gnueabihf/myinclude
         cp -r $2/aarch64-buildroot-linux-gnueabihf/include/c++/10.2.0/{\
 type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwchar,\
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
@@ -21,7 +21,7 @@ $2/aarch64-buildroot-linux-gnueabihf/myinclude
 	cp -u -v $2/lib/gcc/aarch64-buildroot-linux-gnueabihf/10.2.0/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
 else
 	mkdir $2/arm-buildroot-linux-gnueabihf/myinclude
-	cp $5/usr/include/{features.h,stdc-predef.h} $2/arm-buildroot-linux-gnueabihf/myinclude
+	cp -r $5/usr/include/{features.h,stdc-predef.h,sys,bits,gnu} $2/arm-buildroot-linux-gnueabihf/myinclude
 	cp -r $2/arm-buildroot-linux-gnueabihf/include/c++/10.2.0/{\
 type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwchar,\
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
