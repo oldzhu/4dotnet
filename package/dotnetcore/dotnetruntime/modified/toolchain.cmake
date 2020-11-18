@@ -241,5 +241,5 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
-include_directories($ENV{HOST_DIR}/$(TOOLCHAIN)/include/c++/10.2.0)
 include_directories($ENV{HOST_DIR}/$(TOOLCHAIN)/include/c++/10.2.0/$(TOOLCHAIN))
+include_directories($ENV{HOST_DIR}/$(TOOLCHAIN)/myinclude)
