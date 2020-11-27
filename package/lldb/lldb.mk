@@ -40,14 +40,15 @@ LLDB_TARGET_ARCH = $(call qstrip,$(BR2_PACKAGE_LLDB_TARGET_ARCH))
 
 # Build backend for target architecture. This include backends like AMDGPU.
 LLDB_TARGETS_TO_BUILD = $(LLDB_TARGET_ARCH)
-HOST_LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
+HOST_LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="X86;$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
 LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
 
 # LLVM target to use for native code generation. This is required for JIT generation.
 # It must be set to LLVM_TARGET_ARCH for host and target, otherwise we get
 # "No available targets are compatible for this triple" with llvmpipe when host
 # and target architectures are different.
-HOST_LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=$(LLDB_TARGET_ARCH)
+#HOST_LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=$(LLDB_TARGET_ARCH)
+HOST_LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=x86_64
 LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=$(LLDB_TARGET_ARCH)
 
 # Use native llvm-tblgen from host-llvm (needed for cross-compilation)
@@ -167,7 +168,8 @@ LLDB_CONF_OPTS += -DLLVM_ENABLE_LLD=OFF
 
 # Generate code for the target. LLVM selects a target by looking at the
 # toolchain tuple
-HOST_LLDB_CONF_OPTS += -DLLVM_DEFAULT_TARGET_TRIPLE=$(GNU_TARGET_NAME)
+#HOST_LLDB_CONF_OPTS += -DLLVM_DEFAULT_TARGET_TRIPLE=$(GNU_TARGET_NAME)
+HOST_LLDB_CONF_OPTS += -DLLVM_DEFAULT_TARGET_TRIPLE=x86_64-buildroot-linux-gnu
 LLDB_CONF_OPTS += -DLLVM_DEFAULT_TARGET_TRIPLE=$(GNU_TARGET_NAME)
 
 # LLVM_HOST_TRIPLE has a misleading name, it is in fact the triple of the
