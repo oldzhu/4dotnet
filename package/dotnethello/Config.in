@@ -13,6 +13,7 @@ config BR2_PACKAGE_DOTNETHELLO
 	depends on BR2_PACKAGE_DOTNETHELLO_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB
 	depends on BR2_PACKAGE_DOTNETRUNTIME
+	depends on BR2_PACKAGE_DIAGNOSTICS
 	help
           dotnet core Hello world package.
 
@@ -22,3 +23,4 @@ comment "dotnet core hello world package"
 	depends on BR2_PACKAGE_DOTNETHELLO_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB
 	depends on BR2_PACKAGE_DOTNETRUNTIME
+	depends on BR2_PACKAGE_DIAGNOSTICS

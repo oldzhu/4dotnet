@@ -17,9 +17,8 @@ else
 fi
 
 $4/build.sh \
--subset clr+libs \
+-subset clr+libs+installer \
 -arch $3 \
 -c debug \
 -cross \
--pack \
 /p:EnableSourceLink=false

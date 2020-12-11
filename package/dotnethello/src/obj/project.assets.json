@@ -1,0 +1,97 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {},
+    "net5.0/linux-arm": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "net5.0": []
+  },
+  "packageFolders": {
+    "/home/oldzhu/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/oldzhu/4dotnet/package/dotnethello/src/dotnethello.csproj",
+      "projectName": "dotnethello",
+      "projectPath": "/home/oldzhu/4dotnet/package/dotnethello/src/dotnethello.csproj",
+      "packagesPath": "/home/oldzhu/.nuget/packages/",
+      "outputPath": "/home/oldzhu/4dotnet/package/dotnethello/src/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/oldzhu/4dotnet/package/dotnethello/src/nuget.config",
+        "/home/oldzhu/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "/home/oldzhu/buildroot/output/build/dotnetruntime-origin_master/artifacts/packages/Debug/Shipping/": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Runtime.linux-arm",
+            "version": "[5.0.0-rc.2.20475.17, 5.0.0-rc.2.20475.17]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.linux-arm",
+            "version": "[5.0.0-rc.2.20475.5, 5.0.0-rc.2.20475.5]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Runtime.linux-arm",
+            "version": "[6.0.0-dev, 6.0.0-dev]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/home/oldzhu/buildroot/output/build/dotnetruntime-origin_master/.dotnet/sdk/5.0.100-rc.2.20479.15/RuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "linux-arm": {
+        "#import": []
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Microsoft.NETCore.App.Runtime.linux-arm. No packages exist with this id in source(s): /home/oldzhu/buildroot/output/build/dotnetruntime-origin_master/artifacts/packages/Debug/Shipping/",
+      "libraryId": "Microsoft.NETCore.App.Runtime.linux-arm",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
+}
