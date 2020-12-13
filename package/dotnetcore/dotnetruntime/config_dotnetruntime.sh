@@ -33,6 +33,12 @@ add_includes $4 src/installer/corehost/cli/dotnet/CMakeLists.txt
 add_includes $4 src/installer/corehost/cli/apphost/static/CMakeLists.txt
 add_includes $4 src/installer/corehost/cli/nethost/CMakeLists.txt
 add_includes $4 src/installer/corehost/cli/test/mockcoreclr/CMakeLists.txt
+add_includes $4 src/installer/corehost/cli/test/mockhostfxr/CMakeLists.txt
+add_includes $4 src/installer/corehost/cli/test/mockhostpolicy/CMakeLists.txt
+add_includes $4 src/installer/corehost/cli/test_fx_ver/CMakeLists.txt
+add_includes $4 src/installer/corehost/cli/test/nativehost/CMakeLists.txt
+add_includes $4 src/installer/corehost/cli/fxr/standalone/CMakeLists.txt
+add_includes $4 src/installer/corehost/cli/hostpolicy/standalone/CMakeLists.txt
 
 if [ $3 == "ARM64" ]; then
 	mkdir $2/aarch64-buildroot-linux-gnueabihf/myinclude
@@ -42,7 +48,7 @@ type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwc
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
 algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
 ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
-climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread} \
+climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future} \
 $2/aarch64-buildroot-linux-gnueabihf/myinclude
 	cp -u -v $2/lib/gcc/aarch64-buildroot-linux-gnueabihf/10.2.0/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
 else
@@ -54,7 +60,7 @@ type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwc
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
 algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
 ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
-climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread} \
+climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future} \
 $2/arm-buildroot-linux-gnueabihf/myinclude
         cp -u -v $2/lib/gcc/arm-buildroot-linux-gnueabihf/10.2.0/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
 fi
