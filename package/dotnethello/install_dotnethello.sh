@@ -7,6 +7,6 @@
 # p6 [PKGNAME}_PKGDIR
 # p7 TARGET_DIR
 
-if [ $3 == "ARM64" ]; then
-else
-fi
+publishpath=($4/bin/*/*/*/publish)
+mkdir -p $7/root/dotnethello
+cp $publishpath/* $7/root/dotnethello

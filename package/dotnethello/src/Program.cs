@@ -9,6 +9,8 @@ namespace dotnethello
 			var coreAssemblyInfo = System.Diagnostics.FileVersionInfo.GetVersionInfo(typeof(object).Assembly.Location);
 			Console.WriteLine($"Hello World from .NET {coreAssemblyInfo.ProductVersion}");
 			Console.WriteLine($"The location is {typeof(object).Assembly.Location}");
+			Console.WriteLine("press anykey to exit...");
+			Console.ReadLine();
 		}
 	}
 }

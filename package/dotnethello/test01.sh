@@ -1,26 +1,18 @@
-#!/bin/bash
-# p1 BUILD_DIR
-# p2 HOST_DIR
-# p3 BR2_PACKAGE_{PKGNAME}_TARGET_ARCH
-# p4 @D
-# p5 STAGING_DIR
-# p6 [PKGNAME}_PKGDIR
-# p7 TARGET_DIR
-
-packpath=$1/dotnetruntime-origin_master/artifacts/packages
+#~/bin/sh
+packpath=/home/oldzhu/buildroot/output/build/dotnetruntime-origin_master/artifacts/packages
 subdirs=($packpath/*)
 localpath=${subdirs[0]}/Shipping
 runtimepackname=($localpath/Microsoft.NETCore.App.Runtime.*.nupkg)
 ridverpkg=${runtimepackname[0]##*Microsoft.NETCore.App.Runtime.}
-if [ -z "$ridverpkg" ]; then
-	echo "could not find local dotnet core runtime package!"
-	exit 1
-fi 
 ridver=${ridverpkg%%.nupkg*}
 rid=${ridver%%.*}
 ver=${ridver#*.}
+echo $rid
+echo $ver
+publishpath=(/home/oldzhu/buildroot/output/build/dotnethello-1.0/bin/*/*/*/publish)
+echo $publishpath
 
-cat <<EOF > $4/nuget.config
+cat <<EOF > nuget.config
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <packageSources>
@@ -31,7 +23,7 @@ cat <<EOF > $4/nuget.config
 </configuration>
 EOF
 
-cat <<EOF > $4/dotnethello.csproj
+cat <<EOF > dotnethello.csproj
 <Project Sdk="Microsoft.NET.Sdk">
         <PropertyGroup>
                 <OutputType>Exe</OutputType>

@@ -6,20 +6,7 @@
 # p5 STAGING_DIR
 # p6 [PKGNAME}_PKGDIR
 # p7 TARGET_DIR
+	
+cd $4
+$1/dotnetruntime-origin_master/.dotnet/dotnet publish
 
-export PATH=$1/host-lldb-origin_master/llvm/buildroot-build/bin:$PATH:$2/bin;
-export ROOTFS_DIR=$5
-
-if [ $3 == "ARM" ]; then
-	export TOOLCHAIN=arm-buildroot-linux-gnueabihf;
-else
-	export TOOLCHAIN=aarch64-buildroot-linux-gnueabihf;
-fi
-
-$4/build.sh \
--subset clr+libs \
--arch $3 \
--c debug \
--cross \
--pack \
-/p:EnableSourceLink=false
