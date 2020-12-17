@@ -11,8 +11,12 @@ if [ $3 == "ARM64" ]; then
 	mkdir -p $7/root/.dotnet/sos
 	cp $4/artifacts/bin/Linux.aarch64.Debug/{libsos.so,libsosplugin.so,sosdocsunix.txt} \
 	$7/root/.dotnet/sos
-else
+elif [ $3 == "ARM" ]; then
 	mkdir -p $7/root/.dotnet/sos
 	cp $4/artifacts/bin/Linux.arm.Debug/{libsos.so,libsosplugin.so,sosdocsunix.txt} \
 	$7/root/.dotnet/sos
+else
+	mkdir -p $7/root/.dotnet/sos
+        cp $4/artifacts/bin/Linux.x86_64.Debug/{libsos.so,libsosplugin.so,sosdocsunix.txt} \
+        $7/root/.dotnet/sos
 fi

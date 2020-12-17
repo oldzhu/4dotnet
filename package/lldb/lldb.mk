@@ -40,7 +40,13 @@ LLDB_TARGET_ARCH = $(call qstrip,$(BR2_PACKAGE_LLDB_TARGET_ARCH))
 
 # Build backend for target architecture. This include backends like AMDGPU.
 LLDB_TARGETS_TO_BUILD = $(LLDB_TARGET_ARCH)
+
+ifneq ($(LLDB_TARGET_ARCH),X86)
 HOST_LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="X86;$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
+else
+HOST_LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
+endif
+
 LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
 
 # LLVM target to use for native code generation. This is required for JIT generation.
@@ -49,6 +55,7 @@ LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="$(subst $(space),;,$(LLDB_TARGETS_TO_
 # and target architectures are different.
 #HOST_LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=$(LLDB_TARGET_ARCH)
 HOST_LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=x86_64
+
 LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=$(LLDB_TARGET_ARCH)
 
 # Use native llvm-tblgen from host-llvm (needed for cross-compilation)

@@ -40,29 +40,29 @@ add_includes $4 src/installer/corehost/cli/test/nativehost/CMakeLists.txt
 add_includes $4 src/installer/corehost/cli/fxr/standalone/CMakeLists.txt
 add_includes $4 src/installer/corehost/cli/hostpolicy/standalone/CMakeLists.txt
 
+function copy_headslibs {
+        mkdir $1/$3/myinclude
+        cp -r $2/usr/include/{features.h,stdc-predef.h,sys,bits,gnu} $1/$3/myinclude
+        cp -r $1/$3/include/c++/10.2.0/{\
+type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwchar,\
+backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
+algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
+ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
+climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future} \
+$1/$3/myinclude
+        cp -u -v $1/lib/gcc/$3/10.2.0/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $2/usr/lib
+}
+
 if [ $3 == "ARM64" ]; then
-	mkdir $2/aarch64-buildroot-linux-gnueabihf/myinclude
-	cp -r $5/usr/include/{features.h,stdc-predef.h,sys,bits,gnu} $2/aarch64-buildroot-linux-gnueabihf/myinclude
-        cp -r $2/aarch64-buildroot-linux-gnueabihf/include/c++/10.2.0/{\
-type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwchar,\
-backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
-algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
-ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
-climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future} \
-$2/aarch64-buildroot-linux-gnueabihf/myinclude
-	cp -u -v $2/lib/gcc/aarch64-buildroot-linux-gnueabihf/10.2.0/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
-else
+	toolchain=aarch64-buildroot-linux-gnueabihf
+	copy_headslibs $2 $5 $toolchain
+elif [ $3 == "ARM" ]; then
 	patch -N -d $4/src/coreclr/src/vm/arm -p0 -u -b cgencpu.h -i $6/cgencpu.h.mypatch
-	mkdir $2/arm-buildroot-linux-gnueabihf/myinclude
-	cp -r $5/usr/include/{features.h,stdc-predef.h,sys,bits,gnu} $2/arm-buildroot-linux-gnueabihf/myinclude
-	cp -r $2/arm-buildroot-linux-gnueabihf/include/c++/10.2.0/{\
-type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwchar,\
-backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
-algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
-ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
-climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future} \
-$2/arm-buildroot-linux-gnueabihf/myinclude
-        cp -u -v $2/lib/gcc/arm-buildroot-linux-gnueabihf/10.2.0/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
+	toolchain=arm-buildroot-linux-gnueabihf
+	copy_headslibs $2 $5 $toolchain
+else
+	toolchain=x86_64-buildroot-linux-gnueabihf
+	copy_headslibs $2 $5 $toolchain
 fi
 
 mkdir -p -v $5/usr/include/lldb/API

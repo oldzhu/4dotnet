@@ -9,4 +9,4 @@
 
 publishpath=($4/bin/*/*/*/publish)
 mkdir -p $7/root/dotnethello
-cp $publishpath/* $7/root/dotnethello
+cp -v $publishpath/* $7/root/dotnethello

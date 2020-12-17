@@ -12,13 +12,14 @@ export ROOTFS_DIR=$5
 
 if [ $3 == "ARM" ]; then
 	export TOOLCHAIN=arm-buildroot-linux-gnueabihf;
-else
+elif [ $3 == "AArch64" ]; then
 	export TOOLCHAIN=aarch64-buildroot-linux-gnueabihf;
+else
+	export TOOLCHAIN=x86_64-buildroot-linux-gnueabihf;
 fi
 
 $4/build.sh \
 -subset clr+libs+installer \
 -arch $3 \
--c debug \
 -cross \
 /p:EnableSourceLink=false

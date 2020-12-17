@@ -11,8 +11,10 @@ export PATH=$1/host-lldb-origin_master/llvm/buildroot-build/bin:$PATH:$2/bin;
 
 if [ $3 == "ARM" ]; then
 	export TOOLCHAIN=arm-buildroot-linux-gnueabihf;
-else
+elif [ $3 == "AArch64" ]; then
 	export TOOLCHAIN=aarch64-buildroot-linux-gnueabihf;
+else
+	export TOOLCHAIN=x86_64-buildroot-linux-gnueabihf;
 fi
 
 $4/build.sh \

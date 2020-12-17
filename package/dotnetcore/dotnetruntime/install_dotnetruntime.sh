@@ -7,6 +7,6 @@
 # p6 [PKGNAME}_PKGDIR
 # p7 TARGET_DIR
 
-if [ $3 == "ARM64" ]; then
-else
-fi
+#if [ $3 == "ARM64" ]; then
+#else
+#fi
