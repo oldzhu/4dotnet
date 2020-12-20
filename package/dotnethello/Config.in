@@ -1,5 +1,7 @@
 config BR2_PACKAGE_DOTNETHELLO_ARCH_SUPPORTS
         bool
+	default y if BR2_i386
+	default y if BR2_x86_64
         default y if BR2_aarch64
         default y if BR2_arm || BR2_armeb
 
@@ -7,6 +9,7 @@ config BR2_PACKAGE_DOTNETHELLO_TARGET_ARCH
         string
         default "ARM64" if BR2_aarch64
         default "ARM" if BR2_arm || BR2_armeb
+	default "X86" if BR2_i386 || BR2_x86_64
 
 config BR2_PACKAGE_DOTNETHELLO
 	bool "dotnethello"
@@ -22,5 +25,5 @@ config BR2_PACKAGE_DOTNETHELLO
 comment "dotnet core hello world package"
 	depends on BR2_PACKAGE_DOTNETHELLO_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB
-	depends on BR2_PACKAGE_DOTNETRUNTIME
+	depends on BR2_PACKAGE_DOTNETRUNTIME	
 	depends on BR2_PACKAGE_DIAGNOSTICS

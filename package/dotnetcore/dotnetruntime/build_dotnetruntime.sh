@@ -19,7 +19,8 @@ else
 fi
 
 $4/build.sh \
--subset clr+libs+installer \
+-subset clr+libs \
 -arch $3 \
 -cross \
+-c release
 /p:EnableSourceLink=false
