@@ -22,5 +22,5 @@ $4/build.sh \
 -subset clr+libs \
 -arch $3 \
 -cross \
--c release
+-c release \
 /p:EnableSourceLink=false
