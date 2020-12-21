@@ -10,6 +10,7 @@
 #patch -N -d $4/eng/common/cross -p0 -u -b toolchain.cmake -i $6/toolchain.cmake.mypatch
 
 function add_includes {
+echo >> $1/$2
 echo if\(\$ENV{CROSSCOMPILE} EQUAL 1\) >> $1/$2
 echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/include/c++/10.2.0/\$ENV{TOOLCHAIN}\) >> $1/$2
 echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/myinclude\) >> $1/$2
