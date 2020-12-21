@@ -54,14 +54,14 @@ $1/$3/myinclude
 }
 
 if [ $3 == "ARM64" ]; then
-	toolchain=aarch64-buildroot-linux-gnueabihf
+	toolchain=aarch64-buildroot-linux-gnu
 	copy_headslibs $2 $5 $toolchain
 elif [ $3 == "ARM" ]; then
 	patch -N -d $4/src/coreclr/vm/arm -p0 -u -b cgencpu.h -i $6/cgencpu.h.mypatch
 	toolchain=arm-buildroot-linux-gnueabihf
 	copy_headslibs $2 $5 $toolchain
 else
-	toolchain=x86_64-buildroot-linux-gnueabihf
+	toolchain=x86_64-buildroot-linux-gnu
 	copy_headslibs $2 $5 $toolchain
 fi
 

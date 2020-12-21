@@ -13,9 +13,9 @@ export ROOTFS_DIR=$5
 if [ $3 == "ARM" ]; then
 	export TOOLCHAIN=arm-buildroot-linux-gnueabihf;
 elif [ $3 == "AArch64" ]; then
-	export TOOLCHAIN=aarch64-buildroot-linux-gnueabihf;
+	export TOOLCHAIN=aarch64-buildroot-linux-gnu;
 else
-	export TOOLCHAIN=x86_64-buildroot-linux-gnueabihf;
+	export TOOLCHAIN=x86_64-buildroot-linux-gnu;
 fi
 
 $4/build.sh \
