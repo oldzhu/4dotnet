@@ -18,15 +18,15 @@ echo endif\(\) >> $1/$2
 
 #add_includes $4 src/coreclr/src/CMakeLists.txt
 #add_includes $4 src/coreclr/src/hosts/CMakeLists.txt
-add_includes $4 src/coreclr/src/hosts/unixcoreruncommon/CMakeLists.txt
-add_includes $4 src/coreclr/src/hosts/unixcorerun/CMakeLists.txt
-add_includes $4 src/coreclr/src/hosts/unixcoreconsole/CMakeLists.txt
-#add_includes $4 src/coreclr/src/pal/CMakeLists.txt
-add_includes $4 src/coreclr/src/pal/src/eventprovider/lttngprovider/CMakeLists.txt
-add_includes $4 src/coreclr/src/pal/src/CMakeLists.txt
-add_includes $4 src/coreclr/src/debug/dbgutil/CMakeLists.txt
-add_includes $4 src/coreclr/src/gc/CMakeLists.txt
-add_includes $4 src/coreclr/src/debug/createdump/CMakeLists.txt
+#add_includes $4 src/coreclr/hosts/unixcoreruncommon/CMakeLists.txt
+add_includes $4 src/coreclr/hosts/unixcorerun/CMakeLists.txt
+#add_includes $4 src/coreclr/hosts/unixcoreconsole/CMakeLists.txt
+#add_includes $4 src/coreclr/pal/CMakeLists.txt
+add_includes $4 src/coreclr/pal/src/eventprovider/lttngprovider/CMakeLists.txt
+add_includes $4 src/coreclr/pal/src/CMakeLists.txt
+add_includes $4 src/coreclr/debug/dbgutil/CMakeLists.txt
+add_includes $4 src/coreclr/gc/CMakeLists.txt
+add_includes $4 src/coreclr/debug/createdump/CMakeLists.txt
 add_includes $4 src/installer/corehost/cli/apphost/standalone/CMakeLists.txt
 add_includes $4 src/installer/corehost/cli/hostcommon/CMakeLists.txt
 add_includes $4 src/installer/corehost/cli/dotnet/CMakeLists.txt
@@ -41,9 +41,9 @@ add_includes $4 src/installer/corehost/cli/fxr/standalone/CMakeLists.txt
 add_includes $4 src/installer/corehost/cli/hostpolicy/standalone/CMakeLists.txt
 
 function copy_headslibs {
-        mkdir $1/$3/myinclude
-        cp -r $2/usr/include/{features.h,stdc-predef.h,sys,bits,gnu} $1/$3/myinclude
-        cp -r $1/$3/include/c++/10.2.0/{\
+        mkdir -p -v $1/$3/myinclude
+        cp -r -v $2/usr/include/{features.h,stdc-predef.h,sys,bits,gnu} $1/$3/myinclude
+        cp -r -v $1/$3/include/c++/10.2.0/{\
 type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwchar,\
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
 algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
@@ -57,7 +57,7 @@ if [ $3 == "ARM64" ]; then
 	toolchain=aarch64-buildroot-linux-gnueabihf
 	copy_headslibs $2 $5 $toolchain
 elif [ $3 == "ARM" ]; then
-	patch -N -d $4/src/coreclr/src/vm/arm -p0 -u -b cgencpu.h -i $6/cgencpu.h.mypatch
+	patch -N -d $4/src/coreclr/vm/arm -p0 -u -b cgencpu.h -i $6/cgencpu.h.mypatch
 	toolchain=arm-buildroot-linux-gnueabihf
 	copy_headslibs $2 $5 $toolchain
 else
