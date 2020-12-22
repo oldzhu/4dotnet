@@ -49,7 +49,7 @@ type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwc
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
 algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
 ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
-climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future} \
+climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf} \
 $1/$3/myinclude
         cp -u -v $1/lib/gcc/$3/10.2.0/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $2/usr/lib
 }
