@@ -8,7 +8,7 @@
 # p7 TARGET_DIR
 
 sourcepath=($4/artifacts/bin/Linux.*)
-mkdir -p $7/root/.dotnet/so
+mkdir -p $7/root/.dotnet/sos
 cp -v $sourcepath/* $7/root/.dotnet/sos
 
 #if [ $3 == "ARM64" ]; then
