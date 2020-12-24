@@ -7,6 +7,6 @@
 # p6 [PKGNAME}_PKGDIR
 # p7 TARGET_DIR
 	
-cd $4
-$1/dotnetruntime-origin_master/.dotnet/dotnet publish
-
+pushd $4
+.dotnet/dotnet publish
+popd
