@@ -10,3 +10,5 @@
 publishpath=($4/bin/*/*/*/publish)
 mkdir -p $7/root/dotnethello
 cp -v $publishpath/* $7/root/dotnethello
+nativesympath=($1/dotnetruntime-origin_master/artifacts/bin/microsoft.netcore.app.runtime.*/Release/runtimes/*/native)
+cp -v $nativesympath/*.so.dbg $7/root/dotnethello
