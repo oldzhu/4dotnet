@@ -12,3 +12,4 @@ mkdir -p $7/root/dotnethello
 cp -v $publishpath/* $7/root/dotnethello
 nativesympath=($1/dotnetruntime-origin_master/artifacts/bin/microsoft.netcore.app.runtime.*/Release/runtimes/*/native)
 cp -v $nativesympath/*.so.dbg $7/root/dotnethello
+cp -v $1/dotnetruntime-origin_master/artifacts/bin/*/corehost/{libhostfxr.so.dbg,libhostpolicy.so.dbg} $7/root/dotnethello
