@@ -1,0 +1,23 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-origin_master/src/coreclr/jit/emitarm.cpp	2021-01-03 09:49:48.790000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/emitarm.cpp	2021-01-03 09:53:34.740000000 +0800
+@@ -1520,12 +1520,19 @@
+ 
+             if (imm & 0x8000) // Is the PC being popped?
+                 hasPC = true;
++	    if (imm == 0x4000)
++	    {
++                // We have to use the Thumb-2 pop single register encoding but ldm sp!, {lr}
++                regNumber reg = genRegNumFromMask(imm);
++                emitIns_R(ins, attr, reg);
++                return;
++	    }
+             if (imm & 0x4000) // Is the LR being popped?
+             {
+                 hasLR = true;
+                 useT2 = true;
+             }
+-
++ 
+         COMMON_PUSH_POP:
+ 
+             if (((imm - 1) & imm) == 0) // Is only one or zero bits set in imm?
