@@ -10,3 +10,7 @@
 #else
 #	export PATH=$PATH:$HOME/.dotnet/tools
 #fi
+if [ ! -d "/home/oldzhu/buildroot" ]
+	mkdir -p /home/oldzhu/buildroot
+	mount -t 9p -o trans=virtio,version=9p2000.L hostshare /home/oldzhu/buildroot
+fi
