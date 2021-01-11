@@ -9,6 +9,10 @@
 
 #patch -N -d $4/eng/common/cross -p0 -u -b toolchain.cmake -i $6/toolchain.cmake.mypatch
 
+#fix FALSE/TRUE compilation error in src/libraries/Native/Unix/System.Globalization.Native
+sed -i 's/FALSE/0/g'  $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
+sed -i 's/TRUE/1/g' $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
+
 function add_includes {
 echo >> $1/$2
 echo if\(\$ENV{CROSSCOMPILE} EQUAL 1\) >> $1/$2
