@@ -12,4 +12,4 @@ The arm/arm64 VM has:
 The host (x86) version clang/llvm is built from master branch by the buildroot gcc toolchain, then it is used to cross compile the above SOS lldb plugin and the native part of the .NET core runtime for arm/arm64 target. 
 
 [Build arm/arm64 VM (Linux + QEMU + GDB + LLDB + SOS + .NET Core runtime) for .NET core application debugging](build.md)  
-[Using the built arm/arm64 VM to debug](debug.md)
+[Using the arm/arm64 VM built to debug](debug.md)

@@ -20,7 +20,7 @@ it contains the steps to build arm/arm64 vm for .net core debugging.
 ~~~
         
     cp ~/4dotnet/savedconfigs/arm/.qemu_arm_vexpress_config ~/buildroot/.config
-~~~
+~~~  
 **for arm64:**
 ~~~
     cp ~/4donet/savedconfigs/arm64/.qemu_aarch64_virt_config ~/buildroot/.config
@@ -43,4 +43,4 @@ it contains the steps to build arm/arm64 vm for .net core debugging.
 ~~~
     make linux-rebuild all
 ~~~
-8. Done and now you go to [Using the built arm/arm64 VM to debug](debug.md) to start your journey
+8. Done and now you can go to [Using the built arm/arm64 VM to debug](debug.md) to start your journey
