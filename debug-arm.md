@@ -131,8 +131,42 @@ End of assembler dump.
 [SIGILL's on ARM32 while using valgrind #33727](https://github.com/dotnet/runtime/issues/33727)
 10. there are two workarounds to fix the issue
 
-    1. publish the demo dotnethello program with PublishReadyToRun=false
-    
+    1. rebuild the .net core runtime with PublishReadyToRun=false
+        1. modify the line in ~/4dotnet/dotnetcore/dotnetruntime/build_dotnetruntime.sh as the below   
+
+        from
+        ~~~
+        $4/build.sh \
+-subset clr+libs+host+packs \
+-arch $3 \
+-cross \
+-c release \
+-v d \
+/p:EnableSourceLink=false
+        ~~~
+
+        to
+        ~~~
+        $4/build.sh \
+-subset clr+libs+host+packs \
+-arch $3 \
+-cross \
+-c release \
+-v d \
+/p:EnableSourceLink=false \
+/p:DisableCrossgen=true \
+/p:PublishReadyToRun=false
+        ~~~
+
+        2. Remove the local cache for dotnethello demo program.
+        ~~~
+        rm -r $HOME/buildroot/output/build/dotnethello-1.0/localcache
+        ~~~
+        3. Run the below make command to rebuild the dotnethello with the new system image. 
+        ~~~
+        make dotnethello-rebuild all
+        ~~~
+
     or
 
     2. patch the emitarm.cpp with the POC patch

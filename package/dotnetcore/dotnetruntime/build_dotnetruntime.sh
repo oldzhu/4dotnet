@@ -24,4 +24,6 @@ $4/build.sh \
 -cross \
 -c release \
 -v d \
-/p:EnableSourceLink=false
+/p:EnableSourceLink=false \
+/p:DisableCrossgen=true \
+/p:PublishReadyToRun=false
