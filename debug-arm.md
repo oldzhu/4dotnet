@@ -131,42 +131,85 @@ End of assembler dump.
 [SIGILL's on ARM32 while using valgrind #33727](https://github.com/dotnet/runtime/issues/33727)
 10. there are two workarounds to fix the issue
 
-    1. rebuild the .net core runtime with PublishReadyToRun=false
-        1. modify the line in ~/4dotnet/dotnetcore/dotnetruntime/build_dotnetruntime.sh as the below   
-
-        from
-        ~~~
-        $4/build.sh \
--subset clr+libs+host+packs \
--arch $3 \
--cross \
--c release \
--v d \
-/p:EnableSourceLink=false
-        ~~~
-
-        to
-        ~~~
-        $4/build.sh \
--subset clr+libs+host+packs \
--arch $3 \
--cross \
--c release \
--v d \
-/p:EnableSourceLink=false \
-/p:DisableCrossgen=true \
-/p:PublishReadyToRun=false
-        ~~~
-
-        2. Remove the local cache for dotnethello demo program.
-        ~~~
-        rm -r $HOME/buildroot/output/build/dotnethello-1.0/localcache
-        ~~~
-        3. Run the below make command to rebuild the dotnethello with the new system image. 
-        ~~~
-        make dotnethello-rebuild all
-        ~~~
+    1. rebuild the .net core runtime with PublishReadyToRun=false[workaround4illegalinstruction.md] 
 
     or
 
-    2. patch the emitarm.cpp with the POC patch
+    2. patch the emitarm.cpp with the POC patch[pocpatch4illegalinstruction.md]
+
+11. then you can start the debugging trip without the crash.
+~~~
+# lldb dotnethello/dotnethello
+(lldb) target create "dotnethello/dotnethello"
+Current executable set to '/root/dotnethello/dotnethello' (arm).
+(lldb) r
+Process 184 launched: '/root/dotnethello/dotnethello' (arm)
+Process 184 stopped and restarted: thread 1 received signal: SIGCHLD
+Process 184 stopped and restarted: thread 1 received signal: SIGCHLD
+Hello World from .NET 6.0.0-dev
+The location is /root/dotnethello/System.Private.CoreLib.dll
+press anykey to exit...
+Process 184 stopped
+* thread #1, name = 'dotnethello', stop reason = signal SIGSTOP
+    frame #0: 0x76fb46fc libpthread.so.0`__libc_read at read.c:26:10
+   23   ssize_t
+   24   __libc_read (int fd, void *buf, size_t nbytes)
+   25   {
+-> 26     return SYSCALL_CANCEL (read, fd, buf, nbytes);
+                 ^
+   27   }
+   28   libc_hidden_def (__libc_read)
+   29
+libpthread.so.0`__libc_read:
+->  0x76fb46fc <+84>: svc    #0x0
+    0x76fb4700 <+88>: cmn    r0, #4096
+    0x76fb4704 <+92>: mov    r4, r0
+    0x76fb4708 <+96>: ldrhi  r2, [pc, #0x34]           ; <+156> at read.c:26:10
+(lldb) clrstack
+Error: Failed to find runtime directory
+SOSInitializeByHost failed 80004002
+OS Thread Id: 0xb8 (1)
+Child SP       IP Call Site
+7EFFEC34 76fb46fc [InlinedCallFrame: 7effec34]
+7EFFEC34 6d43430e [InlinedCallFrame: 7effec34] Interop+Sys.ReadStdin(Byte*, Int32)
+7EFFEC30 6D43430E ILStubClass.IL_STUB_PInvoke(Byte*, Int32)
+7EFFEC80 6D43429A System.IO.StdInReader.ReadStdin(Byte*, Int32)
+7EFFF0B8 6d434018 [InlinedCallFrame: 7efff0b8]
+7EFFECA8 6D434018 System.IO.StdInReader.ReadKey(Boolean ByRef)
+7EFFF168 6d433b04 [InlinedCallFrame: 7efff168]
+7EFFF160 6D433B04 System.IO.StdInReader.ReadLineCore(Boolean)
+7EFFF1F0 6D433A20 System.IO.StdInReader.ReadLine()
+7EFFF210 6D4339A8 System.IO.SyncTextReader.ReadLine()
+7EFFF240 6D432C44 System.Console.ReadLine()
+7EFFF258 6EE6892C dotnethello.Program.Main(System.String[])
+(lldb) bt
+* thread #1, name = 'dotnethello', stop reason = signal SIGSTOP
+  * frame #0: 0x76fb46fc libpthread.so.0`__libc_read at read.c:26:10
+    frame #1: 0x76fb46e4 libpthread.so.0`__libc_read(fd=0, buf=0x7effecb0, nbytes=1024) at read.c:24
+    frame #2: 0x6ee3b150 libSystem.Native.so`SystemNative_ReadStdin(buffer=0x7effecb0, bufferSize=1024) at pal_console.c:403:37
+    frame #3: 0x6d43430e
+    frame #4: 0x6d43429a
+    frame #5: 0x6d434018
+    frame #6: 0x6d433b04
+    frame #7: 0x6d433a20
+    frame #8: 0x6d4339a8
+    frame #9: 0x6d432c44
+    frame #10: 0x6ee6892c
+    frame #11: 0x769ac166 libcoreclr.so`CallDescrWorkerInternal at asmhelpers.S:78
+(lldb) f 2
+frame #2: 0x6ee3b150 libSystem.Native.so`SystemNative_ReadStdin(buffer=0x7effecb0, bufferSize=1024) at pal_console.c:403:37
+   400      }
+   401
+   402      ssize_t count;
+-> 403      while (CheckInterrupted(count = read(STDIN_FILENO, buffer, Int32ToSizeT(bufferSize))));
+                                            ^
+   404      return (int32_t)count;
+   405  }
+   406
+libSystem.Native.so`SystemNative_ReadStdin:
+->  0x6ee3b150 <+20>: mov    r6, r0
+    0x6ee3b152 <+22>: cmp.w  r0, #0xffffffff
+    0x6ee3b156 <+26>: bgt    0x6ee3b162                ; <+38> at pal_console.c:405:1
+    0x6ee3b158 <+28>: blx    0x6ee35aec                ; symbol stub for: inotify_init
+(lldb)
+~~~

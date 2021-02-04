@@ -23,7 +23,4 @@ $4/build.sh \
 -arch $3 \
 -cross \
 -c release \
--v d \
-/p:EnableSourceLink=false \
-/p:DisableCrossgen=true \
-/p:PublishReadyToRun=false
+/p:EnableSourceLink=false 
