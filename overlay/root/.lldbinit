@@ -1,2 +1,0 @@
-plugin load /root/.dotnet/sos/libsosplugin.so
-settings set stop-disassembly-display always

@@ -12,6 +12,6 @@
 #fi
 if ! mount | grep buildroot > /dev/null 
 then
-	mkdir -p /home/oldzhu/buildroot
-	mount -t 9p -o trans=virtio,version=9p2000.L hostshare /home/oldzhu/buildroot
+	mkdir -p /root/buildroot
+	mount -t 9p -o trans=virtio,version=9p2000.L hostshare /root/buildroot
 fi
