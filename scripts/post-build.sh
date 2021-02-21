@@ -5,7 +5,7 @@ echo 'PermitEmptyPasswords yes' >> $TARGET_DIR/etc/ssh/sshd_config
 cat >$TARGET_DIR/root/.gdbinit <<EOF 
 set substitute-path $HOME/buildroot  /root/buildroot
 define hook-stop
-disas /rs $pc,+8
+disas /mr $pc,+0xa
 end
 EOF
 

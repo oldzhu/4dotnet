@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-LLDB_VERSION = origin/master
+LLDB_VERSION = origin/main
 LLDB_SITE = git://github.com/llvm/llvm-project.git
 LLDB_SUPPORTS_IN_SOURCE_BUILD = NO
 #LLDB_INSTALL_STAGING = YES
