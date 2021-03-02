@@ -10,7 +10,8 @@
 #else
 #	export PATH=$PATH:$HOME/.dotnet/tools
 #fi
-if ! mount | grep buildroot > /dev/null 
+#if ! mount | grep buildroot > /dev/null 
+if [ ! -d "/root/buildroot/output" ]
 then
 	mkdir -p /root/buildroot
 	mount -t 9p -o trans=virtio,version=9p2000.L hostshare /root/buildroot
