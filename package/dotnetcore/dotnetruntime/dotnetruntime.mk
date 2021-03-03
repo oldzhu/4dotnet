@@ -4,7 +4,8 @@
 #
 #################################################################################
 
-DOTNETRUNTIME_VERSION = origin/master
+#DOTNETRUNTIME_VERSION = origin/master
+DOTNETRUNTIME_VERSION = origin/main
 DOTNETRUNTIME_SITE = git://github.com/dotnet/runtime.git
 #DOTNETRUNTIME_INSTALL_STAGING = NO
 DOTNETRUNTIME_INSTALL_TARGET = YES
