@@ -1,11 +1,11 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 5.10.6 Kernel Configuration
+# Linux/arm 5.10.19 Kernel Configuration
 #
-CONFIG_CC_VERSION_TEXT="arm-buildroot-linux-gnueabihf-gcc.br_real (Buildroot 2020.11-685-g3484200391) 10.2.0"
+CONFIG_CC_VERSION_TEXT="arm-buildroot-linux-gnueabihf-gcc.br_real (Buildroot 2021.02-rc2-17-g6c5caa8f43) 10.2.0"
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=100200
-CONFIG_LD_VERSION=235010000
+CONFIG_LD_VERSION=236010000
 CONFIG_CLANG_VERSION=0
 CONFIG_LLD_VERSION=0
 CONFIG_CC_CAN_LINK=y
