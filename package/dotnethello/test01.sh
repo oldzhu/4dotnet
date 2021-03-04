@@ -1,5 +1,5 @@
 #~/bin/sh
-packpath=/home/oldzhu/buildroot/output/build/dotnetruntime-origin_master/artifacts/packages
+packpath=/home/oldzhu/buildroot/output/build/dotnetruntime-origin_main/artifacts/packages
 subdirs=($packpath/*)
 localpath=${subdirs[0]}/Shipping
 runtimepackname=($localpath/Microsoft.NETCore.App.Runtime.*.nupkg)

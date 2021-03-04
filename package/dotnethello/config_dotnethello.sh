@@ -10,7 +10,7 @@
 # the script based on the document at https://github.com/dotnet/runtime/blob/master/docs/workflow/using-dotnet-cli.md
 # it need change too if there is change in the document
 
-packpath=$1/dotnetruntime-origin_master/artifacts/packages
+packpath=$1/dotnetruntime-origin_main/artifacts/packages
 subdirs=($packpath/*)
 localpath=${subdirs[0]}/Shipping
 runtimepackname=($localpath/Microsoft.NETCore.App.Runtime.*.nupkg)
