@@ -7,7 +7,7 @@
 # p6 [PKGNAME}_PKGDIR
 # p7 TARGET_DIR
 
-export PATH=$1/host-lldb-origin_master/llvm/buildroot-build/bin:$PATH:$2/bin;
+export PATH=$1/host-lldb-origin_main/llvm/buildroot-build/bin:$PATH:$2/bin;
 
 if [ $3 == "ARM" ]; then
 	export TOOLCHAIN=arm-buildroot-linux-gnueabihf;
