@@ -10,6 +10,8 @@
 /build/lttng-libust-*/**/
 /build/liburcu-*/
 /build/liburcu-*/**/
+/build/diagnostics-*/
+/build/diagnostics-*/**/
 /build/dotnetruntime-*/
 /build/dotnetruntime-*/**/
 /host/arm-buildroot-linux-gnueabihf/

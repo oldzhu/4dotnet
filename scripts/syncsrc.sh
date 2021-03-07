@@ -1,4 +1,5 @@
 #!/bin/sh
+#$1 buildroot folder
 
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
