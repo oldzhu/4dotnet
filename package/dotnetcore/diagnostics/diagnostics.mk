@@ -4,7 +4,7 @@
 #
 #################################################################################
 
-DIAGNOSTICS_VERSION = origin/master
+DIAGNOSTICS_VERSION = origin/main
 #DIAGNOSTICS_SOURCE =
 DIAGNOSTICS_SITE = git://github.com/dotnet/diagnostics.git
 #DIAGNOSTICS_SITE_METHOD = git
