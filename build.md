@@ -23,11 +23,26 @@ it contains the steps to build arm/arm64 vm for .net core debugging.
 ~~~  
 **for arm64:**
 ~~~
-    cp ~/4donet/savedconfigs/arm64/.qemu_aarch64_virt_config ~/buildroot/.config
+    cp ~/4dotnet/savedconfigs/arm64/.qemu_aarch64_virt_config ~/buildroot/.config
 ~~~
+5. Run the command make menuconfig to set Toolchain options.
+~~
+    make BR2_EXTERNAL=~/4dotnet menuconfig
+~~
+
+check the following setting and select the latest version avaiable if it is not
+
+~~
+    Toolchain -> Custom kernel headers series  
+    Toolchain -> Binutils Version  
+    Toolchain -> GCC compiler Version 
+    Toolchain -> GDB debugger version 
+~~
+
 5. Run the below make command to begin 1st pass build. It could take serveral housrs or even days depends on your system power.
 ~~~
-    yes n | make BR2_EXTERNAL=~/4dotnet
+    export PATH=`echo $PATH|tr -d ' '`
+    make
 ~~~
 6. Copy the customized linux config from 4dotnet to the buildroot linux build folder.  
 
