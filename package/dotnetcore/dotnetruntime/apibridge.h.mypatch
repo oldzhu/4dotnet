@@ -1,0 +1,11 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-origin_main/src/libraries/Native/Unix/System.Security.Cryptography.Native/apibridge.h	2021-03-31 10:30:46.020000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/apibridge.h	2021-03-31 10:33:12.000000000 +0800
+@@ -7,7 +7,7 @@
+ #include "pal_types.h"
+ 
+ int local_BIO_up_ref(BIO *a);
+-const BIGNUM* local_DSA_get0_key(const DSA* dsa, const BIGNUM** pubKey, const BIGNUM** privKey);
++void local_DSA_get0_key(const DSA* dsa, const BIGNUM** pubKey, const BIGNUM** privKey);
+ void local_DSA_get0_pqg(const DSA* dsa, const BIGNUM** p, const BIGNUM** q, const BIGNUM** g);
+ const DSA_METHOD* local_DSA_get_method(const DSA* dsa);
+ int32_t local_DSA_set0_key(DSA* dsa, BIGNUM* bnY, BIGNUM* bnX);

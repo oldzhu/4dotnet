@@ -21,29 +21,12 @@ echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/myinclude\) >> $1/$2
 echo endif\(\) >> $1/$2
 }
 
-#add_includes $4 src/coreclr/src/CMakeLists.txt
-#add_includes $4 src/coreclr/src/hosts/CMakeLists.txt
-#add_includes $4 src/coreclr/hosts/unixcoreruncommon/CMakeLists.txt
-add_includes $4 src/coreclr/hosts/unixcorerun/CMakeLists.txt
-#add_includes $4 src/coreclr/hosts/unixcoreconsole/CMakeLists.txt
-#add_includes $4 src/coreclr/pal/CMakeLists.txt
+#add_includes $4 src/coreclr/hosts/unixcorerun/CMakeLists.txt
 add_includes $4 src/coreclr/pal/src/eventprovider/lttngprovider/CMakeLists.txt
 add_includes $4 src/coreclr/pal/src/CMakeLists.txt
 add_includes $4 src/coreclr/debug/dbgutil/CMakeLists.txt
 add_includes $4 src/coreclr/gc/CMakeLists.txt
 add_includes $4 src/coreclr/debug/createdump/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/apphost/standalone/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/hostcommon/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/dotnet/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/apphost/static/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/nethost/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/test/mockcoreclr/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/test/mockhostfxr/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/test/mockhostpolicy/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/test_fx_ver/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/test/nativehost/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/fxr/standalone/CMakeLists.txt
-#add_includes $4 src/installer/corehost/cli/hostpolicy/standalone/CMakeLists.txt
 add_includes $4 src/native/corehost/apphost/standalone/CMakeLists.txt
 add_includes $4 src/native/corehost/apphost/static/CMakeLists.txt
 add_includes $4 src/native/corehost/fxr/standalone/CMakeLists.txt
@@ -55,7 +38,9 @@ add_includes $4 src/native/corehost/test/mockhostfxr/CMakeLists.txt
 add_includes $4 src/native/corehost/test/mockhostpolicy/CMakeLists.txt
 add_includes $4 src/native/corehost/test/nativehost/CMakeLists.txt
 add_includes $4 src/native/corehost/hostpolicy/standalone/CMakeLists.txt
-add_includes $4 src/native/corehost/test_fx_ver/CMakeLists.txt
+#add_includes $4 src/native/corehost/test_fx_ver/CMakeLists.txt
+add_includes $4 src/coreclr/hosts/corerun/CMakeLists.txt
+add_includes $4 src/native/corehost/test/fx_ver/CMakeLists.txt
 
 function copy_headslibs {
         mkdir -p -v $1/$3/myinclude
@@ -69,6 +54,14 @@ climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread
 $1/$3/myinclude
         cp -u -v $1/lib/gcc/$3/10.2.0/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $2/usr/lib
 }
+
+function apply_mypatches {
+	patch -N -d $1/src/libraries/Native/Unix/System.Native -p0 -u -b pal_process.c -i $2/pal_process.c.mypatch
+	patch -N -d $1/src/libraries/Native/Unix/System.Security.Cryptography.Native -p0 -u -b apibridge.h -i $2/apibridge.h.mypatch
+	patch -N -d $1/src/libraries/Native/Unix/System.Security.Cryptography.Native -p0 -u -b apibridge.c -i $2/apibridge.c.mypatch
+}
+
+apply_mypatches $4 $6
 
 if [ $3 == "ARM64" ]; then
 	toolchain=aarch64-buildroot-linux-gnu

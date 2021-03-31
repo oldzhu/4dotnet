@@ -1,0 +1,19 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-origin_main/src/libraries/Native/Unix/System.Security.Cryptography.Native/apibridge.c	2021-03-31 10:30:55.510000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/apibridge.c	2021-03-31 10:33:04.310000000 +0800
+@@ -220,7 +220,7 @@
+     }
+ }
+ 
+-const BIGNUM* local_DSA_get0_key(const DSA* dsa, const BIGNUM** pubKey, const BIGNUM** privKey)
++void local_DSA_get0_key(const DSA* dsa, const BIGNUM** pubKey, const BIGNUM** privKey)
+ {
+     if (dsa)
+     {
+@@ -235,7 +235,6 @@
+         }
+     }
+ 
+-    return NULL;
+ }
+ 
+ int32_t local_DSA_set0_pqg(DSA* dsa, BIGNUM* bnP, BIGNUM* bnQ, BIGNUM* bnG)
