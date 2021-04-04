@@ -58,4 +58,4 @@ check the following setting and select the latest version avaiable if it is not
 ~~~
     make linux-rebuild all
 ~~~
-8. Done and now you can go to [Using the built arm/arm64 VM to debug](debug.md) to start your journey
+8. Done and now you can go to [Using the arm VM to debug](debug-arm.md) or [Using the arm64 VM to debug](debug-arm64.md) to enjoy a .netcore app debugging.
