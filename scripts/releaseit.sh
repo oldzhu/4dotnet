@@ -45,14 +45,16 @@ SCRIPT=\$(readlink -f "\$0")
 SCRIPTPATH=\$(dirname "\$SCRIPT")
 echo \$SCRIPTPATH
 
-\$SCRIPTPATH/emu-system-aarch64 -M virt -cpu cortex-a53 -nographic -smp 2 -m 2048 -kernel \$SCRIPTPATH/Image -append "rootwait root=/dev/vda console=ttyAMA0" -netdev user,id=eth0,hostfwd=tcp::2222-:22 -device virtio-net-device,netdev=eth0 -drive file=\$SCRIPTPATH/rootfs.ext4,if=none,format=raw,id=hd0 -device virtio-blk-device,drive=hd0
+\$SCRIPTPATH/qemu-system-aarch64 -M virt -cpu cortex-a53 -nographic -smp 2 -m 2048 -kernel \$SCRIPTPATH/Image -append "rootwait root=/dev/vda console=ttyAMA0" -netdev user,id=eth0,hostfwd=tcp::2222-:22 -device virtio-net-device,netdev=eth0 -drive file=\$SCRIPTPATH/rootfs.ext4,if=none,format=raw,id=hd0 -device virtio-blk-device,drive=hd0
 EOF
+	chmod +x $relpath/arm64/start-qemu.sh
 	cp -u -v $HOME/buildroot/output/host/bin/qemu-system-aarch64 $relpath/arm64
         cp -u -v $HOME/buildroot/output/images/{Image,rootfs.ext4} $relpath/arm64
 	mkdir -p $relpath/arm64/tmpfs
         sudo mount $relpath/arm64/rootfs.ext4 $relpath/arm64/tmpfs
         sudo rsync -av -m --include-from=$SCRIPTPATH/includes.txt --exclude='*' $HOME/buildroot/output/ $relpath/arm64/tmpfs/root/buildroot/output/
         sudo umount $relpath/arm64/tmpfs
+	rm -rf $relpath/arm64/tmpfs
 	tar -C $HOME -czvf $relpath/dotnet_arm64_linux_vm_$(date +"%d-%m-%Y").tar.gz vm_releases/$(date +"%d-%m-%Y")/arm64
 fi
 
