@@ -7,7 +7,7 @@ for arm:
 wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.gz
 tar -xzvf dotnet_arm_linux_vm_[dd-mm-yyyy].tar.gz -C ~
 ~~~ 
-2.  Start the VM by the below command.
+2.  Start the VM by the below command.  
 if vm is built by yourself:
 ~~~
 ~/4dotnet/scripts/arm/start-qemu.sh
@@ -17,6 +17,7 @@ if vm is donwloaded release:
 ~/vm_releases/[dd-mm-yyyy]/arm/start-qemu.sh
 ~~~
 **replace the [dd-mm-yyyy] with the real date time you see in the latest github release if you prefer to use the released VM directly.**
+  
 3. Login as root without password
 ~~~
 Welcome to Buildroot
@@ -24,9 +25,10 @@ buildroot login: root
 qemu-system-arm: warning: 9p: degraded performance: a reasonable high msize should be chosen on client/guest side (chosen msize is <= 8192). See https://wiki.qemu.org/Documentation/9psetup#msize for details.
 #
 ~~~
-
 **you won't hit the illegal instruction if you use the rleased arm VM directly as the released arm VM was already patched**
-**so skip the step 4 to 10 and start from the setp 11 to enjoy the debugging if the release arm VM is used**
+  
+**so skip the step 4 to 10 and start from the setp 11 to enjoy the debugging if the release arm VM is used** 
+  
 4. Run lldb to debug the demo dotnethello application.
 ~~~
 # lldb dotnethello/dotnethello

@@ -7,15 +7,17 @@ for arm64:
 wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.gz
 tar -xzvf dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.gz -C ~
 ~~~  
-2.  Start the VM by the below command.
+2.  Start the VM by the below command.  
 if vm is built by yourself:
 ~~~
 ~/4dotnet/scripts/arm64/start-qemu.sh
-~~~
+~~~  
 if vm is donwloaded release:
 ~~~
 ~/vm_releases/[dd-mm-yyyy]/arm64/start-qemu.sh
 ~~~
+**replace the [dd-mm-yyyy] with the real date time you see in the latest github release if you prefer to use the released VM directly.**  
+  
 3. Login as root without password
 ~~~
 Welcome to Buildroot
