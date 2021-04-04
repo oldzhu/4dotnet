@@ -2,10 +2,19 @@ The steps to debug .net core app using the built arm64 VM
 for arm64:
 1. Build the arm64 VM as [Build arm/arm64 VM (Linux + QEMU + GDB + LLDB + SOS + .NET Core runtime) for .NET core application debugging](build.md)  
     or  
-    Download the released VM with some packaged sources.  
-2.  Start the VM by the below command。
+    Download the latest released arm VM and extract the files to home folder. For example:
+~~~
+wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.gz
+tar -xzvf dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.gz -C ~
+~~~  
+2.  Start the VM by the below command.
+if vm is built by yourself:
 ~~~
 ~/4dotnet/scripts/arm64/start-qemu.sh
+~~~
+if vm is donwloaded release:
+~~~
+~/vm_releases/[dd-mm-yyyy]/arm64/start-qemu.sh
 ~~~
 3. Login as root without password
 ~~~
