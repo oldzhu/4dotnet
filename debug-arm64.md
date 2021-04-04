@@ -16,7 +16,7 @@ if vm is donwloaded release:
 ~~~
 ~/vm_releases/[dd-mm-yyyy]/arm64/start-qemu.sh
 ~~~
-**replace the [dd-mm-yyyy] with the real date time you see in the latest github release if you prefer to use the released VM directly.**  
+**replace the [dd-mm-yyyy] with the real date time you see in the latest github release if you prefer to use the release VM directly.**  
   
 3. Login as root without password
 ~~~

@@ -16,7 +16,8 @@ if vm is donwloaded release:
 ~~~
 ~/vm_releases/[dd-mm-yyyy]/arm/start-qemu.sh
 ~~~
-**replace the [dd-mm-yyyy] with the real date time you see in the latest github release if you prefer to use the released VM directly.**
+  
+**replace the [dd-mm-yyyy] with the real date time you see in the latest github release if you prefer to use the release VM directly.**
   
 3. Login as root without password
 ~~~
@@ -25,7 +26,7 @@ buildroot login: root
 qemu-system-arm: warning: 9p: degraded performance: a reasonable high msize should be chosen on client/guest side (chosen msize is <= 8192). See https://wiki.qemu.org/Documentation/9psetup#msize for details.
 #
 ~~~
-**you won't hit the illegal instruction if you use the rleased arm VM directly as the released arm VM was already patched**
+**you won't hit the illegal instruction if you use the rlease arm VM directly as the release arm VM was already patched**
   
 **so skip the step 4 to 10 and start from the setp 11 to enjoy the debugging if the release arm VM is used** 
   
