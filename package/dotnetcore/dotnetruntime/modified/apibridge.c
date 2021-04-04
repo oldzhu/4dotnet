@@ -99,15 +99,15 @@ const ASN1_TIME* local_X509_CRL_get0_nextUpdate(const X509_CRL* crl)
     return NULL;
 }
 
-int32_t local_X509_get_version(const X509* x509)
+long local_X509_get_version(const X509* x509)
 {
     if (x509 && x509->cert_info)
     {
         long ver = ASN1_INTEGER_get(x509->cert_info->version);
-        return (int32_t)ver;
+        return ver;
     }
 
-    return -1;
+    return -1L;
 }
 
 X509_PUBKEY* local_X509_get_X509_PUBKEY(const X509* x509)
