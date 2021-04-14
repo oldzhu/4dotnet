@@ -92,6 +92,8 @@ sudo cp -u -v \$1/* $SCRIPTPATH/tmpfs/root/\$2
 sudo umount \$SCRIPTPATH/tmpfs
 EOF
 	chmod +x $relpath/arm/start-qemu.sh
+	chmod +x $relpath/arm/syncsrc.sh
+	chmod +x $relpath/arm/pub2img.sh
 	cp -u -v $HOME/buildroot/output/host/bin/qemu-system-arm $relpath/arm
 	cp -u -v $HOME/buildroot/output/images/{rootfs.ext2,vexpress-v2p-ca9.dtb,zImage} $relpath/arm
 	$SCRIPTPATH/patcharmvm.sh
@@ -182,6 +184,8 @@ EOF
 
 rm -rf \$SCRIPTPATH/tmpfs
 	chmod +x $relpath/arm64/start-qemu.sh
+	chmod +x $relpath/arm64/syncsrc.sh
+	chmod +x $relpath/arm64/pub2img.sh
 	cp -u -v $HOME/buildroot/output/host/bin/qemu-system-aarch64 $relpath/arm64
         cp -u -v $HOME/buildroot/output/images/{Image,rootfs.ext4} $relpath/arm64
 	mkdir -p $relpath/arm64/tmpfs
