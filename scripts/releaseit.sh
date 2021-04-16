@@ -29,7 +29,7 @@ EOF
 #!/bin/bash
 # the script assume it run from the same folder as the the release vm image
 
-SCRIPT=\$(readlink -f "$0")
+SCRIPT=\$(readlink -f "\$0")
 SCRIPTPATH=\$(dirname "\$SCRIPT")
 
 if [ \$# -eq 0 ]; then
@@ -52,22 +52,27 @@ pushd \$SCRIPTPATH/mytmpsrc
 if [ \$majorversion -gt 3 ]; then
         git clone -n https://github.com/dotnet/runtime.git
         pushd $SCRIPTPATH/mytmpsrc/runtime
+	git checkout \$commithash
+	popd
 else
-        git clone -n https://github.com/dotnet/coreclr.git
-        pushd $SCRIPTPATH/mytmpsrc/coreclr
+        wget https://github.com/dotnet/coreclr/archive/refs/tags/v\$dotnetcoreversion.tar.gz
+        tar -xzvf v\$dotnetcoreversion.tar.gz
 fi
-git checkout $commithash
-popd
 popd
 
 mkdir -p \$SCRIPTPATH/tmpfs
 sudo mount \$SCRIPTPATH/rootfs.ext2 \$SCRIPTPATH/tmpfs
 
-sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s/src
-sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/src/
+sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s
+if [ \$majorversion -gt 3 ]; then
+        sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
+	sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/runtime/src/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
+else
+        sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/coreclr-\$dotnetcoreversion/src/ \$SCRIPTPATH/tmpfs/__w/1/s/
+fi
 sudo umount \$SCRIPTPATH/tmpfs
 rm -rf \$SCRIPTPATH/tmpfs
-rm -rf \$SCRIPTPATH/mytmpsr
+rm -rf \$SCRIPTPATH/mytmpsrc
 EOF
         cat >$relpath/arm/pub2img.h <<EOF
 #/bin/bash
@@ -142,22 +147,27 @@ pushd \$SCRIPTPATH/mytmpsrc
 if [ \$majorversion -gt 3 ]; then
         git clone -n https://github.com/dotnet/runtime.git
         pushd \$SCRIPTPATH/mytmpsrc/runtime
+	git checkout \$commithash
+	popd
 else
-        git clone -n https://github.com/dotnet/coreclr.git
-        pushd \$SCRIPTPATH/mytmpsrc/coreclr
+        wget https://github.com/dotnet/coreclr/archive/refs/tags/v\$dotnetcoreversion.tar.gz
+        tar -xzvf v\$dotnetcoreversion.tar.gz
 fi
-git checkout \$commithash
-popd
 popd
 
 mkdir -p \$SCRIPTPATH/tmpfs
 sudo mount \$SCRIPTPATH/rootfs.ext4 \$SCRIPTPATH/tmpfs
 
-sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s/src
-sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/src/
+sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s
+if [ \$majorversion -gt 3 ]; then
+	sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
+        sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/runtime/src/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr/
+else
+        sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/
+fi
 sudo umount \$SCRIPTPATH/tmpfs
 rm -rf \$SCRIPTPATH/tmpfs
-rm -rf \$SCRIPTPATH/mytmpsr
+rm -rf \$SCRIPTPATH/mytmpsrc
 EOF
         cat >$relpath/arm64/pub2img.h <<EOF
 #/bin/bash
