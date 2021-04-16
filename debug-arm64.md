@@ -17,7 +17,14 @@ if vm is donwloaded release:
 ~/vm_releases/[dd-mm-yyyy]/arm64/start-qemu.sh
 ~~~
 **replace the [dd-mm-yyyy] with the real date time you see in the latest github release if you prefer to use the release VM directly.**  
-  
+if see the below error when start the release VM:
+~~
+vm_releases/04-04-2021/arm64/qemu-system-aarch64: error while loading shared libraries: libpixman-1.so.0: cannot open shared object file: No such file or directory
+~~~
+try to install libpixman-1-dev to fix
+~~~
+sudo apt install libpixman-1-dev
+~~~    
 3. Login as root without password
 ~~~
 Welcome to Buildroot
