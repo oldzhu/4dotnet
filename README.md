@@ -1,5 +1,5 @@
 # 4dotnet
-The repository is building a Linux arm/arm64 VM for a .NET core application debugging.  
+The repository is building a Linux arm/arm64 VM for a .NET core application debugging in WSL2.  
 
 The target arm/arm64 VM contains:
 
@@ -17,3 +17,4 @@ Also have the following tools built for the host x86-64:
 1. [Build arm/arm64 VM (Linux + GDB + LLDB + SOS + .NET Core applcation)](build.md)  
 2. [Using the amr64 VM  to debug](debug-arm64.md)
 3. [Using the arm VM to debug](debug-arm.md)
+4. [Publish yourself .net core app to vm for debugging](pulish.md)
