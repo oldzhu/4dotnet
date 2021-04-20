@@ -64,9 +64,11 @@ mkdir -p \$SCRIPTPATH/tmpfs
 sudo mount \$SCRIPTPATH/rootfs.ext2 \$SCRIPTPATH/tmpfs
 
 sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s
-if [ \$majorversion -gt 3 ]; then
+if [ \$majorversion -eq 5 ]; then
         sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
 	sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/runtime/src/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
+elif [ \$majorversion -eq 6 ]; then
+	sudo cp -r -u -v $SCRIPTPATH/mytmpsrc/runtime/src/coreclr/  $SCRIPTPATH/tmpfs/__w/1/s/src/
 else
         sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/coreclr-\$dotnetcoreversion/src/ \$SCRIPTPATH/tmpfs/__w/1/s/
 fi
@@ -159,9 +161,11 @@ mkdir -p \$SCRIPTPATH/tmpfs
 sudo mount \$SCRIPTPATH/rootfs.ext4 \$SCRIPTPATH/tmpfs
 
 sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s
-if [ \$majorversion -gt 3 ]; then
-	sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
-        sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/runtime/src/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr/
+if [ \$majorversion -eq 5 ]; then
+        sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
+        sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/runtime/src/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
+elif [ \$majorversion -eq 6 ]; then
+        sudo cp -r -u -v $SCRIPTPATH/mytmpsrc/runtime/src/coreclr/  $SCRIPTPATH/tmpfs/__w/1/s/src/
 else
         sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/
 fi

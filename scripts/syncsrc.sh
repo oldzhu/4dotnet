@@ -50,8 +50,10 @@ elif [ -f $SCRIPTPATH/rootfs.ext4 ]; then
 fi
 
 sudo mkdir -p $SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
-if [ $majorversion -gt 3 ]; then
+if [ $majorversion -eq 5 ]; then
 	sudo cp -r -u -v $SCRIPTPATH/mytmpsrc/runtime/src/coreclr/src/ $SCRIPTPATH/tmpfs/__w/1/s/src/coreclr/
+elif [ $majorversion -eq 6 ]; then
+	sudo cp -r -u -v $SCRIPTPATH/mytmpsrc/runtime/src/coreclr/  $SCRIPTPATH/tmpfs/__w/1/s/src/
 else
 	sudo cp -r -u -v $SCRIPTPATH/mytmpsrc/coreclr-$dotnetcoreversion/src/ $SCRIPTPATH/tmpfs/__w/1/s/
 fi
