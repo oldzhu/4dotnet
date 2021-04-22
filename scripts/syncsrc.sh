@@ -6,8 +6,8 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 echo $SCRIPTPATH
 
 if [ $# -eq 0 ]; then 
-	dotnetcoreversion=`dotnet --info |awk -F: '/Version/{i++}i==3{print $2; exit}'`
-	commithash=`dotnet --info |awk -F: '/Commit/{i++}i==2{print $2; exit}'`
+	dotnetcoreversion=\$(dotnet --info |awk -F: '/Version/{i++}i==3{print $2; exit}')
+	commithash=\$(dotnet --info |awk -F: '/Commit/{i++}i==2{print $2; exit}')
 elif [ $# -eq 2 ]; then
 	dotnetcoreversion=$1
 	commithash=$2
