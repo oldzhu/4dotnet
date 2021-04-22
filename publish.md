@@ -76,7 +76,156 @@ for arm 64 example
 7. Login as root and enjoy the debugging.
 for arm example
 ~~~
+Welcome to Buildroot
+buildroot login: root
+# lldb myhello/myhello
+(lldb) target create "myhello/myhello"
+Current executable set to '/root/myhello/myhello' (arm).
+(lldb) r
+error: failed to get reply to handshake packet
+(lldb) r
+error: failed to get reply to handshake packet
+(lldb) r
+Process 200 launched: '/root/myhello/myhello' (arm)
+Process 200 stopped and restarted: thread 1 received signal: SIGCHLD
+Process 200 stopped and restarted: thread 1 received signal: SIGCHLD
+Hello World!
+Process 200 stopped
+* thread #1, name = 'myhello', stop reason = signal SIGSTOP
+    frame #0: 0x76fb46fc libpthread.so.0`__libc_read at read.c:26:10
+   23   ssize_t
+   24   __libc_read (int fd, void *buf, size_t nbytes)
+   25   {
+-> 26     return SYSCALL_CANCEL (read, fd, buf, nbytes);
+                 ^
+   27   }
+   28   libc_hidden_def (__libc_read)
+   29
+libpthread.so.0`__libc_read:
+->  0x76fb46fc <+84>: svc    #0x0
+    0x76fb4700 <+88>: cmn    r0, #4096
+    0x76fb4704 <+92>: mov    r4, r0
+    0x76fb4708 <+96>: ldrhi  r2, [pc, #0x34]           ; <+156> at read.c:26:10
+(lldb) sethostruntime /root/dotnethello
+Using .NET Core runtime to host the managed SOS code
+Host runtime path: /root/dotnethello
+(lldb) setsymbolserver -ms
+Added Microsoft public symbol server
+(lldb) loadsymbols
+(lldb) bt
+* thread #1, name = 'myhello', stop reason = signal SIGSTOP
+  * frame #0: 0x76fb46fc libpthread.so.0`__libc_read at read.c:26:10
+    frame #1: 0x76fb46e4 libpthread.so.0`__libc_read(fd=0, buf=0x7effef20, nbytes=1024) at read.c:24
+    frame #2: 0x6e3f6adc System.Native.so`SystemNative_ReadStdin(buffer=<unavailable>, bufferSize=<unavailable>) at pal_console.c:393:37
+    frame #3: 0x6bc33ff4
+    frame #4: 0x6e483cee
+    frame #5: 0x6e483140
+    frame #6: 0x6e4830c0
+    frame #7: 0x6e4766ee
+    frame #8: 0x6e4c2890
+(lldb) clrstack
+OS Thread Id: 0xc8 (1)
+Child SP       IP Call Site
+7EFFEECC 76fb46fc [InlinedCallFrame: 7effeecc]
+7EFFEECC 6bc33ff4 [InlinedCallFrame: 7effeecc] Interop+Sys.ReadStdin(Byte*, Int32)
+7EFFEEC8 6BC33FF4 ILStubClass.IL_STUB_PInvoke(Byte*, Int32)
+7EFFEF18 6E483CEE System.IO.StdInReader.ReadKey(Boolean ByRef) [/_/src/System.Console/src/System/IO/StdInReader.cs @ 395]
+7EFFF3B8 6E483140 System.IO.StdInReader.ReadLine(Boolean) [/_/src/System.Console/src/System/IO/StdInReader.cs @ 100]
+7EFFF450 6E4830C0 System.IO.StdInReader.ReadLine() [/_/src/System.Console/src/System/IO/StdInReader.cs @ 83]
+7EFFF458 6E4823E2 System.IO.SyncTextReader.ReadLine() [/_/src/System.Console/src/System/IO/SyncTextReader.cs @ 77]
+7EFFF478 6E4766EE System.Console.ReadLine() [/_/src/System.Console/src/System/Console.cs @ 463]
+7EFFF488 6E4C2890 myhello.Program.Main(System.String[]) [/home/oldzhu/myhello/Program.cs @ 10]
+7EFFF60C 767d9466 [GCFrame: 7efff60c]
+7EFFF9A0 767d9466 [GCFrame: 7efff9a0]
+(lldb) f 2
+frame #2: 0x6e3f6adc System.Native.so`SystemNative_ReadStdin(buffer=<unavailable>, bufferSize=<unavailable>) at pal_console.c:393:37
+System.Native.so`SystemNative_ReadStdin:
+->  0x6e3f6adc <+24>: mov    r6, r0
+    0x6e3f6ade <+26>: cmp.w  r6, #0xffffffff
+    0x6e3f6ae2 <+30>: bgt    0x6e3f6afc                ; <+56> at pal_console.c:395:1
+    0x6e3f6ae4 <+32>: blx    0x6e3f5d3c                ; symbol stub for: __errno_location
+(lldb) source info
+Lines found in module `System.Native.so
+[0x6e3f6ad2-0x6e3f6ade): /__w/1/s/src/Native/Unix/System.Native/pal_console.c:393:37
 ~~~
+***note the I didn't sethostruntime to /root/myhello as the below exampel for arm64 but set it to /root/dotnethello for arm example, do you know why?***
+In addtion, for arm as teh below you would find still can't see the source info for libcoreclr.so which is not like for arm64 even after run loadsymbols, this looks like the similar issue as [dotnet-trace does not resolve symbols on linux-arm #2003](https://github.com/dotnet/diagnostics/issues/2003) which need to work out. 
+
+for arm example (libcoreclr.so):
+~~~
+(lldb) t 5
+(lldb) * thread #5, name = 'myhello'
+    frame #0: 0x76fb4ec8 libpthread.so.0`__libc_open(file="@5\U00000015\xe5", oflag=0) at open.c:44:10
+   41         va_end (arg);
+   42       }
+   43
+-> 44     return SYSCALL_CANCEL (openat, AT_FDCWD, file, oflag, mode);
+                 ^
+   45   }
+   46   libc_hidden_def (__libc_open)
+   47
+libpthread.so.0`__libc_open:
+->  0x76fb4ec8 <+172>: svc    #0x0
+    0x76fb4ecc <+176>: cmn    r0, #4096
+    0x76fb4ed0 <+180>: mov    r4, r0
+    0x76fb4ed4 <+184>: ldrhi  r3, [pc, #0x30]           ; <+240> at open.c:44:10
+bt
+* thread #5, name = 'myhello'
+  * frame #0: 0x76fb4ec8 libpthread.so.0`__libc_open(file="@5\U00000015\xe5", oflag=0) at open.c:44:10
+    frame #1: 0x768e8b94 libcoreclr.so`TwoWayPipe::WaitForConnection() + 24
+    frame #2: 0x768dceaa libcoreclr.so`DbgTransportSession::TransportWorker() + 126
+    frame #3: 0x768dc122 libcoreclr.so`DbgTransportSession::TransportWorkerStatic(void*) + 8
+    frame #4: 0x7698acd2 libcoreclr.so`CorUnix::CPalThread::ThreadEntry(void*) + 342
+    frame #5: 0x76fa8e08 libpthread.so.0`start_thread(arg=0x748fe3d0) at pthread_create.c:463:8
+    (lldb) f 1
+frame #1: 0x768e8b94 libcoreclr.so`TwoWayPipe::WaitForConnection() + 24
+libcoreclr.so`TwoWayPipe::WaitForConnection:
+->  0x768e8b94 <+24>: str    r0, [r4, #0x4]
+    0x768e8b96 <+26>: adds   r0, #0x1
+    0x768e8b98 <+28>: beq    0x768e8bb0                ; <+52>
+    0x768e8b9a <+30>: add.w  r0, r4, #0x110
+(lldb) source info
+error: No debug info for the selected frame.
+(lldb)
+~~~
+based on the below output, suspect the symbol for libcoreclr.so is not published for linux-arm so that it can't be located.
+~~
+(lldb) image list
+[  0] 09FB0A33-CDF4-D4B5-803D-E076BDD1291F-C6380370 0x00008000 /root/myhello/myhello
+      /root/.dotnet/symbolcache/_.debug/elf-buildid-sym-09fb0a33cdf4d4b5803de076bdd1291fc6380370/_.debug
+[  1] D104EE88 0x76fcc000 /lib/ld-2.32.so
+[  2] 3374B213-D499-019F-863C-E562EDA15D30-8EC5D06B 0x76ffd000 [vdso] (0x0000000076ffd000)
+[  3] AABF9974 0x76ffd000 linux-vdso.so.1 (0x0000000076ffd000)
+[  4] 4781D472 0x76fa3000 /lib/libpthread.so.0
+[  5] 5A28B0CD 0x76f90000 /lib/libdl.so.2
+[  6] AB9275CC 0x76e53000 /usr/lib/libstdc++.so.6
+[  7] DFE402F0 0x76de7000 /lib/libm.so.6
+[  8] 8F3E7BED 0x76db9000 /lib/libgcc_s.so.1
+[  9] 5FB2EE16 0x76c73000 /lib/libc.so.6
+[ 10] 395938F5-CAC9-A90F-0147-35054D3B687A-D2D4F0A3 0x76c25000 /root/myhello/libhostfxr.so
+      /root/.dotnet/symbolcache/_.debug/elf-buildid-sym-395938f5cac9a90f014735054d3b687ad2d4f0a3/_.debug
+[ 11] B196731E-F28B-14EC-BFAE-4C14CFF41024-137E690F 0x76bdf000 /root/myhello/libhostpolicy.so
+      /root/.dotnet/symbolcache/_.debug/elf-buildid-sym-b196731ef28b14ecbfae4c14cff41024137e690f/_.debug
+[ 12] B22390F5-129E-4694-7ECC-73B893ED9E7F-001B33AD 0x76666000 /root/myhello/libcoreclr.so
+[ 13] 0640E910 0x7664f000 /lib/librt.so.1
+[ 14] 66C2F092-8EF1-9617-602A-14FCFB2AD010-66DC3B7D 0x765cf000 /root/myhello/libcoreclrtraceptprovider.so
+      /root/.dotnet/symbolcache/_.debug/elf-buildid-sym-66c2f0928ef19617602a14fcfb2ad01066dc3b7d/_.debug
+[ 15] E4661459 0x7655e000 /usr/lib/liblttng-ust.so.0
+[ 16] 1DFA7934 0x7653d000 /usr/lib/liblttng-ust-tracepoint.so.0
+[ 17] 9FA41BA2 0x76526000 /usr/lib/liburcu-bp.so.6
+[ 18] 3949A303 0x7650e000 /usr/lib/liburcu-cds.so.6
+[ 19] C0513F3C 0x764fa000 /usr/lib/liburcu-common.so.6
+[ 20] EDB1C93B-0BC1-8995-AE68-3E5D2D641F88-655E4876 0x6e4cb000 /root/myhello/libclrjit.so
+      /root/.dotnet/symbolcache/_.debug/elf-buildid-sym-edb1c93b0bc18995ae683e5d2d641f88655e4876/_.debug
+[ 21] DB6193C8-E062-C692-57A9-4388F26798C9-6585643A 0x6e3f2000 /root/myhello/System.Native.so
+      /root/.dotnet/symbolcache/_.debug/elf-buildid-sym-db6193c8e062c69257a94388f26798c96585643a/_.debug
+[ 22] 6559CC5C-8F62-34D1-4CBB-DF762DA087C1-76C540CD 0x6e3d4000 /root/myhello/System.Globalization.Native.so
+      /root/.dotnet/symbolcache/_.debug/elf-buildid-sym-6559cc5c8f6234d14cbbdf762da087c176c540cd/_.debug
+[ 23] A1E235A4 0x6e25e000 /usr/lib/libicuuc.so.68
+[ 24] 8DF0C512 0x6c70e000 /usr/lib/libicudata.so.68
+[ 25] E00D3A0B 0x6c6f7000 /lib/libatomic.so.1
+[ 26] 1580547C 0x6c4b3000 /usr/lib/libicui18n.so.68
+~~
 for arm64 example:
 ~~~
 Welcome to Buildroot
@@ -172,10 +321,20 @@ Lines found in module `libcoreclr.so
 (lldb)
 ~~~
 8. Note there is no source code avaiable in the above debugging even after the symbols loaded, it is because that the new deployed self-contained .net core app is not using the .net core runtime built from the scratch. You can use the syncsrc.sh to sync the source code of the coreclr for the specific .net core runtime to the arm/arm64 VM image  so that you can use the coreclr in debugging:
+for arm
+~~~
+ ~/vm_releases/04-04-2021/arm64/syncsrc.sh
+~~~
+for arm64
 ~~~
  ~/vm_releases/04-04-2021/arm64/syncsrc.sh
 ~~~
 After sync the source, terminate the current qemu process and start the new instance of the VM image by running start-qemu.sh, then you can get the coreclr part of the source code availabe as the below.
+for arm example:
+~~~
+
+~~~
+for arm64 example:
 ~~~
 (lldb) f 14
 frame #14: 0x0000007ff7579708 libcoreclr.so`RunMain(MethodDesc*, short, int*, PtrArray**) at assembly.cpp:1556
@@ -195,4 +354,13 @@ libcoreclr.so`RunMain:
 Lines found in module `libcoreclr.so
 [0x0000007ff7579708-0x0000007ff7579708): /__w/1/s/src/vm/assembly.cpp:1556
 (lldb)
+~~~
+if run syncsrc.sh without parameter, then syncsrc.sh will sync the coreclr source for the .netcore runtime which is used by default in WSL2 host.
+you also can run syncsrc.sh as the below to sync the coreclr source for the specific version .netcore runtime.
+~~~ 
+syncsrc.sh [version] [commithash] 
+~~~
+for example:
+~~~
+
 ~~~

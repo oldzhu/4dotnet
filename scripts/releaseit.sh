@@ -25,7 +25,7 @@ echo \$SCRIPTPATH
 
 \$SCRIPTPATH/qemu-system-arm -M vexpress-a9 -smp 2 -m 1024 -nographic -kernel \$SCRIPTPATH/zImage -dtb \$SCRIPTPATH/vexpress-v2p-ca9.dtb -drive file=\$SCRIPTPATH/rootfs.ext2,if=sd,format=raw -append "console=ttyAMA0,115200 rootwait root=/dev/mmcblk0" -net nic,model=lan9118 -net user,hostfwd=tcp::2222-:22
 EOF
-	cat >$relpath/arm/syncsrc.h <<EOF
+	cat >$relpath/arm/syncsrc.sh <<EOF
 #!/bin/bash
 # the script assume it run from the same folder as the the release vm image
 
@@ -76,7 +76,7 @@ sudo umount \$SCRIPTPATH/tmpfs
 rm -rf \$SCRIPTPATH/tmpfs
 rm -rf \$SCRIPTPATH/mytmpsrc
 EOF
-        cat >$relpath/arm/pub2img.h <<EOF
+        cat >$relpath/arm/pub2img.sh <<EOF
 #/bin/bash
 # the script assume it run from the same folder as the the release vm image
 # $1 local publish path
@@ -122,7 +122,7 @@ echo \$SCRIPTPATH
 
 \$SCRIPTPATH/qemu-system-aarch64 -M virt -cpu cortex-a53 -nographic -smp 2 -m 2048 -kernel \$SCRIPTPATH/Image -append "rootwait root=/dev/vda console=ttyAMA0" -netdev user,id=eth0,hostfwd=tcp::2222-:22 -device virtio-net-device,netdev=eth0 -drive file=\$SCRIPTPATH/rootfs.ext4,if=none,format=raw,id=hd0 -device virtio-blk-device,drive=hd0
 EOF
-        cat >$relpath/arm64/syncsrc.h <<EOF
+        cat >$relpath/arm64/syncsrc.sh <<EOF
 #!/bin/bash
 # the script assume it run from the same folder as the the release vm image
 
@@ -173,7 +173,7 @@ sudo umount \$SCRIPTPATH/tmpfs
 rm -rf \$SCRIPTPATH/tmpfs
 rm -rf \$SCRIPTPATH/mytmpsrc
 EOF
-        cat >$relpath/arm64/pub2img.h <<EOF
+        cat >$relpath/arm64/pub2img.sh <<EOF
 #/bin/bash
 # the script assume it run from the same folder as the the release vm image
 # $1 local publish path
