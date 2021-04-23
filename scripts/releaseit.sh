@@ -12,8 +12,8 @@ fi
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 #echo $SCRIPTPATH
-
-relpath=$HOME/vm_releases/$(date +"%d-%m-%Y")
+dtpart=$(date +"%d-%m-%Y")
+relpath=$HOME/vm_releases/$dtpart
 
 if [ $1 = "arm" ]; then
 	mkdir -p $relpath/arm
@@ -68,7 +68,7 @@ if [ \$majorversion -eq 5 ]; then
         sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
 	sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/runtime/src/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
 elif [ \$majorversion -eq 6 ]; then
-	sudo cp -r -u -v $SCRIPTPATH/mytmpsrc/runtime/src/coreclr/  $SCRIPTPATH/tmpfs/__w/1/s/src/
+	sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/runtime/src/coreclr/  \$SCRIPTPATH/tmpfs/__w/1/s/src/
 else
         sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/coreclr-\$dotnetcoreversion/src/ \$SCRIPTPATH/tmpfs/__w/1/s/
 fi
@@ -95,7 +95,7 @@ mkdir -p \$SCRIPTPATH/tmpfs
 sudo mount \$SCRIPTPATH/rootfs.ext2 \$SCRIPTPATH/tmpfs
 
 sudo mkdir -p \$SCRIPTPATH/tmpfs/root/\$2
-sudo cp -u -v \$1/* $SCRIPTPATH/tmpfs/root/\$2
+sudo cp -u -v \$1/* \$SCRIPTPATH/tmpfs/root/\$2
 sudo umount \$SCRIPTPATH/tmpfs
 EOF
 	chmod +x $relpath/arm/start-qemu.sh
@@ -109,7 +109,7 @@ EOF
 	sudo rsync -av -m --include-from=$SCRIPTPATH/includes.txt --exclude='*' $HOME/buildroot/output/ $relpath/arm/tmpfs/root/buildroot/output/
 	sudo umount $relpath/arm/tmpfs
 	rm -rf $relpath/arm/tmpfs
-	tar -C $HOME -czvf $relpath/dotnet_arm_linux_vm_$(date +"%d-%m-%Y").tar.gz vm_releases/$(date +"%d-%m-%Y")/arm
+	tar -C $HOME -czvf $relpath/dotnet_arm_linux_vm_$dtpart.tar.gz vm_releases/$dtpart/arm
 fi
 
 if [ $1 = "arm64" ]; then
@@ -165,7 +165,7 @@ if [ \$majorversion -eq 5 ]; then
         sudo mkdir -p \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
         sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/runtime/src/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/src/coreclr
 elif [ \$majorversion -eq 6 ]; then
-        sudo cp -r -u -v $SCRIPTPATH/mytmpsrc/runtime/src/coreclr/  $SCRIPTPATH/tmpfs/__w/1/s/src/
+        sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/runtime/src/coreclr/  \$SCRIPTPATH/tmpfs/__w/1/s/src/
 else
         sudo cp -r -u -v \$SCRIPTPATH/mytmpsrc/coreclr/src/ \$SCRIPTPATH/tmpfs/__w/1/s/
 fi
@@ -192,7 +192,7 @@ mkdir -p \$SCRIPTPATH/tmpfs
 sudo mount \$SCRIPTPATH/rootfs.ext4 \$SCRIPTPATH/tmpfs
 
 sudo mkdir -p \$SCRIPTPATH/tmpfs/root/\$2
-sudo cp -u -v \$1/* $SCRIPTPATH/tmpfs/root/\$2
+sudo cp -u -v \$1/* \$SCRIPTPATH/tmpfs/root/\$2
 sudo umount \$SCRIPTPATH/tmpfs
 EOF
 
@@ -207,5 +207,5 @@ rm -rf \$SCRIPTPATH/tmpfs
         sudo rsync -av -m --include-from=$SCRIPTPATH/includes.txt --exclude='*' $HOME/buildroot/output/ $relpath/arm64/tmpfs/root/buildroot/output/
         sudo umount $relpath/arm64/tmpfs
 	rm -rf $relpath/arm64/tmpfs
-	tar -C $HOME -czvf $relpath/dotnet_arm64_linux_vm_$(date +"%d-%m-%Y").tar.gz vm_releases/$(date +"%d-%m-%Y")/arm64
+	tar -C $HOME -czvf $relpath/dotnet_arm64_linux_vm_$dtpart.tar.gz vm_releases/$dtpart/arm64
 fi
