@@ -9,6 +9,8 @@
 
 #patch -N -d $4/eng/common/cross -p0 -u -b toolchain.cmake -i $6/toolchain.cmake.mypatch
 
+cplusplusver=10.3.0
+
 #fix FALSE/TRUE compilation error in src/libraries/Native/Unix/System.Globalization.Native
 sed -i 's/FALSE/0/g'  $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
 sed -i 's/TRUE/1/g' $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
@@ -16,7 +18,7 @@ sed -i 's/TRUE/1/g' $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
 function add_includes {
 echo >> $1/$2
 echo if\(\$ENV{CROSSCOMPILE} EQUAL 1\) >> $1/$2
-echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/include/c++/10.2.0/\$ENV{TOOLCHAIN}\) >> $1/$2
+echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/include/c++/$cplusplusver/\$ENV{TOOLCHAIN}\) >> $1/$2
 echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/myinclude\) >> $1/$2
 echo endif\(\) >> $1/$2
 }
@@ -45,14 +47,14 @@ add_includes $4 src/native/corehost/test/fx_ver/CMakeLists.txt
 function copy_headslibs {
         mkdir -p -v $1/$3/myinclude
         cp -r -v $2/usr/include/{features.h,stdc-predef.h,sys,bits,gnu} $1/$3/myinclude
-        cp -r -v $1/$3/include/c++/10.2.0/{\
+        cp -r -v $1/$3/include/c++/$cplusplusver/{\
 type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwchar,\
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
 algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
 ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
 climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf} \
 $1/$3/myinclude
-        cp -u -v $1/lib/gcc/$3/10.2.0/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $2/usr/lib
+        cp -u -v $1/lib/gcc/$3/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $2/usr/lib
 }
 
 function apply_mypatches {
