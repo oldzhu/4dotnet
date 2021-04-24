@@ -18,7 +18,7 @@ cat >$TARGET_DIR/root/.lldbinit <<EOF
 settings set target.source-map $HOME/buildroot /root/buildroot
 plugin load /root/.dotnet/sos/libsosplugin.so
 settings set stop-disassembly-display always
-sethostruntime /dotnethello/dotnethello
+sethostruntime /root/dotnethello
 EOF
 
 cat >$TARGET_DIR/root/.profile <<EOF

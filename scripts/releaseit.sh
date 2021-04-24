@@ -106,6 +106,7 @@ EOF
 	$SCRIPTPATH/patcharmvm.sh
 	mkdir -p $relpath/arm/tmpfs
 	sudo mount $relpath/arm/rootfs.ext2 $relpath/arm/tmpfs
+	sudo mkdir -p $relpath/arm/tmpfs/root/buildroot/output
 	sudo rsync -av -m --include-from=$SCRIPTPATH/includes.txt --exclude='*' $HOME/buildroot/output/ $relpath/arm/tmpfs/root/buildroot/output/
 	sudo umount $relpath/arm/tmpfs
 	rm -rf $relpath/arm/tmpfs
@@ -204,6 +205,7 @@ rm -rf \$SCRIPTPATH/tmpfs
         cp -u -v $HOME/buildroot/output/images/{Image,rootfs.ext4} $relpath/arm64
 	mkdir -p $relpath/arm64/tmpfs
         sudo mount $relpath/arm64/rootfs.ext4 $relpath/arm64/tmpfs
+	sudo mkdir -p $relpath/arm64/tmpfs/root/buildroot/output
         sudo rsync -av -m --include-from=$SCRIPTPATH/includes.txt --exclude='*' $HOME/buildroot/output/ $relpath/arm64/tmpfs/root/buildroot/output/
         sudo umount $relpath/arm64/tmpfs
 	rm -rf $relpath/arm64/tmpfs
