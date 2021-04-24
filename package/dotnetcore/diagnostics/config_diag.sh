@@ -9,8 +9,19 @@
 
 cplusplusver=10.3.0
 
+function add_includes {
+	echo >> $1/$2
+#	echo if\(\$ENV{CROSSCOMPILE} EQUAL 1\) >> $1/$2
+	echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/include/c++/$cplusplusver\) >> $1/$2
+	echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/include/c++/$cplusplusver/\$ENV{TOOLCHAIN}\) >> $1/$2
+#	echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/myinclude\) >> $1/$2
+#	echo endif\(\) >> $1/$2
+}
+
+add_includes $4 eng/cross/toolchain.cmake
+
 patch -N -d $4/eng -p0 -u -b build.sh -i $6/diag_eng_build.sh.mypatch
-patch -N -d $4/eng/cross -p0 -u -b toolchain.cmake -i $6/toolchain.cmake.mypatch
+#patch -N -d $4/eng/cross -p0 -u -b toolchain.cmake -i $6/toolchain.cmake.mypatch
 
 if [ $3 == "ARM64" ]; then
 	patch -N -d $4/src/pal/src/locale -p0 -u -b utf8.cpp -i $6/utf8.cpp.mypatch
