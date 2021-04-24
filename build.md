@@ -54,8 +54,12 @@ check the following setting and select the latest version avaiable if it is not
 ~~~
     find ~/buildroot/output/build -iname "linux-[4-9]*" -type d -exec cp ~/4dotnet/savedconfigs/arm64/.linux_config '{}'/.config \; -quit
 ~~~
-7. Run the below make command to begin 2nd pass build to rebuild the linux kernel with the above copied config and normally it should quick.
+7. Run the below command to show the linux build configs, press exit and save the configs. 
 ~~~
-    make linux-rebuild all
+make linux-menuconfig
+~~~ 
+8. Run the below make command to begin 2nd pass build to rebuild the linux kernel with the above copied config and normally it should quick.
 ~~~
-8. Done and now you can go to [Using the arm VM to debug](debug-arm.md) or [Using the arm64 VM to debug](debug-arm64.md) to enjoy a .netcore app debugging.
+    make
+~~~
+9. Done and now you can go to [Using the arm VM to debug](debug-arm.md) or [Using the arm64 VM to debug](debug-arm64.md) to enjoy a .netcore app debugging.

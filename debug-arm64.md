@@ -139,8 +139,6 @@ libc.so.6`__libc_start_main:
 8. Run sos command to list the managed stack frames.
 ~~~
 (lldb) clrstack
-Error: Failed to find runtime directory
-SOSInitializeByHost failed 80004002
 OS Thread Id: 0x80 (1)
         Child SP               IP Call Site
 0000007FFFFFE368 0000007ff7fac330 [InlinedCallFrame: 0000007fffffe368] Interop+Sys.ReadStdin(Byte*, Int32)

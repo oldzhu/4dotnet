@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2021.02-rc3-43-g2bb26c1a1d Configuration
+# Buildroot 2021.02-795-g1054aa9707 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_EXTERNAL_4dotnet_PATH="/home/oldzhu/4dotnet"
@@ -256,11 +256,13 @@ BR2_KERNEL_HEADERS_AS_KERNEL=y
 # BR2_KERNEL_HEADERS_4_19 is not set
 # BR2_KERNEL_HEADERS_5_4 is not set
 # BR2_KERNEL_HEADERS_5_10 is not set
+# BR2_KERNEL_HEADERS_5_11 is not set
 # BR2_KERNEL_HEADERS_VERSION is not set
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
 BR2_KERNEL_HEADERS_LATEST=y
-BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_5_10=y
+BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_5_11=y
+# BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_5_10 is not set
 # BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_5_9 is not set
 # BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_5_8 is not set
 # BR2_PACKAGE_HOST_LINUX_HEADERS_CUSTOM_5_7 is not set
@@ -339,7 +341,7 @@ BR2_BINUTILS_EXTRA_CONFIG_OPTIONS=""
 # BR2_GCC_VERSION_9_X is not set
 BR2_GCC_VERSION_10_X=y
 BR2_GCC_SUPPORTS_DLANG=y
-BR2_GCC_VERSION="10.2.0"
+BR2_GCC_VERSION="10.3.0"
 BR2_EXTRA_GCC_CONFIG_OPTIONS=""
 BR2_TOOLCHAIN_BUILDROOT_CXX=y
 # BR2_TOOLCHAIN_BUILDROOT_FORTRAN is not set
@@ -437,8 +439,9 @@ BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_7=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_8=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_9=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_10=y
+BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_11=y
 BR2_TOOLCHAIN_HEADERS_LATEST=y
-BR2_TOOLCHAIN_HEADERS_AT_LEAST="5.10"
+BR2_TOOLCHAIN_HEADERS_AT_LEAST="5.11"
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_3=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_4=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_5=y
@@ -533,7 +536,7 @@ BR2_LINUX_KERNEL_LATEST_VERSION=y
 # BR2_LINUX_KERNEL_CUSTOM_GIT is not set
 # BR2_LINUX_KERNEL_CUSTOM_HG is not set
 # BR2_LINUX_KERNEL_CUSTOM_SVN is not set
-BR2_LINUX_KERNEL_VERSION="5.10.19"
+BR2_LINUX_KERNEL_VERSION="5.11.8"
 BR2_LINUX_KERNEL_PATCH=""
 BR2_LINUX_KERNEL_USE_DEFCONFIG=y
 # BR2_LINUX_KERNEL_USE_ARCH_DEFAULT_CONFIG is not set
@@ -623,11 +626,11 @@ BR2_PACKAGE_FFMPEG_ARCH_SUPPORTS=y
 BR2_PACKAGE_KODI_ARCH_SUPPORTS=y
 
 #
-# kodi needs python w/ .py modules, a uClibc or glibc toolchain w/ C++, threads, wchar, dynamic library, gcc >= 4.8
+# kodi needs python3 w/ .py modules, a uClibc or glibc toolchain w/ C++, threads, wchar, dynamic library, gcc >= 4.9
 #
 
 #
-# kodi needs an OpenGL EGL backend with OpenGL support
+# kodi needs an OpenGL EGL backend with OpenGL or GLES support
 #
 # BR2_PACKAGE_LAME is not set
 # BR2_PACKAGE_MADPLAY is not set
@@ -794,6 +797,7 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-gnu"
 # BR2_PACKAGE_JQ is not set
 # BR2_PACKAGE_LIBTOOL is not set
 # BR2_PACKAGE_MAKE is not set
+# BR2_PACKAGE_MAWK is not set
 # BR2_PACKAGE_PATCH is not set
 # BR2_PACKAGE_PKGCONF is not set
 # BR2_PACKAGE_RIPGREP is not set
@@ -843,6 +847,10 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-gnu"
 # BR2_PACKAGE_UDFTOOLS is not set
 # BR2_PACKAGE_UNIONFS is not set
 # BR2_PACKAGE_XFSPROGS is not set
+
+#
+# zfs needs udev /dev management
+#
 
 #
 # Fonts, cursors, icons, sounds and themes
@@ -915,7 +923,7 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-gnu"
 #
 
 #
-# cage needs udev, mesa3d w/ EGL and GLES support
+# cage needs udev, EGL w/ Wayland backend and OpenGL ES support
 #
 
 #
@@ -1221,6 +1229,7 @@ BR2_PACKAGE_GAUCHE_ARCH_SUPPORTS=y
 # BR2_PACKAGE_GAUCHE is not set
 # BR2_PACKAGE_GUILE is not set
 # BR2_PACKAGE_HASERL is not set
+# BR2_PACKAGE_JANET is not set
 # BR2_PACKAGE_JIMTCL is not set
 # BR2_PACKAGE_LUA is not set
 BR2_PACKAGE_PROVIDES_HOST_LUAINTERPRETER="host-lua"
@@ -1361,6 +1370,7 @@ BR2_PACKAGE_LIBGPG_ERROR_SYSCFG="arm-unknown-linux-gnueabi"
 # BR2_PACKAGE_LIBSSH2 is not set
 # BR2_PACKAGE_LIBTOMCRYPT is not set
 # BR2_PACKAGE_LIBUECC is not set
+# BR2_PACKAGE_LIBXCRYPT is not set
 # BR2_PACKAGE_MBEDTLS is not set
 # BR2_PACKAGE_NETTLE is not set
 BR2_PACKAGE_OPENSSL=y
@@ -1545,7 +1555,7 @@ BR2_PACKAGE_WEBKITGTK_ARCH_SUPPORTS=y
 # BR2_PACKAGE_WEBP is not set
 
 #
-# wlroots needs udev, mesa3d w/ EGL and GLES support
+# wlroots needs udev, EGL w/ Wayland backend and OpenGL ES support
 #
 # BR2_PACKAGE_WOFF2 is not set
 
@@ -1611,6 +1621,7 @@ BR2_PACKAGE_GNU_EFI_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LIBPHIDGET is not set
 # BR2_PACKAGE_LIBPRI is not set
 # BR2_PACKAGE_LIBQMI is not set
+# BR2_PACKAGE_LIBQRTR_GLIB is not set
 # BR2_PACKAGE_LIBRAW1394 is not set
 # BR2_PACKAGE_LIBRTLSDR is not set
 # BR2_PACKAGE_LIBSERIAL is not set
@@ -1698,6 +1709,10 @@ BR2_PACKAGE_SPIDERMONKEY_JIT_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LOG4CPLUS is not set
 # BR2_PACKAGE_LOG4CPP is not set
 # BR2_PACKAGE_LOG4CXX is not set
+
+#
+# log4qt needs qt5
+#
 # BR2_PACKAGE_OPENTRACING_CPP is not set
 # BR2_PACKAGE_SPDLOG is not set
 # BR2_PACKAGE_ZLOG is not set
@@ -1876,6 +1891,7 @@ BR2_PACKAGE_LIBKRB5=y
 # BR2_PACKAGE_RESIPROCATE is not set
 # BR2_PACKAGE_RESTCLIENT_CPP is not set
 # BR2_PACKAGE_RTMPDUMP is not set
+# BR2_PACKAGE_SIPROXD is not set
 # BR2_PACKAGE_SLIRP is not set
 # BR2_PACKAGE_SNMPPP is not set
 # BR2_PACKAGE_SOFIA_SIP is not set
@@ -2017,6 +2033,7 @@ BR2_PACKAGE_POCO_ARCH_SUPPORTS=y
 BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 # BR2_PACKAGE_PROTOBUF is not set
 # BR2_PACKAGE_PROTOBUF_C is not set
+# BR2_PACKAGE_PROTOZERO is not set
 # BR2_PACKAGE_QHULL is not set
 # BR2_PACKAGE_QLIBC is not set
 # BR2_PACKAGE_RIEMANN_C_CLIENT is not set
@@ -2456,6 +2473,7 @@ BR2_PACKAGE_OPENSSH_KEY_UTILS=y
 # -------------------------------------------------------
 #
 # BR2_PACKAGE_OPKG is not set
+# BR2_PACKAGE_OPKG_UTILS is not set
 # BR2_PACKAGE_RPM is not set
 
 #
@@ -2767,6 +2785,7 @@ BR2_TARGET_GRUB2_ARCH_SUPPORTS=y
 # BR2_TARGET_MXS_BOOTLETS is not set
 # BR2_TARGET_OPTEE_OS is not set
 # BR2_TARGET_S500_BOOTLOADER is not set
+# BR2_TARGET_SHIM is not set
 # BR2_TARGET_UBOOT is not set
 
 #
@@ -2887,6 +2906,16 @@ BR2_PACKAGE_HOST_UTIL_LINUX=y
 #
 # Legacy config options
 #
+
+#
+# Legacy options removed in 2021.05
+#
+# BR2_PACKAGE_XSERVER_XORG_SERVER_KDRIVE_EVDEV is not set
+# BR2_PACKAGE_XSERVER_XORG_SERVER_KDRIVE_KBD is not set
+# BR2_PACKAGE_XSERVER_XORG_SERVER_KDRIVE_MOUSE is not set
+# BR2_PACKAGE_MESA3D_OSMESA_CLASSIC is not set
+# BR2_PACKAGE_MESA3D_DRI_DRIVER_SWRAST is not set
+# BR2_PACKAGE_KODI_SCREENSAVER_CRYSTALMORPH is not set
 
 #
 # Legacy options removed in 2021.02

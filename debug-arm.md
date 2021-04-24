@@ -189,8 +189,6 @@ libpthread.so.0`__libc_read:
     0x76fb4704 <+92>: mov    r4, r0
     0x76fb4708 <+96>: ldrhi  r2, [pc, #0x34]           ; <+156> at read.c:26:10
 (lldb) clrstack
-Error: Failed to find runtime directory
-SOSInitializeByHost failed 80004002
 OS Thread Id: 0xb8 (1)
 Child SP       IP Call Site
 7EFFEC34 76fb46fc [InlinedCallFrame: 7effec34]
