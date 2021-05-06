@@ -23,7 +23,7 @@ SCRIPT=\$(readlink -f "\$0")
 SCRIPTPATH=\$(dirname "\$SCRIPT")
 echo \$SCRIPTPATH
 
-\$SCRIPTPATH/qemu-system-arm -M vexpress-a9 -smp 2 -m 1024 -nographic -kernel \$SCRIPTPATH/zImage -dtb \$SCRIPTPATH/vexpress-v2p-ca9.dtb -drive file=\$SCRIPTPATH/rootfs.ext2,if=sd,format=raw -append "console=ttyAMA0,115200 rootwait root=/dev/mmcblk0" -net nic,model=lan9118 -net user,hostfwd=tcp::2222-:22
+\$SCRIPTPATH/qemu-system-arm -M virt,highmem=off -smp 2 -m 2048 -nographic -kernel \$SCRIPTPATH/zImage -drive file=\$SCRIPTPATH/rootfs.ext2,if=none,format=raw,id=hd0 -device virtio-blk-device,drive=hd0 -append "console=ttyAMA0,115200 rootwait root=/dev/vda" -netdev user,id=eth0 -device virtio-net-device,netdev=eth0 -net user,hostfwd=tcp::2222-:22
 EOF
 	cat >$relpath/arm/syncsrc.sh <<EOF
 #!/bin/bash

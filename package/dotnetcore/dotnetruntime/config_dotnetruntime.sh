@@ -11,6 +11,8 @@
 
 cplusplusver=10.3.0
 
+$6/patch-2021-05-06.sh "$@"
+
 #fix FALSE/TRUE compilation error in src/libraries/Native/Unix/System.Globalization.Native
 sed -i 's/FALSE/0/g'  $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
 sed -i 's/TRUE/1/g' $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
