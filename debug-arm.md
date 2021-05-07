@@ -32,9 +32,9 @@ Welcome to Buildroot
 buildroot login: root
 qemu-system-arm: warning: 9p: degraded performance: a reasonable high msize should be chosen on client/guest side (chosen msize is <= 8192). See https://wiki.qemu.org/Documentation/9psetup#msize for details.
 #
-~~~
-**you won't hit the illegal instruction if you use the rlease arm VM directly as the release arm VM was already patched**
-  
+~~~ 
+
+**you won't hit the illegal instruction if you use the rlease arm VM directly as the release arm VM was already patched** 
 **so skip the step 4 to 10 and start from the setp 11 to enjoy the debugging if the release arm VM is used** 
   
 4. Run lldb to debug the demo dotnethello application.
@@ -43,46 +43,49 @@ qemu-system-arm: warning: 9p: degraded performance: a reasonable high msize shou
 (lldb) target create "dotnethello/dotnethello"
 Current executable set to '/root/dotnethello/dotnethello' (arm).
 (lldb) r
-Process 184 launched: '/root/dotnethello/dotnethello' (arm)
-Process 184 stopped and restarted: thread 1 received signal: SIGCHLD
-Process 184 stopped and restarted: thread 1 received signal: SIGCHLD
-Process 184 stopped
+Process 174 launched: '/root/dotnethello/dotnethello' (arm)
+Process 174 stopped
 * thread #1, name = 'dotnethello', stop reason = signal SIGILL: illegal instruction
-    frame #0: 0x6e4582d2
-->  0x6e4582d2: strhmi lr, [r0], -sp
-    0x6e4582d6: ldrbmi r11, [r0, -r1]!
-    0x6e4582da: strlt  r0, [r3], #-0
-    0x6e4582de: .long  0xf89db51c                ; unknown opcode
+    frame #0: 0xae575c4a
+->  0xae575c4a: strhmi lr, [r0], -sp
+    0xae575c4e: ldrbmi r11, [r0, -r1]!
+    0xae575c52: .long  0xde01de01                ; unknown opcode
+    0xae575c56: .long  0xde01de01                ; unknown opcode
 (lldb)
 ~~~
 5. Disassemble the current illegal instruction with the raw bytes displayed (0x4000e8bd).  
 ~~~
 (lldb) disas -b -m -p -c 1
-->  0x6dc522d2: 0x4000e8bd   strhmi lr, [r0], -sp
+->  0xae575c4a: 0x4000e8bd   strhmi lr, [r0], -sp
 (lldb)
 ~~~
 6. Run bt and clrstack to check the stack frames of illegal instruction.
 ~~~
 (lldb) bt
 * thread #1, name = 'dotnethello', stop reason = signal SIGILL: illegal instruction
-  * frame #0: 0x6e4582d2
-    frame #1: 0x6ee5fba2
-    frame #2: 0x6ee5f78c
-    frame #3: 0x6ee5f2f4
-    frame #4: 0x6ee681e8
+  * frame #0: 0xae575c4a
+    frame #1: 0xae7afdee
+    frame #2: 0xae7afa42
+    frame #3: 0xae7af910
+    frame #4: 0xae7af518
+    frame #5: 0xae7d7cd4
 (lldb) clrstack
-Error: Failed to find runtime directory
-SOSInitializeByHost failed 80004002
-OS Thread Id: 0xb8 (1)
+OS Thread Id: 0xae (1)
 Child SP       IP Call Site
-7EFFF100 6E4582D2 System.Reflection.Metadata.AssemblyDefinitionHandle.op_Implicit(System.Reflection.Metadata.AssemblyDefinitionHandle)
-7EFFF108 6E457992 System.Reflection.Metadata.AssemblyDefinition.GetCustomAttributes()
-7EFFF130 6EE5FBA2 System.Diagnostics.FileVersionInfo.LoadManagedAssemblyMetadata(System.Reflection.Metadata.MetadataReader, Boolean)
-7EFFF198 6EE5F78C System.Diagnostics.FileVersionInfo.TryLoadManagedAssemblyMetadata()
-7EFFF240 6EE5F2F4 System.Diagnostics.FileVersionInfo.GetVersionInfo(System.String)
-7EFFF258 6EE681E8 dotnethello.Program.Main(System.String[])
-(lldb)
+BEFFF118 AE575C4A System.Reflection.Metadata.AssemblyDefinitionHandle.op_Implicit(System.Reflection.Metadata.AssemblyDefinitionHandle)
+BEFFF120 AE574EE6 System.Reflection.Metadata.AssemblyDefinition.GetCustomAttributes()
+BEFFF148 AE7AFDEE System.Diagnostics.FileVersionInfo.LoadManagedAssemblyMetadata(System.Reflection.Metadata.MetadataReader, Boolean)
+BEFFF1B8 AE7AFA42 System.Diagnostics.FileVersionInfo.TryLoadManagedAssemblyMetadata()
+BEFFF1E0 AE7AF910 System.Diagnostics.FileVersionInfo..ctor(System.String)
+BEFFF268 AE7AF518 System.Diagnostics.FileVersionInfo.GetVersionInfo(System.String)
+BEFFF280 AE7D7CD4 Fatal error. System.Runtime.InteropServices.SEHException (0x80004005): External component has thrown an exception.
+   at System.Runtime.InteropServices.GCHandle.ToIntPtr(System.Runtime.InteropServices.GCHandle)
+   at SOS.Hosting.SymbolServiceWrapper.LoadSymbolsForModule(IntPtr, System.String, Boolean, UInt64, UInt32, UInt64, UInt32)
+Aborted
+#
 ~~~
+clrstack command could cause lldb fatal exception to exit.
+
 7. Quit from lldb and switch to gdb to debug the illegal instruction.
 ~~~
 # gdb dotnethello/dotnethello
@@ -107,47 +110,45 @@ Reading symbols from dotnethello/dotnethello...
 Starting program: /root/dotnethello/dotnethello
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "/lib/libthread_db.so.1".
-[New Thread 0x766173d0 (LWP 283)]
-[New Thread 0x75cff3d0 (LWP 284)]
-[New Thread 0x752ff3d0 (LWP 285)]
-[New Thread 0x748ff3d0 (LWP 286)]
-[New Thread 0x740fe3d0 (LWP 287)]
-[New Thread 0x738fd3d0 (LWP 288)]
-[New Thread 0x700fb3d0 (LWP 289)]
-[New Thread 0x74afe3d0 (LWP 290)]
-[New Thread 0x6ed6f3d0 (LWP 291)]
-[New Thread 0x6e56e3d0 (LWP 292)]
-[New Thread 0x6e41e3d0 (LWP 293)]
-[New Thread 0x6bc513d0 (LWP 294)]
+[New Thread 0xb660b3d0 (LWP 223)]
+[New Thread 0xb5cff3d0 (LWP 224)]
+[New Thread 0xb52ff3d0 (LWP 225)]
+[New Thread 0xb4afe3d0 (LWP 226)]
+[New Thread 0xb42fd3d0 (LWP 227)]
+[New Thread 0xb3afc3d0 (LWP 228)]
+[New Thread 0xb02fa3d0 (LWP 229)]
+[New Thread 0xaf02f3d0 (LWP 230)]
+[Thread 0xaf02f3d0 (LWP 230) exited]
+[New Thread 0xaf02f3d0 (LWP 231)]
 
 Thread 1 "dotnethello" received signal SIGILL, Illegal instruction.
-Dump of assembler code from 0x6e4572d2 to 0x6e4572da:
-=> 0x6e4572d2:  bd e8 00 40     ldmia.w sp!, {lr}
-   0x6e4572d6:  01 b0   add     sp, #4
-   0x6e4572d8:  70 47   bx      lr
+Dump of assembler code from 0xae585c4a to 0xae585c54:
+=> 0xae585c4a:  bd e8 00 40     ldmia.w sp!, {lr}
+   0xae585c4e:  01 b0   add     sp, #4
+   0xae585c50:  70 47   bx      lr
+   0xae585c52:  01 de   udf     #1
 End of assembler dump.
-0x6e4572d2 in ?? ()
-
+0xae585c4a in ?? ()
 (gdb)
 ~~~
-8. Note lldb and gdb disassemble the same raw bytes 0x4000e8bd as different arm instruction. Seems our lldb does not work well to  disassemble the arm instruction and that's why sometimes it is necessary to use both lldb and gdb for debugging.  
+8. Note lldb and gdb disassemble the same raw bytes 0x4000e8bd as different arm instruction. Seems the lldb does not work well to  disassemble the arm instruction and that's why sometimes it is necessary to use both lldb and gdb for debugging.  
 lldb + sos plugin to check the managed part of the target.  
 gdb to dissaemble the insuructions in case lldb does not work well to disassemble   
 
 lldb
 ~~~
 (lldb) disas -b -m -p -c 1
-->  0x6dc522d2: 0x4000e8bd   strhmi lr, [r0], -sp
+->  0xae575c4a: 0x4000e8bd   strhmi lr, [r0], -sp
 (lldb)
 ~~~   
 gdb
 ~~~
 (gdb) disas /rs $pc,+1
-Dump of assembler code from 0x6e4502d2 to 0x6e4502d3:
-=> 0x6e4502d2:  bd e8 00 40     ldmia.w sp!, {lr}
+Dump of assembler code from 0xae585c4a to 0xae585c4b:
+=> 0xae585c4a:  bd e8 00 40     ldmia.w sp!, {lr}
 End of assembler dump.
-(gdb) x /x $pc
-0x6e4502d2:     0x4000e8bd
+(gdb)  x /x $pc
+0xae585c4a:     0x4000e8bd
 (gdb)
 ~~~
 9. The issue for the above illegal instruction described as the below  

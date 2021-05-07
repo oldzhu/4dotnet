@@ -8,7 +8,15 @@ it contains the steps to build arm/arm64 vm for .net core debugging.
     * g++
     * libncurses-dev
     * liblttng-ust-dev 
- 
+ ~~~
+ sudo apt-get update
+ sudo apt intstall make
+ sudo apt install unzip
+ sudo apt install gcc
+ sudo apt install g++
+ sudo apt install libncurses-dev
+ sudo apt install liblttng-ust-dev
+ ~~~
 3. Clone buildroot and 4dotnet to your home folder. 
 ~~~
     git clone https://git.buildroot.net/buildroot 
@@ -18,16 +26,16 @@ it contains the steps to build arm/arm64 vm for .net core debugging.
 
 **for arm:**
 ~~~
-        
-    cp ~/4dotnet/savedconfigs/arm/.qemu_arm_vexpress_config ~/buildroot/.config
+     
+    make BR2_EXTERNAL=~/4dotnet defconfig BR2_DEFCONFIG=~/4dotnet/savedconfigs/arm/br2.defconfig
 ~~~  
 **for arm64:**
 ~~~
-    cp ~/4dotnet/savedconfigs/arm64/.qemu_aarch64_virt_config ~/buildroot/.config
+    make BR2_EXTERNAL=~/4dotnet defconfig BR2_DEFCONFIG=~/4dotnet/savedconfigs/arm64/br2.defconfig
 ~~~
-5. Run the command make menuconfig to set Toolchain options.
+5. Run the command make menuconfig to make sure Toolchain options using the latest available.
 ~~
-    make BR2_EXTERNAL=~/4dotnet menuconfig
+    make menuconfig
 ~~
 
 check the following setting and select the latest version avaiable if it is not
@@ -39,27 +47,9 @@ check the following setting and select the latest version avaiable if it is not
     Toolchain -> GDB debugger version 
 ~~
 
-5. Run the below make command to begin 1st pass build. It could take serveral housrs or even days depends on your system power.
+5. Run the below make command to begin the build. It could take serveral housrs or even days depends on your system power.
 ~~~
     export PATH=`echo $PATH|tr -d ' '`
     make
 ~~~
-6. Copy the customized linux config from 4dotnet to the buildroot linux build folder.  
-
-**for arm:**
-~~~
-    find ~/buildroot/output/build -iname "linux-[4-9]*" -type d -exec cp ~/4dotnet/savedconfigs/arm/.linux_config '{}'/.config \; -quit
-~~~ 
-**for arm64:**
-~~~
-    find ~/buildroot/output/build -iname "linux-[4-9]*" -type d -exec cp ~/4dotnet/savedconfigs/arm64/.linux_config '{}'/.config \; -quit
-~~~
-7. Run the below command to show the linux build configs, press exit and save the configs. 
-~~~
-make linux-menuconfig
-~~~ 
-8. Run the below make command to begin 2nd pass build to rebuild the linux kernel with the above copied config and normally it should quick.
-~~~
-    make
-~~~
-9. Done and now you can go to [Using the arm VM to debug](debug-arm.md) or [Using the arm64 VM to debug](debug-arm64.md) to enjoy a .netcore app debugging.
+6. Done and now you can go to [Using the arm VM to debug](debug-arm.md) or [Using the arm64 VM to debug](debug-arm64.md) to enjoy a .netcore app debugging.
