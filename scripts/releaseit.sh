@@ -102,7 +102,8 @@ EOF
 	chmod +x $relpath/arm/syncsrc.sh
 	chmod +x $relpath/arm/pub2img.sh
 	cp -u -v $HOME/buildroot/output/host/bin/qemu-system-arm $relpath/arm
-	cp -u -v $HOME/buildroot/output/images/{rootfs.ext2,vexpress-v2p-ca9.dtb,zImage} $relpath/arm
+#	cp -u -v $HOME/buildroot/output/images/{rootfs.ext2,vexpress-v2p-ca9.dtb,zImage} $relpath/arm
+	cp -u -v $HOME/buildroot/output/images/{rootfs.ext2,zImage} $relpath/arm
 	$SCRIPTPATH/patcharmvm.sh
 	mkdir -p $relpath/arm/tmpfs
 	sudo mount $relpath/arm/rootfs.ext2 $relpath/arm/tmpfs
