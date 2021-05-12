@@ -23,7 +23,7 @@ SCRIPT=\$(readlink -f "\$0")
 SCRIPTPATH=\$(dirname "\$SCRIPT")
 echo \$SCRIPTPATH
 
-\$SCRIPTPATH/qemu-system-arm -M virt,highmem=off -smp 2 -m 2048 -nographic -kernel \$SCRIPTPATH/zImage -drive file=\$SCRIPTPATH/rootfs.ext2,if=none,format=raw,id=hd0 -device virtio-blk-device,drive=hd0 -append "console=ttyAMA0,115200 rootwait root=/dev/vda" -netdev user,id=eth0 -device virtio-net-device,netdev=eth0 -net user,hostfwd=tcp::2222-:22
+\$SCRIPTPATH/qemu-system-arm -M virt,highmem=off -smp 2 -m 2048 -nographic -kernel \$SCRIPTPATH/zImage -drive file=\$SCRIPTPATH/rootfs.ext2,if=none,format=raw,id=hd0 -device virtio-blk-device,drive=hd0 -append "console=ttyAMA0,115200 rootwait root=/dev/vda" -netdev user,id=eth0 -device virtio-net-device,netdev=eth0 -net user,hostfwd=tcp::2222-:22 "\$@"
 EOF
 	cat >$relpath/arm/syncsrc.sh <<EOF
 #!/bin/bash
@@ -122,7 +122,7 @@ SCRIPT=\$(readlink -f "\$0")
 SCRIPTPATH=\$(dirname "\$SCRIPT")
 echo \$SCRIPTPATH
 
-\$SCRIPTPATH/qemu-system-aarch64 -M virt -cpu cortex-a53 -nographic -smp 2 -m 2048 -kernel \$SCRIPTPATH/Image -append "rootwait root=/dev/vda console=ttyAMA0" -netdev user,id=eth0,hostfwd=tcp::2222-:22 -device virtio-net-device,netdev=eth0 -drive file=\$SCRIPTPATH/rootfs.ext4,if=none,format=raw,id=hd0 -device virtio-blk-device,drive=hd0
+\$SCRIPTPATH/qemu-system-aarch64 -M virt -cpu cortex-a53 -nographic -smp 2 -m 2048 -kernel \$SCRIPTPATH/Image -append "rootwait root=/dev/vda console=ttyAMA0" -netdev user,id=eth0,hostfwd=tcp::2222-:22 -device virtio-net-device,netdev=eth0 -drive file=\$SCRIPTPATH/rootfs.ext4,if=none,format=raw,id=hd0 -device virtio-blk-device,drive=hd0 "\$@"
 EOF
         cat >$relpath/arm64/syncsrc.sh <<EOF
 #!/bin/bash
