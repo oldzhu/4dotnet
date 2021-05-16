@@ -3,7 +3,7 @@ The repository is building a Linux arm/arm64 VM for a .NET core application debu
 
 The target arm/arm64 VM contains:
 
-- The linux system (5.11.x) - build by the buildroot gcc toolchain
+- The linux system (5.12) - build by the buildroot gcc toolchain
 - The gdb (10.x) - build by the buildroot gcc toolchain
 - The lldb (main branch) - build by the buildroot gcc toolchain
 - The SOS lldb plugin (main branch) - build by the clang/llvm(for native part) + MS compilers(for managed part)
