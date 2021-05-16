@@ -1,7 +1,7 @@
 # 4dotnet
-The repository is building a Linux arm/arm64 VM for a .NET core application debugging in WSL2.  
+The repository is building a Linux arm/arm64 VM in WSL2 so you can play with .NET core debugging on arm/arm64 system as the below without buying a real hardware.
 
-![.net core debugging on arm vm demo](armdemo.gif =250x25)
+![.net core debgugging demo on arm vm](armdemo.gif )
 
 The target arm/arm64 VM contains:
 
