@@ -21,6 +21,7 @@ to
 ~~~   
 2. Rebuild dotnet core runtime by the below command
 ~~~
+        export PATH=`echo $PATH|tr -d ' '`
         make dotnetruntime-rebuild
 ~~~ 
 3. Remove the local cache of the dotnethello demo program.
