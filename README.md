@@ -19,4 +19,4 @@ Also have the following tools built for the host x86-64:
 1. [Build arm/arm64 VM (Linux + GDB + LLDB + SOS + .NET Core applcation)](build.md)  
 2. [Using the amr64 VM  to debug](debug-arm64.md)
 3. [Using the arm VM to debug](debug-arm.md)
-4. [Publish yourself .net core app to vm for debugging](pulish.md)
+4. [Publish yourself .net core app to vm for debugging](publish.md)
