@@ -190,7 +190,7 @@ error: No debug info for the selected frame.
 (lldb)
 ~~~
 based on the below output, suspect the symbol for libcoreclr.so is not published for linux-arm so that it can't be located.
-~~
+~~~
 (lldb) image list
 [  0] 09FB0A33-CDF4-D4B5-803D-E076BDD1291F-C6380370 0x00008000 /root/myhello/myhello
       /root/.dotnet/symbolcache/_.debug/elf-buildid-sym-09fb0a33cdf4d4b5803de076bdd1291fc6380370/_.debug
@@ -226,7 +226,8 @@ based on the below output, suspect the symbol for libcoreclr.so is not published
 [ 24] 8DF0C512 0x6c70e000 /usr/lib/libicudata.so.68
 [ 25] E00D3A0B 0x6c6f7000 /lib/libatomic.so.1
 [ 26] 1580547C 0x6c4b3000 /usr/lib/libicui18n.so.68
-~~
+~~~ 
+
 for arm64 example:
 ~~~
 Welcome to Buildroot
