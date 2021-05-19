@@ -1,6 +1,6 @@
 1. Apply the POC patch by the below command
 ~~~
-        patch -N -d $HOME/buildroot/output/build/dotnetruntime-origin_main/src/coreclr/jit -p0 -u -b emitarm.cpp -i $HOME/4dotnet/package/dotnetcore/dotnetruntime/emitarm.cpp.mypatch
+        rpath=$(find $HOME/buildroot/output/build -maxdepth 1  -name dotnetruntime-\* -type d -print -quit);patch -N -d $rpath/src/coreclr/jit -p0 -u -b emitarm.cpp -i $HOME/4dotnet/package/dotnetcore/dotnetruntime/emitarm.cpp.mypatch
 ~~~
 2. Rebuild dotnet core runtime by the below command
 ~~~

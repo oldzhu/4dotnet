@@ -322,19 +322,19 @@ Lines found in module `libcoreclr.so
 [0x0000007ff7579708-0x0000007ff7579708): /__w/1/s/src/vm/assembly.cpp:1556
 (lldb)
 ~~~
-8. Note there is no source code avaiable in the above debugging even after the symbols loaded, it is because that the new deployed self-contained .net core app is not using the .net core runtime built from the scratch. You can use the syncsrc.sh to sync the source code of the coreclr for the specific .net core runtime to the arm/arm64 VM image  so that you can use the coreclr in debugging:
+8. Note there is no source code avaiable in the above debugging even after the symbols loaded, it is because that the new deployed self-contained .net core app is not using the .net core runtime built from the scratch. You can use the syncsrc.sh to sync the source code of the coreclr for the specific .net core runtime to the arm/arm64 VM image so that you can use the coreclr in debugging:
 for arm
 ~~~
- ~/vm_releases/04-04-2021/arm64/syncsrc.sh
+ ~/vm_releases/04-04-2021/arm/syncsrc.sh
 ~~~
 for arm64
 ~~~
  ~/vm_releases/04-04-2021/arm64/syncsrc.sh
 ~~~
-After sync the source, terminate the current qemu process and start the new instance of the VM image by running start-qemu.sh, then you can get the coreclr part of the source code availabe as the below.
+After sync the source, exit the current qemu session by press CTRL+a then press x, and start the new instance of the VM image by running start-qemu.sh, then you can get the coreclr part of the source code availabe as the below.
 for arm example:
 ~~~
-
+still no source avaiale as the above symbol issue...
 ~~~
 for arm64 example:
 ~~~

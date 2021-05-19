@@ -12,6 +12,7 @@
 cplusplusver=10.3.0
 
 $6/patch-2021-05-06.sh "$@"
+$6/patch-to-v6.0.0-preview.3.21201.4-001.sh "$@"
 
 #fix FALSE/TRUE compilation error in src/libraries/Native/Unix/System.Globalization.Native
 sed -i 's/FALSE/0/g'  $4/src/libraries/Native/Unix/System.Globalization.Native/*.c

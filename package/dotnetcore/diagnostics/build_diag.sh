@@ -7,7 +7,8 @@
 # p6 [PKGNAME}_PKGDIR
 # p7 TARGET_DIR
 
-export PATH=$1/host-lldb-origin_main/llvm/buildroot-build/bin:$PATH:$2/bin;
+hostlldbpath=$(find $1 -maxdepth 1  -name host-lldb-\* -type d -print -quit)
+export PATH=$hostlldbpath/llvm/buildroot-build/bin:$PATH:$2/bin;
 
 if [ $3 == "ARM" ]; then
 	export TOOLCHAIN=arm-buildroot-linux-gnueabihf;
