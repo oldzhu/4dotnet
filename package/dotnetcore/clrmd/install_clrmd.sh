@@ -7,16 +7,7 @@
 # p6 [PKGNAME}_PKGDIR
 # p7 TARGET_DIR
 
-dotnetruntimepath=$(find $1 -maxdepth 1  -name dotnetruntime-\* -type d -print -quit)
-clrmdpath=$(find $1 -maxdepth 1  -name clrmd-\* -type d -print -quit)
-
-sourcepath=($4/artifacts/bin/Linux.*)
-mkdir -p $7/root/.dotnet/sos
-cp -v $sourcepath/* $7/root/.dotnet/sos
-
-# fix the issue #1 SOS throw System.DllNotFoundException in latest build
-cp -v $clrmdpath/artifacts/bin/Microsoft.Diagnostics.Runtime/Release/netcoreapp3.1/*.dll $7/root/.dotnet/sos
-cp -v $clrmdpath/artifacts/bin/Microsoft.Diagnostics.Runtime.Utilities/Release/netcoreapp3.1/*.dll $7/root/.dotnet/sos
+echo "install ClrMd"
 
 #if [ $3 == "ARM64" ]; then
 #	mkdir -p $7/root/.dotnet/sos

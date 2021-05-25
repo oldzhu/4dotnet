@@ -1,0 +1,71 @@
+config BR2_PACKAGE_CLRMD_ARCH_SUPPORTS
+        bool
+	default y if BR2_i386
+	default y if BR2_x86_64
+        default y if BR2_aarch64
+        default y if BR2_arm || BR2_armeb
+
+config BR2_PACKAGE_CLRMD_TARGET_ARCH
+        string
+        default "ARM64" if BR2_aarch64
+        default "ARM" if BR2_arm || BR2_armeb
+	default "X86" if BR2_i386 || BR2_x86_64
+
+config BR2_PACKAGE_CLRMD
+	bool "clrmd"
+	depends on BR2_PACKAGE_CLRMD_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_LLDB
+        depends on BR2_PACKAGE_DOTNETRUNTIME
+	help
+	  ClrMD is a process and crash dump introspection library
+
+	  https://github.com/microsoft/clrmd.git
+
+if BR2_PACKAGE_CLRMD
+choice
+        prompt "where to get the source"
+        default BR2_PACKAGE_CLRMD_CUSTOM_GIT
+        help
+          Select how to get the latest ClrMD source
+          one is to clone from the github repo
+          another is to download fom the github release tarball(default)
+
+config BR2_PACKAGE_CLRMD_CUSTOM_TARBALL
+        bool "Release Tarball"
+        help
+          This option allows you to specify a URL pointing to the specified
+          release source tarball for ClrMD.
+
+config BR2_PACKAGE_CLRMD_CUSTOM_GIT
+        bool "Git Repo"
+        help
+          This option is to get the ClrMD source
+          code from the Git repo.
+
+endchoice
+
+config BR2_PACKAGE_CLRMD_CUSTOM_TARBALL_LOCATION
+        string "URL of Tarball"
+        default "https://github.com/microsoft/clrmd/archive/refs/tags/0.9.170626.1.tar.gz"
+        depends on BR2_PACKAGE_CLRMD_CUSTOM_TARBALL
+
+if BR2_PACKAGE_CLRMD_CUSTOM_GIT
+
+config BR2_PACKAGE_CLRMD_CUSTOM_REPO_URL
+        string "URL of Git Repo"
+        default "git://github.com/microsoft/clrmd.git"
+
+config BR2_PACKAGE_CLRMD_CUSTOM_REPO_VERSION
+        string "Custom repo version"
+        default "origin/master"
+        help
+          Revision to use in the typical format used by
+          Git/Mercurial/Subversion E.G. a sha id, a tag, branch, ..
+
+endif
+endif
+
+comment "ClrMD needs lldb and dotnetruntime package" 
+	depends on BR2_PACKAGE_CLRMD_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_LLDB
+        depends on BR2_PACKAGE_DOTNETRUNTIME

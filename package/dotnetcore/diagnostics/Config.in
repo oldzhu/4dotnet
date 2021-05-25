@@ -15,14 +15,17 @@ config BR2_PACKAGE_DIAGNOSTICS
 	bool "diagnostics"
 	depends on BR2_PACKAGE_DIAGNOSTICS_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB
+	depends on BR2_PACKAGE_CLRMD
+        depends on BR2_PACKAGE_DOTNETRUNTIME
 	help
 	  diagnostics is .net core runtime diagnostics package
 
 	  https://github.com/dotnet/diagnostics
 
+if BR2_PACKAGE_DIAGNOSTICS
 choice
         prompt "where to get the source"
-        default BR2_PACKAGE_DIAGNOSTICS_CUSTOM_TARBALL
+        default BR2_PACKAGE_DIAGNOSTICS_CUSTOM_GIT 
         help
           Select how to get the latest diagnostics source
           one is to clone from the github repo
@@ -61,7 +64,10 @@ config BR2_PACKAGE_DIAGNOSTICS_CUSTOM_REPO_VERSION
           Git/Mercurial/Subversion E.G. a sha id, a tag, branch, ..
 
 endif
+endif
 
-comment "diagnostics needs lldb package" 
+comment "diagnostics needs lldb,ClrMD and dotnetruntime package" 
 	depends on BR2_PACKAGE_DIAGNOSTICS_ARCH_SUPPORTS
-	depends on BR2_PACKAGE_LLDB 
+	depends on BR2_PACKAGE_LLDB
+	depends on BR2_PACKAGE_CLRMD
+        depends on BR2_PACKAGE_DOTNETRUNTIME

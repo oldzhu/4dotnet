@@ -20,9 +20,10 @@ config BR2_PACKAGE_DOTNETRUNTIME
 
 	  https://github.com/dotnet/runtime
 
+if BR2_PACKAGE_DOTNETRUNTIME
 choice
 	prompt "where to get the source"
-	default BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_TARBALL
+	default BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_GIT 
 	help
 	  Select how to get the latest donetcore runtime source
 	  one is to clone from the github repo 
@@ -60,6 +61,7 @@ config BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_REPO_VERSION
           Revision to use in the typical format used by
           Git/Mercurial/Subversion E.G. a sha id, a tag, branch, ..
 
+endif
 endif
 
 comment "dotnetruntime needs lldb package" 
