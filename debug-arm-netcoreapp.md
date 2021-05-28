@@ -1,3 +1,4 @@
+# debugging a .net core app in arm vm
 The steps to debug .net core app using the arm VM 
 for arm:
 1. Build the arm VM by the steps [Build arm/arm64 VM (Linux + QEMU + GDB + LLDB + SOS + .NET Core runtime) for .NET core application debugging](build.md)  
@@ -86,7 +87,7 @@ Aborted
 ~~~
 clrstack command could cause lldb fatal exception to exit.
 
-7. Quit from lldb and switch to gdb to debug the illegal instruction.
+7. Swicth to gdb to debug the illegal instruction.
 ~~~
 # gdb dotnethello/dotnethello
 GNU gdb (GDB) 10.1
