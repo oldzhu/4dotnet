@@ -1,7 +1,7 @@
 # debugging a .net core app in arm vm
 The steps to debug .net core app using the arm VM 
 for arm:
-1. Build the arm VM by the steps [Build arm/arm64 VM (Linux + QEMU + GDB + LLDB + SOS + .NET Core runtime) for .NET core application debugging](build.md)  
+1. Build the arm VM by the steps [Build arm/arm64 VM (Linux + QEMU + GDB + LLDB + SOS + .NET Core runtime) for .NET core application debugging](documents/build.md)  
     or  
     Download the latest released arm VM and extract the files to home folder. For example:
 ~~~
@@ -156,11 +156,11 @@ End of assembler dump.
 [SIGILL's on ARM32 while using valgrind #33727](https://github.com/dotnet/runtime/issues/33727)
 10. there are two workarounds to fix the issue
 
-    1. rebuild the .net core runtime with PublishReadyToRun=false[workaround4illegalinstruction.md] 
+    1. rebuild the .net core runtime with PublishReadyToRun=false[documents/workaround4illegalinstruction.md] 
 
     or
 
-    2. patch the emitarm.cpp with the POC patch[pocpatch4illegalinstruction.md]
+    2. patch the emitarm.cpp with the POC patch[documents/pocpatch4illegalinstruction.md]
 
 11. then you can start the debugging trip without the crash.
 ~~~

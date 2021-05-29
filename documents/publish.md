@@ -1,6 +1,6 @@
 How to publish a .netcore app to the arm/arm64 vm.  
 
-if you build the arm/arm64 vm using the steps [Build arm/arm64 VM (Linux + GDB + LLDB + SOS + .NET Core applcation)](build.md) from scratch,  
+if you build the arm/arm64 vm using the steps [Build arm/arm64 VM (Linux + GDB + LLDB + SOS + .NET Core applcation)](documents/build.md) from scratch,  
 you can use vi or vscode to modify the dotnethello source which is ~/buildroot/output/build/dotnethello-1.0/Program.cs to add your customize code,  
 then run the below command to rebuild the dotnethello and the new system image for debugging.  
 ~~~

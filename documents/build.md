@@ -55,4 +55,4 @@ check the following setting and select the latest version avaiable if it is not
     export PATH=`echo $PATH|tr -d ' '`
     make
 ~~~
-6. Done and now you can go to [Using the arm VM to debug](debug-arm.md) or [Using the arm64 VM to debug](debug-arm64.md) to enjoy a .netcore app debugging.
+6. Done and now you can go to [Using the arm VM to debug](documents/debug-arm-netcoreapp.md) or [Using the arm64 VM to debug](documents/debug-arm64-netcoreapp.md) to enjoy a .netcore app debugging.
