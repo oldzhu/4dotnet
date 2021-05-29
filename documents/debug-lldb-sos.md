@@ -1,6 +1,24 @@
 # lldb sos plugin debugging
-1. Run lldb to launch dotnethello in one arm64 qemu vm  and waiting for debugging.
+1. Start arm64 vm instance using the below command with the large memory (>=16G) and the tap networking set.
 ~~~
+sudo $HOME/buildroot/output/host/bin/qemu-system-aarch64 -M virt -cpu cortex-a53 -nographic -smp 2 -m 16384 -kernel $HOME/buildroot/output/imag
+es/Image -append "rootwait root=/dev/vda console=ttyAMA0" -netdev tap,id=eth0,script=$HOME/4dotnet/scripts/qemu-ifup,downscript=no -device virtio-net-device,netdev=eth0 -drive file=$HOME/buildroot/output/images/rootfs.ext4,if=none,format=raw,id=hd0 -device virtio-blk-device,drive=hd0 -fsdev local,id=v_9p_dev,path=$HOME/buildroot,security_model=none -device virtio-9p-device,fsdev=v_9p_dev,mount_tag=hostshare
+~~~
+2. Login and Run lldb to launch dotnethello in the arm64 qemu vm and waiting for debugging.
+~~~
+...
+udhcpc: sending select for 192.168.53.76
+udhcpc: lease of 192.168.53.76 obtained, lease time 3600
+deleting routers
+adding dns 192.168.53.1
+OK
+Starting ntpd: OK
+random: crng init done
+Starting sshd: OK
+
+Welcome to Buildroot
+buildroot login: root
+qemu-system-aarch64: warning: 9p: degraded performance: a reasonable high msize should be chosen on client/guest side (chosen msize is <= 8192). See https://wiki.qemu.org/Documentation/9psetup#msize for details.
 # lldb dotnethello/dotnethello
 Using .NET Core runtime to host the managed SOS code
 Host runtime path: /root/dotnethello
@@ -41,7 +59,7 @@ OS Thread Id: 0x1eb (1)
 0000007FFFFFEAF0 0000007F7E4F81E0 dotnethello.Program.Main(System.String[]) [/home/oldzhu/buildroot/output/build/dotnethello-1.0/Program.cs @ 13]
 (lldb)
 ~~~
-2. Open a new WSL session,ssh to the started arm64 qemu vm, run another lldb,attach to the above started lldb and start the debugging.
+3. Open a new WSL session,ssh to the started arm64 qemu vm, run another lldb,attach to the above started lldb and start the debugging.
 ~~~
 ~$ ssh root@192.168.53.76
 # ps aux |grep lldb
