@@ -2,7 +2,7 @@
 # debugging a .net core app in arm64 vm
 The steps to debug .net core app using the built arm64 VM  
 for arm64:
-1. Build the arm64 VM as [Build arm/arm64 VM (Linux + QEMU + GDB + LLDB + SOS + .NET Core runtime) for .NET core application debugging](documents/build.md)  
+1. Build the arm64 VM as [Build arm/arm64 VM (Linux + QEMU + GDB + LLDB + SOS + .NET Core runtime) for .NET core application debugging](build.md)  
     or  
     Download the latest released arm VM and extract the files to home folder. For example:
 ~~~
