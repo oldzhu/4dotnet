@@ -27,11 +27,13 @@ it contains the steps to build arm/arm64 vm for .net core debugging.
 **for arm:**
 ~~~
     cd buildroot
+    make distclean
     make BR2_EXTERNAL=~/4dotnet defconfig BR2_DEFCONFIG=~/4dotnet/savedconfigs/arm/br2.defconfig
 ~~~  
 **for arm64:**
 ~~~
     cd buildroot
+    make distclean
     make BR2_EXTERNAL=~/4dotnet defconfig BR2_DEFCONFIG=~/4dotnet/savedconfigs/arm64/br2.defconfig
 ~~~
 5. Run the command make menuconfig to make sure Toolchain options using the latest available.
