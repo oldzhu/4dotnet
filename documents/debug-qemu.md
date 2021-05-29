@@ -29,4 +29,4 @@ for arm64
 ~~~
 gdb $HOME/buildroot/output/host/bin/qemu-system-aarch64 <pid of qemu>
 ~~~
-<img src="armhostqemu_demo.gif" width="1500"/>
+<img src="armhostqemu_demo_120.gif" width="1500"/>

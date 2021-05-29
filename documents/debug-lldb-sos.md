@@ -279,3 +279,4 @@ Architecture set to: aarch64-unknown-linux-gnu.
       /root/dotnethello/libmscordaccore.so.dbg
 (lldb)
 ~~~
+<img src="arm64lldbsos_demo_120.gif" width="1500"/>

@@ -24,4 +24,4 @@ Remote debugging using :1234
 0x40000000 in ?? ()
 (gdb)
 ~~~
-<img src="armkernel_demo_c.gif" width="1500"/>
+<img src="armkernel_demo_c_120.gif" width="1500"/>
