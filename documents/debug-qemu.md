@@ -1,5 +1,5 @@
 # host qemu debugging
-
+<img src="armhostqemu_demo_120.gif" width="1500"/>
 1. Install host gdb in WSL2 if it is not installed.
 ~~~
 sudo apt install gdb
@@ -29,4 +29,3 @@ for arm64
 ~~~
 gdb $HOME/buildroot/output/host/bin/qemu-system-aarch64 <pid of qemu>
 ~~~
-<img src="armhostqemu_demo_120.gif" width="1500"/>

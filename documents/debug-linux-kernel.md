@@ -1,4 +1,5 @@
 # linux kernel debugging
+<img src="armkernel_demo_c_120.gif" width="1500"/>
 1. Start arm/arm64 vm instance with additional "-s -S" parameters and wait for debugging.  
 for arm
 ~~~
@@ -24,4 +25,3 @@ Remote debugging using :1234
 0x40000000 in ?? ()
 (gdb)
 ~~~
-<img src="armkernel_demo_c_120.gif" width="1500"/>
