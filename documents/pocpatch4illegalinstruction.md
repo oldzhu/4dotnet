@@ -15,3 +15,8 @@
 ~~~
         make dotnethello-rebuild all
 ~~~
+  
+or simply run the script patcharmvm.sh which contains all commands above
+~~~
+        $HOME/4dotnet/scripts/patcharmvm.sh
+~~~

@@ -296,5 +296,63 @@ Architecture set to: aarch64-unknown-linux-gnu.
 [ 31] 0C6295E5 0x0000007f58eb4000 /usr/lib64/libicui18n.so.68
 [ 32] 50CBD5D8-EB68-5D39-48F6-9F383B8AE53A-7A03D588 0x0000007f58b64000 /root/dotnethello/libmscordaccore.so
       /root/dotnethello/libmscordaccore.so.dbg
-(lldb)
+(lldb) image lookup -r -n ClrDataStackWalk::Request libmscordaccore.so
+1 match found in /root/dotnethello/libmscordaccore.so:
+        Address: libmscordaccore.so[0x00000000000918c4] (libmscordaccore.so.PT_LOAD[0]..text + 378164)
+        Summary: libmscordaccore.so`ClrDataStackWalk::Request(unsigned int, unsigned int, unsigned char*, unsigned int, unsigned char*) at stack.cpp:383
+(lldb) br set -n ClrDataStackWalk::Request -s libmscordaccore.so
+Breakpoint 1: where = libmscordaccore.so`ClrDataStackWalk::Request(unsigned int, unsigned int, unsigned char*, unsigned int, unsigned char*) + 40 at stack.cpp:386:5, address = 0x0000007f337cc8ec
+(lldb) c
+Process 121 resuming
+(lldb) Process 121 stopped
+* thread #1, name = 'lldb', stop reason = breakpoint 1.1
+    frame #0: 0x0000007f337cc8ec libmscordaccore.so`ClrDataStackWalk::Request(this=0x000000558686c250, reqCode=4026531840, inBufferSize=0, inBuffer=0x0000000000000000, outBufferSize=8, outBuffer="") at stack.cpp:386:5
+   383  {
+   384      HRESULT status;
+   385
+-> 386      DAC_ENTER_SUB(m_dac);
+   387
+   388      EX_TRY
+   389      {
+libmscordaccore.so`ClrDataStackWalk::Request:
+->  0x7f337cc8ec <+40>: adrp   x0, 445
+    0x7f337cc8f0 <+44>: mov    x20, x5
+    0x7f337cc8f4 <+48>: ldr    x8, [x8]
+    0x7f337cc8f8 <+52>: mov    w21, w4
+bt
+* thread #1, name = 'lldb', stop reason = breakpoint 1.1
+  * frame #0: 0x0000007f337cc8ec libmscordaccore.so`ClrDataStackWalk::Request(this=0x000000558686c250, reqCode=4026531840, inBufferSize=0, inBuffer=0x0000000000000000, outBufferSize=8, outBuffer="") at stack.cpp:386:5
+    frame #1: 0x0000007f50dffcb0 libsos.so`ClrStackImpl::PrintThread(unsigned int, int, int, int, int, int, int) [inlined] DacpFrameData::Request(this=0x0000007fe5276908, dac=<unavailable>) at dacprivate.h:1037:21
+    frame #2: 0x0000007f50dffc90 libsos.so`ClrStackImpl::PrintThread(osID=<unavailable>, bParams=<unavailable>, bLocals=<unavailable>, bSuppressLines=NO, bGC=<unavailable>, bFull=NO, bDisplayRegVals=NO) at strike.cpp:14033
+    frame #3: 0x0000007f50df416c libsos.so`::ClrStack(PDEBUG_CLIENT, PCSTR) [inlined] ClrStackImpl::PrintCurrentThread(bParams=NO, bLocals=NO, bSuppressLines=NO, bGC=NO, bNative=NO, bDisplayRegVals=NO) at strike.cpp:14298:9
+    frame #4: 0x0000007f50df40f0 libsos.so`::ClrStack(client=<unavailable>, args=<unavailable>) at strike.cpp:14818
+    frame #5: 0x0000007f7c450604 libsosplugin.so`sosCommand::DoExecute(this=<unavailable>, debugger=<unavailable>, arguments=<unavailable>, result=0x0000007fe52771b0) at soscommand.cpp:75:30
+    frame #6: 0x0000007f80a182a0 liblldb.so.12`CommandPluginInterfaceImplementation::DoExecute(lldb_private::Args&, lldb_private::CommandReturnObject&) + 164
+    frame #7: 0x0000007f80c362f4 liblldb.so.12`lldb_private::CommandObjectParsed::Execute(char const*, lldb_private::CommandReturnObject&) + 392
+    frame #8: 0x0000007f80c34230 liblldb.so.12`lldb_private::CommandInterpreter::HandleCommand(char const*, lldb_private::LazyBool, lldb_private::CommandReturnObject&, lldb_private::ExecutionContext*, bool, bool) + 1512
+    frame #9: 0x0000007f80c347a8 liblldb.so.12`lldb_private::CommandInterpreter::IOHandlerInputComplete(lldb_private::IOHandler&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) + 224
+    frame #10: 0x0000007f80bd09e4 liblldb.so.12`lldb_private::IOHandlerEditline::Run() + 308
+    frame #11: 0x0000007f80bc0550 liblldb.so.12`lldb_private::Debugger::RunIOHandlers() + 84
+    frame #12: 0x0000007f80c2b6c4 liblldb.so.12`lldb_private::CommandInterpreter::RunCommandInterpreter(lldb_private::CommandInterpreterRunOptions&) + 112
+    frame #13: 0x0000007f80a465b4 liblldb.so.12`lldb::SBDebugger::RunCommandInterpreter(bool, bool) + 484
+    frame #14: 0x00000055861077e4 lldb`Driver::MainLoop(this=0x0000007fe5277b78) at Driver.cpp:675:39
+    frame #15: 0x0000005586106594 lldb`main(argc=<unavailable>, argv=<unavailable>) at Driver.cpp:940:34
+    frame #16: 0x0000007f7c5513f8 libc.so.6`__libc_start_main(main=(lldb`main at Driver.cpp:870:40), argc=2, argv=0x0000007fe5277f88, init=<unavailable>, fini=<unavailable>, rtld_fini=<unavailable>, stack_end=<unavailable>) at libc-start.c:314:16
+    frame #17: 0x0000005586106638 lldb`_start at start.S:91
+(lldb) f 4
+frame #4: 0x0000007f50df40f0 libsos.so`::ClrStack(client=<unavailable>, args=<unavailable>) at strike.cpp:14818
+   14815                ClrStackImpl::PrintAllThreads(bParams, bLocals, bSuppressLines, bGC, bFull, bDisplayRegVals);
+   14816            }
+   14817            else {
+-> 14818                ClrStackImpl::PrintCurrentThread(bParams, bLocals, bSuppressLines, bGC, bFull, bDisplayRegVals);
+   14819            }
+   14820
+   14821            return S_OK;
+libsos.so`::ClrStack(PDEBUG_CLIENT, PCSTR):
+    0x7f50df40f0 <+956>: adrp   x28, 150
+    0x7f50df40f4 <+960>: ldr    x28, [x28, #0xb80]
+    0x7f50df40f8 <+964>: stp    wzr, wzr, [sp, #0x44]
+    0x7f50df40fc <+968>: ldr    x8, [x28]
+(lldb) detach
+Process 121 detached
 ~~~

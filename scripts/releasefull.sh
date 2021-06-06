@@ -36,10 +36,13 @@ buildroot/output/build/linux-$linuxversion/vmlinux
 EOF
 
 popd
+
 if [ $1 = "arm" ]; then
 	cat >>$HOME/includefiles.txt <<EOF
 4dotnet/scripts/arm
 EOF
+	$SCRIPTPATH/build_debug_hostqemu.sh
+	$SCRIPTPATH/patcharmvm.sh	
 	tar -C $HOME -cJvf $relpath/dotnet_arm_linux_vm_$dtpart.tar.xz -T $HOME/includefiles.txt
 	pushd $relpath
 	split -n 2 -d dotnet_arm_linux_vm_$dtpart.tar.xz dotnet_arm_linux_vm_$dtpart.tar.xz.
