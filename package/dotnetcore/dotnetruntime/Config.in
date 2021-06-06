@@ -23,7 +23,7 @@ config BR2_PACKAGE_DOTNETRUNTIME
 if BR2_PACKAGE_DOTNETRUNTIME
 choice
 	prompt "where to get the source"
-	default BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_GIT 
+	default BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_TARBALL 
 	help
 	  Select how to get the latest donetcore runtime source
 	  one is to clone from the github repo 
@@ -45,7 +45,7 @@ endchoice
 
 config BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_TARBALL_LOCATION
         string "URL of Tarball"
-	default "https://github.com/dotnet/runtime/archive/refs/tags/v6.0.0-preview.3.21201.4.tar.gz"
+	default "https://github.com/dotnet/runtime/archive/refs/tags/v6.0.0-preview.4.21253.7.tar.gz"
         depends on BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_TARBALL
 
 if BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_GIT

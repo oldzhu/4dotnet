@@ -3,7 +3,7 @@ The repository is building a Linux arm/arm64 VM in WSL2 so you can play with .NE
 
 Two goals of the project:  
 1. Lower the gate to play .net core app on Linux arm/arm64.
-2. Provide a "All-In-One" package and a "Full Stack" experience (source code level debugging at every layer, from host-qemu,linux kernel,lldb/gdb,sos,.net core app)
+2. Provide a "All-In-One" package and a "Full Stack" debugging experience in OSS world(from qemu,linux kernel,lldb/gdb,sos,.net core app)
 
 <img src="documents/armdemo.gif" alt=".net core debugging demo on arm vm" width="1500"/>
 
@@ -11,9 +11,9 @@ The target arm/arm64 VM contains:
 
 - The linux system (5.12) - build by the buildroot gcc toolchain
 - The gdb (10.x) - build by the buildroot gcc toolchain
-- The lldb (main branch) - build by the buildroot gcc toolchain
+- The lldb (12.0.x) - build by the buildroot gcc toolchain
 - The SOS lldb plugin (main branch) - build by the clang/llvm(for native part) + MS compilers(for managed part)
-- A selfcontained .NET core applciation with the .NET core runtime (main branch) - build by the host clang/llvm(for native part) and MS compilers(for managed part))
+- A selfcontained .NET core applciation with the .NET core runtime (.net core 6.0 RC) - build by the host clang/llvm(for native part) and MS compilers(for managed part))
 
 Also have the following tools built for the host x86-64:
 

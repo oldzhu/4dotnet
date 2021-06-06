@@ -3,9 +3,19 @@
 # lldb
 #
 ################################################################################
-
-LLDB_VERSION = origin/main
-LLDB_SITE = git://github.com/llvm/llvm-project.git
+ifeq ($(BR2_PACKAGE_LLDB_CUSTOM_GIT),y)
+#LLDB_VERSION = origin/master
+LLDB_VERSION = $(call qstrip,$(BR2_PACKAGE_LLDB_CUSTOM_REPO_VERSION))
+LLDB_SITE = $(call qstrip,$(BR2_PACKAGE_LLDB_CUSTOM_REPO_URL))
+else
+LLDB_CUSTOM_TARBALL_LOCATION = $(call qstrip,$(BR2_PACKAGE_LLDB_CUSTOM_TARBALL_LOCATION))
+LLDB_SOURCE = $(notdir $(LLDB_CUSTOM_TARBALL_LOCATION))
+LLDB_TARBALL_FILENAME = $(basename $(basename $(LLDB_SOURCE)))
+LLDB_VERSION = $(patsubst llvmorg-%,v%,$(LLDB_TARBALL_FILENAME))
+LLDB_SITE = $(patsubst %/,%,$(dir $(LLDB_CUSTOM_TARBALL_LOCATION)))
+endif
+#LLDB_VERSION = origin/main
+#LLDB_SITE = git://github.com/llvm/llvm-project.git
 LLDB_SUPPORTS_IN_SOURCE_BUILD = NO
 #LLDB_INSTALL_STAGING = YES
 LLDB_SUBDIR=llvm
@@ -273,8 +283,12 @@ define LLDB_INSTALL_TARGET_CMDS
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/bin/lldb $(TARGET_DIR)/usr/bin
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/bin/lldb-server  $(TARGET_DIR)/usr/bin
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libLLVM*.so $(TARGET_DIR)/usr/lib
-     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libclang-cpp.so.*git $(TARGET_DIR)/usr/lib
-     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/liblldb.so.*git $(TARGET_DIR)/usr/lib
+#     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libclang-cpp.so.*git $(TARGET_DIR)/usr/lib
+#     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/liblldb.so.*git $(TARGET_DIR)/usr/lib
+#      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libclang-cpp.so $(TARGET_DIR)/usr/lib
+#      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/liblldb.so $(TARGET_DIR)/usr/lib
+      cp -a $(LLDB_BUILDDIR)/lib/libclang-cpp.so* $(TARGET_DIR)/usr/lib
+      cp -a $(LLDB_BUILDDIR)/lib/liblldb.so* $(TARGET_DIR)/usr/lib
 #     ln -rsf $(TARGET_DIR)/usr/lib/libclang-cpp.so.11git libclang-cpp.so
 #     ln -rsf $(TARGET_DIR)/usr/lib/liblldb.so.11.0.0git liblldb.so.11git
 #     ln -rsf $(TARGET_DIR)/usr/lib/liblldb.so.11.0.0git liblldb.so

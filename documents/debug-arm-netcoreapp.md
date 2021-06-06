@@ -3,30 +3,20 @@ The steps to debug .net core app using the arm VM
 for arm:
 1. Build the arm VM by the steps [Build arm/arm64 VM (Linux + QEMU + GDB + LLDB + SOS + .NET Core runtime) for .NET core application debugging](build.md)  
     or  
-    Download the latest released arm VM and extract the files to home folder. For example:
+    Download the latest released arm VM to $HOME folder and extract it to $HOME:
 ~~~
-wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.gz
-tar -xzvf dotnet_arm_linux_vm_[dd-mm-yyyy].tar.gz -C ~
+wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.xz.00
+wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.xz.01
+cat $HOME/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.xz.0* > $HOME/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.xz
+tar -xvf $HOME/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.xz -C $HOME
 ~~~ 
+**replace the [dd-mm-yyyy] with the real date time you see in the latest github release.**  
 2.  Start the VM by the below command.  
-if vm is built by yourself:
 ~~~
-~/4dotnet/scripts/arm/start-qemu.sh
+$HOME/4dotnet/scripts/arm/start-qemu.sh
 ~~~
-if vm is donwloaded release:
-~~~
-~/vm_releases/[dd-mm-yyyy]/arm/start-qemu.sh
-~~~
-**replace the [dd-mm-yyyy] with the real date time you see in the latest github release if you prefer to use the release VM directly.**  
-if see the below error when start the release VM:
-~~~
-vm_releases/04-04-2021/arm64/qemu-system-aarch64: error while loading shared libraries: libpixman-1.so.0: cannot open shared object file: No such file or directory
-~~~
-try to install libpixman-1-dev to fix
-~~~
-sudo apt install libpixman-1-dev
-~~~  
 
+  
 3. Login as root without password
 ~~~
 Welcome to Buildroot
@@ -35,8 +25,8 @@ qemu-system-arm: warning: 9p: degraded performance: a reasonable high msize shou
 #
 ~~~ 
 
-**you won't hit the illegal instruction if you use the rlease arm VM directly as the release arm VM was already patched** 
-**so skip the step 4 to 10 and start from the setp 11 to enjoy the debugging if the release arm VM is used** 
+**you won't hit the illegal instruction if you use the rlease arm VM as the release arm VM was already patched** 
+**so skip the step 4 to 10 and start from the setp 11 to enjoy the debugging if use the release arm VM** 
   
 4. Run lldb to debug the demo dotnethello application.
 ~~~

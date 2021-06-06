@@ -25,6 +25,50 @@ config BR2_PACKAGE_LLDB
 
 	  http://lldb.llvm.org
 
+if BR2_PACKAGE_LLDB
+choice
+        prompt "where to get the source"
+        default BR2_PACKAGE_LLDB_CUSTOM_TARBALL
+        help
+          Select how to get the latest donetcore runtime source
+          one is to clone from the github repo
+          another is to download fom the github release tarball(default)
+
+config BR2_PACKAGE_LLDB_CUSTOM_TARBALL
+        bool "Release Tarball"
+        help
+          This option allows you to specify a URL pointing to the specified
+          release source tarball for dotnetruntime.
+
+config BR2_PACKAGE_LLDB_CUSTOM_GIT
+        bool "Git Repo"
+        help
+          This option is to get the dotnetruntime source
+          code from the Git repo.
+
+endchoice
+
+config BR2_PACKAGE_LLDB_CUSTOM_TARBALL_LOCATION
+        string "URL of Tarball"
+        default "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-12.0.1-rc1.tar.gz"
+        depends on BR2_PACKAGE_LLDB_CUSTOM_TARBALL
+
+if BR2_PACKAGE_LLDB_CUSTOM_GIT
+
+config BR2_PACKAGE_LLDB_CUSTOM_REPO_URL
+        string "URL of Git Repo"
+        default "git://github.com/llvm/llvm-project.git"
+
+config BR2_PACKAGE_LLDB_CUSTOM_REPO_VERSION
+        string "Custom repo version"
+        default "origin/main"
+        help
+          Revision to use in the typical format used by
+          Git/Mercurial/Subversion E.G. a sha id, a tag, branch, ..
+
+endif
+endif
+
 comment "lldb needs a toolchain w/ wchar, threads, C++, gcc >= 4.8, dynamic library"
 	depends on BR2_PACKAGE_LLDB_ARCH_SUPPORTS
 	depends on !BR2_TOOLCHAIN_HAS_THREADS || !BR2_INSTALL_LIBSTDCPP || \

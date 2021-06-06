@@ -4,29 +4,18 @@ The steps to debug .net core app using the built arm64 VM
 for arm64:
 1. Build the arm64 VM as [Build arm/arm64 VM (Linux + QEMU + GDB + LLDB + SOS + .NET Core runtime) for .NET core application debugging](build.md)  
     or  
-    Download the latest released arm VM and extract the files to home folder. For example:
+    Download the latest released arm64 VM to $HOME folder and extract it to $HOME:
 ~~~
-wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.gz
-tar -xzvf dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.gz -C ~
+wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.xz.00
+wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.xz.01
+cat $HOME/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.xz.0* > $HOME/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.xz
+tar -xvf $HOME/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.xz -C $HOME
 ~~~  
+**replace the [dd-mm-yyyy] with the real date time you see in the latest github release.**  
 2.  Start the VM by the below command.  
-if vm is built by yourself:
 ~~~
-~/4dotnet/scripts/arm64/start-qemu.sh
-~~~  
-if vm is donwloaded release:
-~~~
-~/vm_releases/[dd-mm-yyyy]/arm64/start-qemu.sh
-~~~
-**replace the [dd-mm-yyyy] with the real date time you see in the latest github release if you prefer to use the release VM directly.**  
-if see the below error when start the release VM:
-~~~
-vm_releases/04-04-2021/arm64/qemu-system-aarch64: error while loading shared libraries: libpixman-1.so.0: cannot open shared object file: No such file or directory
-~~~
-try to install libpixman-1-dev to fix
-~~~
-sudo apt install libpixman-1-dev
-~~~    
+$HOME/4dotnet/scripts/arm64/start-qemu.sh
+~~~   
 3. Login as root without password
 ~~~
 Welcome to Buildroot

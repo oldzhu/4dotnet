@@ -13,16 +13,23 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 BUILDROOTPATH=$SCRIPTPATH/../../buildroot
 dtpart=$(date +"%d-%m-%Y")
 relpath=$HOME/vm_releases
+linuxversion="5.12.4"
 
 mkdir -p $relpath
 
 fileexts="-iname *.c -o -iname *.h -o -iname *.cpp -o -iname *.cs -o -iname *.s -o -iname *.dbg -o -iname *.pdb"
+ex1=/test
+ex2=test/
+ex3=tests/
+
 pushd $HOME
 
-find buildroot/output/build -type f \( $fileexts \) -print > $HOME/includefiles.txt
+find buildroot/output/build -type f \( $fileexts \) -print|grep -v $ex1|grep -v $ex2|grep -v $ex3 > $HOME/includefiles.txt
+find buildroot/output/build/
 cat >>$HOME/includefiles.txt <<EOF
 buildroot/output/host
 buildroot/output/images
+buildroot/output/build/linux-$linuxversion/vmlinux
 4dotnet/scripts/pub2img.sh
 4dotnet/scripts/syncsrc.sh
 4dotnet/scripts/qemu-ifup
@@ -34,6 +41,9 @@ if [ $1 = "arm" ]; then
 4dotnet/scripts/arm
 EOF
 	tar -C $HOME -cJvf $relpath/dotnet_arm_linux_vm_$dtpart.tar.xz -T $HOME/includefiles.txt
+	pushd $relpath
+	split -n 2 -d dotnet_arm_linux_vm_$dtpart.tar.xz dotnet_arm_linux_vm_$dtpart.tar.xz.
+	popd
 fi
 
 if [ $1 = "arm64" ]; then
@@ -41,6 +51,9 @@ if [ $1 = "arm64" ]; then
 4dotnet/scripts/arm64
 EOF
 	tar -C $HOME -cJvf $relpath/dotnet_arm64_linux_vm_$dtpart.tar.xz -T $HOME/includefiles.txt
+	pushd $relpath
+	split -n 2 -d dotnet_arm64_linux_vm_$dtpart.tar.xz dotnet_arm64_linux_vm_$dtpart.tar.xz.
+	popd
 fi
 
 rm $HOME/includefiles.txt 

@@ -10,7 +10,7 @@ then run the below command to rebuild the dotnethello and the new system image f
 
 If you download and use the release arm/arm64 vm directly, refer the below steps to publish a .netcore app with the released .net core runtime to the VM image to debug:  
 The steps is similiar as  [Deploy self-contained .NET apps to Raspberry Pi](https://docs.microsoft.com/en-us/dotnet/iot/deployment#deploying-a-self-contained-app).
-1. Install .NET core in WSL2 if you.
+1. Install the .NET core you want to test in WSL2 if you haven't.
 ~~~
 curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin
 ~~~
