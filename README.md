@@ -3,7 +3,7 @@ The repository is building a Linux arm/arm64 VM in WSL2 so you can play with .NE
 
 Two goals of the project:  
 1. Lower the gate to play .net core app on Linux arm/arm64.
-2. Provide a "All-In-One" package and a "Full Stack" debugging experience in OSS world(from qemu,linux kernel,lldb/gdb,sos,.net core app)
+2. Provide a "All-In-One" package and a "Full Stack" debugging experience in OSS world(from qemu,linux kernel,clang/llvm,lldb/gdb,sos,.net core app)
 
 <img src="documents/armdemo.gif" alt=".net core debugging demo on arm vm" width="1500"/>
 

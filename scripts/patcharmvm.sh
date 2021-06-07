@@ -5,13 +5,14 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 #echo $SCRIPTPATH
 
-if [ $# -eq 0 ]; then
-	relpath=$HOME/vm_releases/$(date +"%d-%m-%Y")
-else
-	relpath=$1
-fi
+#if [ $# -eq 0 ]; then
+#	relpath=$HOME/vm_releases/$(date +"%d-%m-%Y")
+#else
+#	relpath=$1
+#fi
 
-patch -N -d $HOME/buildroot/output/build/dotnetruntime-origin_main/src/coreclr/jit -p0 -u -b emitarm.cpp -i $HOME/4dotnet/package/dotnetcore/dotnetruntime/emitarm.cpp.mypatch
+runtimepath=$(find $HOME/buildroot/output/build -maxdepth 1  -name dotnetruntime-\* -type d -print -quit)
+patch -N -d $runtimepath/src/coreclr/jit -p0 -u -b emitarm.cpp -i $HOME/4dotnet/package/dotnetcore/dotnetruntime/emitarm.cpp.mypatch
 #set -e
 pushd $HOME/buildroot
 
@@ -21,8 +22,13 @@ rm -r $HOME/buildroot/output/build/dotnethello-1.0/localcache
 make dotnethello-rebuild
 popd
 
-mkdir -p $relpath/arm/tmpfs
-sudo mount $relpath/arm/rootfs.ext2 $relpath/arm/tmpfs
-sudo cp -u -v $HOME/buildroot/output/target/root/dotnethello/* $relpath/arm/tmpfs/root/dotnethello
-sudo umount $relpath/arm/tmpfs
-rm -rf $relpath/arm/tmpfs
+#mkdir -p $relpath/arm/tmpfs
+#sudo mount $relpath/arm/rootfs.ext2 $relpath/arm/tmpfs
+#sudo cp -u -v $HOME/buildroot/output/target/root/dotnethello/* $relpath/arm/tmpfs/root/dotnethello
+#sudo umount $relpath/arm/tmpfs
+#rm -rf $relpath/arm/tmpfs
+mkdir -p $SCRIPTPATH/tmpfs
+sudo mount $HOME/buildroot/output/images/rootfs.ext2 $SCRIPTPATH/tmpfs
+sudo cp -u -v $HOME/buildroot/output/target/root/dotnethello/* $SCRIPTPATH/tmpfs/root/dotnethello
+sudo umount $SCRIPTPATH/tmpfs
+rm -rf $SCRIPTPATH/tmpfs
