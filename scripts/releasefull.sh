@@ -22,6 +22,8 @@ ex1=/test
 ex2=test/
 ex3=tests/
 
+$SCRIPTPATH/build_debug_hostqemu.sh
+
 pushd $HOME
 
 find buildroot/output/build -type f \( $fileexts \) -print|grep -v $ex1|grep -v $ex2|grep -v $ex3 > $HOME/includefiles.txt
@@ -41,7 +43,6 @@ if [ $1 = "arm" ]; then
 	cat >>$HOME/includefiles.txt <<EOF
 4dotnet/scripts/arm
 EOF
-	$SCRIPTPATH/build_debug_hostqemu.sh
 	$SCRIPTPATH/patcharmvm.sh	
 	tar -C $HOME -cJvf $relpath/dotnet_arm_linux_vm_$dtpart.tar.xz -T $HOME/includefiles.txt
 	pushd $relpath
