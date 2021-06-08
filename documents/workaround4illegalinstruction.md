@@ -1,4 +1,4 @@
-1. Modify the line in ~/4dotnet/dotnetcore/dotnetruntime/build_dotnetruntime.sh as the below   
+1. Modify the line in ~/4dotnet/package/dotnetcore/dotnetruntime/build_dotnetruntime.sh as the below   
 from
 ~~~
         $4/build.sh \
@@ -31,4 +31,9 @@ to
 4. Run the below make command to rebuild the dotnethello and the new system image. 
 ~~~
         make dotnethello-rebuild all
+~~~
+  
+or simply run the script woraroundarmvm.sh as the below:
+~~~
+        $HOME/4dotnet/scripts/workaroundarmvm.sh
 ~~~

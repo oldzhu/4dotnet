@@ -43,12 +43,12 @@ it contains the steps to build arm/arm64 vm for .net core debugging.
 
 check the following setting and select the latest version avaiable if it is not
 
-~~
+~~~
     Toolchain -> Custom kernel headers series  
     Toolchain -> Binutils Version  
     Toolchain -> GCC compiler Version 
     Toolchain -> GDB debugger version 
-~~
+~~~
 
 5. Run the below make command to begin the build. It could take serveral housrs or even days depends on your system power.
 ~~~
