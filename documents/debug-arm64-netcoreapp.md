@@ -1,29 +1,19 @@
 
 # debugging a .net core app in arm64 vm
 The steps to debug .net core app using the built arm64 VM  
-for arm64:
-1. Build the arm64 VM as [Build arm/arm64 VM (Linux + QEMU + GDB + LLDB + SOS + .NET Core runtime) for .NET core application debugging](build.md)  
-    or  
-    Download the latest released arm64 VM to $HOME folder and extract it to $HOME:
-~~~
-wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.xz.00
-wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.xz.01
-cat $HOME/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.xz.0* > $HOME/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.xz
-tar -xvf $HOME/dotnet_arm64_linux_vm_[dd-mm-yyyy].tar.xz -C $HOME
-~~~  
-**replace the [dd-mm-yyyy] with the real date time you see in the latest github release.**  
-2.  Start the VM by the below command.  
+
+1.  Start the VM by the below command.  
 ~~~
 $HOME/4dotnet/scripts/arm64/start-qemu.sh
 ~~~   
-3. Login as root without password
+2. Login as root without password
 ~~~
 Welcome to Buildroot
 buildroot login: root
 qemu-system-aarch64: warning: 9p: degraded performance: a reasonable high msize should be chosen on client/guest side (chosen msize is <= 8192). See https://wiki.qemu.org/Documentation/9psetup#msize for details.
 #
 ~~~
-4. Run lldb to debug the demo dotnethello application.
+3. Run lldb to debug the demo dotnethello application.
 ~~~
 # lldb ./dotnethello/dotnethello
 (lldb) target create "./dotnethello/dotnethello"
@@ -36,7 +26,7 @@ Hello World from .NET 6.0.0-dev
 The location is /root/dotnethello/System.Private.CoreLib.dll
 press anykey to exit...
 ~~~
-5. Press CTRL+c to break into the lldb.
+4. Press CTRL+c to break into the lldb.
 ~~~
 Process 128 stopped
 * thread #1, name = 'dotnethello', stop reason = signal SIGSTOP
@@ -56,7 +46,7 @@ libpthread.so.0`__libc_read:
     0x7ff7fac33c <+124>: b.hi   0x7ff7fac374              ; <+180> [inlined] __libc_read at read.c:24
 (lldb)
 ~~~
-6. Display the native call stack of the currnt thread.
+5. Display the native call stack of the currnt thread.
 ~~~
 (lldb) bt
 * thread #1, name = 'dotnethello', stop reason = signal SIGSTOP
@@ -93,7 +83,7 @@ libpthread.so.0`__libc_read:
     frame #30: 0x000000555555d444 dotnethello`___lldb_unnamed_symbol129$$dotnethello + 144
     frame #31: 0x0000007ff7be03f8 libc.so.6`__libc_start_main(main=(dotnethello`___lldb_unnamed_symbol129$$dotnethello), argc=1, argv=0x0000007ffffffd58, init=<unavailable>, fini=<unavailable>, rtld_fini=<unavailable>, stack_end=<unavailable>) at libc-start.c:314:16
 ~~~
-7. Swicth between the different frames, not only the source of the .NET core runtime can be displayed but also the source of the linux .so libaries used. 
+6. Swicth between the different frames, not only the source of the .NET core runtime can be displayed but also the source of the linux .so libaries used. 
 ~~~
 (lldb) f 11
 frame #11: 0x0000007ff761ffd4 libcoreclr.so`MethodDescCallSite::CallTargetWorker(unsigned long const*, unsigned long*, int) at callhelpers.cpp:71:5
@@ -127,7 +117,7 @@ libc.so.6`__libc_start_main:
     0x7ff7be0404 <+244>: ldr    x1, [x0]
 (lldb)
 ~~~
-8. Run sos command to list the managed stack frames.
+7. Run sos command to list the managed stack frames.
 ~~~
 (lldb) clrstack
 OS Thread Id: 0x80 (1)
@@ -143,7 +133,7 @@ OS Thread Id: 0x80 (1)
 0000007FFFFFEB10 0000007F7E4FE12C dotnethello.Program.Main(System.String[])
 (lldb)
 ~~~
-9. Using the gdb to debug the same applciation but only can see native part.
+8. Using the gdb to debug the same applciation but only can see native part.
 ~~~
 # gdb dotnethello/dotnethello
 GNU gdb (GDB) 10.1

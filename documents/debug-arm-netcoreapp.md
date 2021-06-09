@@ -1,23 +1,13 @@
 # debugging a .net core app in arm vm
 The steps to debug .net core app using the arm VM 
-for arm:
-1. Build the arm VM by the steps [Build arm/arm64 VM (Linux + QEMU + GDB + LLDB + SOS + .NET Core runtime) for .NET core application debugging](build.md)  
-    or  
-    Download the latest released arm VM to $HOME folder and extract it to $HOME:
-~~~
-wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.xz.00
-wget https://github.com/oldzhu/4dotnet/releases/download/v1.0.0/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.xz.01
-cat $HOME/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.xz.0* > $HOME/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.xz
-tar -xvf $HOME/dotnet_arm_linux_vm_[dd-mm-yyyy].tar.xz -C $HOME
-~~~ 
-**replace the [dd-mm-yyyy] with the real date time you see in the latest github release.**  
-2.  Start the VM by the below command.  
+
+1.  Start the VM by the below command.  
 ~~~
 $HOME/4dotnet/scripts/arm/start-qemu.sh
 ~~~
 
   
-3. Login as root without password
+2. Login as root without password
 ~~~
 Welcome to Buildroot
 buildroot login: root
@@ -26,9 +16,9 @@ qemu-system-arm: warning: 9p: degraded performance: a reasonable high msize shou
 ~~~ 
 
 **you won't hit the illegal instruction if you use the rlease arm VM as the release arm VM was already patched** 
-**so skip the step 4 to 10 and start from the setp 11 to enjoy the debugging if use the release arm VM** 
+**so skip the step 3 to 9 and start from the setp 11 to enjoy the debugging if use the release arm VM** 
   
-4. Run lldb to debug the demo dotnethello application.
+3. Run lldb to debug the demo dotnethello application.
 ~~~
 # lldb dotnethello/dotnethello
 (lldb) target create "dotnethello/dotnethello"
@@ -44,13 +34,13 @@ Process 174 stopped
     0xae575c56: .long  0xde01de01                ; unknown opcode
 (lldb)
 ~~~
-5. Disassemble the current illegal instruction with the raw bytes displayed (0x4000e8bd).  
+4. Disassemble the current illegal instruction with the raw bytes displayed (0x4000e8bd).  
 ~~~
 (lldb) disas -b -m -p -c 1
 ->  0xae575c4a: 0x4000e8bd   strhmi lr, [r0], -sp
 (lldb)
 ~~~
-6. Run bt and clrstack to check the stack frames of illegal instruction.
+5. Run bt and clrstack to check the stack frames of illegal instruction.
 ~~~
 (lldb) bt
 * thread #1, name = 'dotnethello', stop reason = signal SIGILL: illegal instruction
@@ -77,7 +67,7 @@ Aborted
 ~~~
 clrstack command could cause lldb fatal exception to exit.
 
-7. Swicth to gdb to debug the illegal instruction.
+6. Swicth to gdb to debug the illegal instruction.
 ~~~
 # gdb dotnethello/dotnethello
 GNU gdb (GDB) 10.1
@@ -122,7 +112,7 @@ End of assembler dump.
 0xae585c4a in ?? ()
 (gdb)
 ~~~
-8. Note lldb and gdb disassemble the same raw bytes 0x4000e8bd as different arm instruction. Seems the lldb does not work well to  disassemble the arm instruction and that's why sometimes it is necessary to use both lldb and gdb for debugging.  
+7. Note lldb and gdb disassemble the same raw bytes 0x4000e8bd as different arm instruction. Seems the lldb does not work well to  disassemble the arm instruction and that's why sometimes it is necessary to use both lldb and gdb for debugging.  
 lldb + sos plugin to check the managed part of the target.  
 gdb to dissaemble the insuructions in case lldb does not work well to disassemble   
 
@@ -142,9 +132,9 @@ End of assembler dump.
 0xae585c4a:     0x4000e8bd
 (gdb)
 ~~~
-9. The issue for the above illegal instruction described as the below  
+8. The issue for the above illegal instruction described as the below  
 [SIGILL's on ARM32 while using valgrind #33727](https://github.com/dotnet/runtime/issues/33727)
-10. there are two workarounds to fix the issue
+9. there are two workarounds to fix the issue
 
     1. rebuild the .net core runtime with PublishReadyToRun=false[workaround4illegalinstruction.md] 
 
@@ -152,7 +142,7 @@ End of assembler dump.
 
     2. patch the emitarm.cpp with the POC patch[pocpatch4illegalinstruction.md]
 
-11. then you can start the debugging trip without the crash.
+10. then you can start the debugging trip without the crash.
 ~~~
 /# lldb dotnethello/dotnethello
 (lldb) target create "dotnethello/dotnethello"
