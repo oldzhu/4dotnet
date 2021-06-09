@@ -20,14 +20,14 @@ Also have the following tools built for the host x86-64:
 * The qemu (5.2.0) - build by the buildroot gcc toochain, which is used to host the arm/arm64 vm built.  
 * The latest clang/llvm (main branch) - build by buildroot gcc toolchain, which is used to cross compile the above SOS lldb plugin and the native part of the .NET core runtime for arm/arm64 target.  
   
-There are two ways to play with the VM:
+There are two ways to get the VM package to play:
 
 1. [build arm/arm64 VM (Linux + GDB + LLDB + SOS + .NET Core applcation) from scratch](documents/build.md)  
-  
   Building from scratch could take several hours or even longer, it depends on how powerful of the hardware is.  
   or  
-
 2. [You can donwload the released VM and use it directly](documents/download.md)
+
+After build or download the VM package, you can  
 
 1. [.net core app on arm64 vm debugging](documents/debug-arm64-netcoreapp.md)
 2. [.net core app on arm vm debugging](documents/debug-arm-netcoreapp.md)
