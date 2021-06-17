@@ -23,3 +23,4 @@ $4/build.sh \
 --rootfs  $5 \
 -c release \
 /p:EnableSourceLink=false
+#-v d

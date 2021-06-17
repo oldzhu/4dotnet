@@ -47,7 +47,7 @@ endchoice
 
 config BR2_PACKAGE_DIAGNOSTICS_CUSTOM_TARBALL_LOCATION
         string "URL of Tarball"
-        default "https://github.com/dotnet/diagnostics/archive/refs/tags/v5.0.221401.tar.gz"
+        default "https://github.com/dotnet/diagnostics/archive/refs/tags/v5.0.227602.tar.gz"
         depends on BR2_PACKAGE_DIAGNOSTICS_CUSTOM_TARBALL
 
 if BR2_PACKAGE_DIAGNOSTICS_CUSTOM_GIT

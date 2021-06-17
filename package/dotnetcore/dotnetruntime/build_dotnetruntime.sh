@@ -23,5 +23,6 @@ $4/build.sh \
 -subset clr+libs+host+packs \
 -arch $3 \
 -cross \
--c release \
-/p:EnableSourceLink=false
+-c release 
+#-v d 
+#/p:EnableSourceLink=false

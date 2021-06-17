@@ -19,7 +19,7 @@ it contains the steps to build arm/arm64 vm for .net core debugging.
  ~~~
 3. Clone buildroot and 4dotnet to your home folder. 
 ~~~
-    git clone https://git.buildroot.net/buildroot 
+    git clone https://github.com/oldzhu/buildroot.git 
     git clone https://github.com/oldzhu/4dotnet.git
 ~~~ 
 4. Run the below commands to update the default config to build vm.  
