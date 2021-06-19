@@ -13,7 +13,7 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 BUILDROOTPATH=$SCRIPTPATH/../../buildroot
 dtpart=$(date +"%d-%m-%Y")
 relpath=$HOME/vm_releases
-linuxversion="5.12.4"
+#linuxversion="5.12.4"
 
 mkdir -p $relpath
 
@@ -27,11 +27,11 @@ ex3=tests/
 pushd $HOME
 
 find buildroot/output/build -type f \( $fileexts \) -print|grep -v $ex1|grep -v $ex2|grep -v $ex3 > $HOME/includefiles.txt
-find buildroot/output/build/
+linuxbuilddir=`find buildroot/output/build/ -maxdepth 1 -type d -iname linux-[0-9]*`
 cat >>$HOME/includefiles.txt <<EOF
 buildroot/output/host
 buildroot/output/images
-buildroot/output/build/linux-$linuxversion/vmlinux
+$linuxbuilddir/vmlinux
 4dotnet/scripts/pub2img.sh
 4dotnet/scripts/syncsrc.sh
 4dotnet/scripts/qemu-ifup

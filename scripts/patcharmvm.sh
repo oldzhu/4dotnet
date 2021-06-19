@@ -17,6 +17,7 @@ patch -N -d $runtimepath/src/coreclr/jit -p0 -u -b emitarm.cpp -i $HOME/4dotnet/
 pushd $HOME/buildroot
 
 export PATH=`echo $PATH|tr -d ' '`
+#rm -rf $runtimepath/artifacts
 make dotnetruntime-rebuild
 rm -r $HOME/buildroot/output/build/dotnethello-1.0/localcache
 make dotnethello-rebuild
@@ -30,5 +31,9 @@ popd
 mkdir -p $SCRIPTPATH/tmpfs
 sudo mount $HOME/buildroot/output/images/rootfs.ext2 $SCRIPTPATH/tmpfs
 sudo cp -u -v $HOME/buildroot/output/target/root/dotnethello/* $SCRIPTPATH/tmpfs/root/dotnethello
+
+# fix the illegal instruction when run clrstack in arm
+sudo cp -v $HOME/buildroot/output/target/root/dotnethello/{System.Collections.Immutable.dll,System.Reflection.Metadata.dll} $SCRIPTPATH/tmpfs/root/.dotnet/sos
+
 sudo umount $SCRIPTPATH/tmpfs
 rm -rf $SCRIPTPATH/tmpfs
