@@ -9,7 +9,16 @@
 
 #patch -N -d $4/eng/common/cross -p0 -u -b toolchain.cmake -i $6/toolchain.cmake.mypatch
 
-cplusplusver=10.3.0
+if [ $3 == "ARM64" ]; then
+	toolchain=aarch64-buildroot-linux-gnu
+elif [ $3 == "ARM" ]; then
+        patch -N -d $4/src/coreclr/vm/arm -p0 -u -b cgencpu.h -i $6/cgencpu.h.mypatch
+        toolchain=arm-buildroot-linux-gnueabihf
+else
+        toolchain=x86_64-buildroot-linux-gnu
+fi
+
+cplusplusver=$(cd $2/$toolchain/include/c++;echo *)
 
 $6/patch-2021-05-06.sh "$@"
 $6/patch-to-v6.0.0-preview.3.21201.4-001.sh "$@"
@@ -55,7 +64,7 @@ type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwc
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
 algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
 ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
-climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf} \
+climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf,bit} \
 $1/$3/myinclude
         cp -u -v $1/lib/gcc/$3/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $2/usr/lib
 }
@@ -67,18 +76,8 @@ function apply_mypatches {
 }
 
 apply_mypatches $4 $6
+copy_headslibs $2 $5 $toolchain
 
-if [ $3 == "ARM64" ]; then
-	toolchain=aarch64-buildroot-linux-gnu
-	copy_headslibs $2 $5 $toolchain
-elif [ $3 == "ARM" ]; then
-	patch -N -d $4/src/coreclr/vm/arm -p0 -u -b cgencpu.h -i $6/cgencpu.h.mypatch
-	toolchain=arm-buildroot-linux-gnueabihf
-	copy_headslibs $2 $5 $toolchain
-else
-	toolchain=x86_64-buildroot-linux-gnu
-	copy_headslibs $2 $5 $toolchain
-fi
 
 mkdir -p -v $5/usr/include/lldb/API
 cp -u -v $2/include/lldb/API/* $5/usr/include/lldb/API

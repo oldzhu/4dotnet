@@ -7,7 +7,14 @@
 # p6 [PKGNAME}_PKGDIR
 # p7 TARGET_DIR
 
-cplusplusver=10.3.0
+if [ $3 == "ARM64" ]; then
+        toolchain=aarch64-buildroot-linux-gnu
+elif [ $3 == "ARM" ]; then
+        toolchain=arm-buildroot-linux-gnueabihf
+else
+        toolchain=x86_64-buildroot-linux-gnu
+fi
+cplusplusver=$(cd $2/$toolchain/include/c++;echo *)
 
 function add_includes {
 	echo >> $1/$2
@@ -25,12 +32,9 @@ patch -N -d $4/eng -p0 -u -b build.sh -i $6/diag_eng_build.sh.mypatch
 
 if [ $3 == "ARM64" ]; then
 	patch -N -d $4/src/pal/src/locale -p0 -u -b utf8.cpp -i $6/utf8.cpp.mypatch
-	cp -u -v $2/lib/gcc/aarch64-buildroot-linux-gnu/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
-elif [ $3 == "ARM" ]; then
-	cp -u -v $2/lib/gcc/arm-buildroot-linux-gnueabihf/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
-else
-	cp -u -v $2/lib/gcc/x86_64-buildroot-linux-gnu/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
 fi
+
+cp -u -v $2/lib/gcc/$toolchain/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
 
 mkdir -p -v $5/usr/include/lldb/API
 cp -u -v $2/include/lldb/API/* $5/usr/include/lldb/API
