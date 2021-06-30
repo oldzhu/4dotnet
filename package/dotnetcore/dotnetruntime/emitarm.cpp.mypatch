@@ -1,23 +1,48 @@
---- /home/oldzhu/buildroot/output/build/dotnetruntime-origin_main/src/coreclr/jit/emitarm.cpp	2021-01-03 09:49:48.790000000 +0800
-+++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/emitarm.cpp	2021-01-03 09:53:34.740000000 +0800
-@@ -1520,12 +1520,19 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.5.21301.5/src/coreclr/jit/emitarm.cpp	2021-06-02 01:37:27.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/emitarm.cpp	2021-06-29 10:26:07.680000000 +0800
+@@ -1508,7 +1508,8 @@
+     bool      hasLR  = false;
+     bool      hasPC  = false;
+     bool      useT2  = false;
+-    bool      onlyT1 = false;
++//    bool      onlyT1 = false;
++    bool      isSingleBit = false;
  
-             if (imm & 0x8000) // Is the PC being popped?
-                 hasPC = true;
-+	    if (imm == 0x4000)
-+	    {
-+                // We have to use the Thumb-2 pop single register encoding but ldm sp!, {lr}
-+                regNumber reg = genRegNumFromMask(imm);
-+                emitIns_R(ins, attr, reg);
-+                return;
-+	    }
-             if (imm & 0x4000) // Is the LR being popped?
-             {
-                 hasLR = true;
-                 useT2 = true;
-             }
--
-+ 
-         COMMON_PUSH_POP:
+     /* Figure out the encoding format of the instruction */
+     switch (ins)
+@@ -1559,10 +1560,12 @@
  
              if (((imm - 1) & imm) == 0) // Is only one or zero bits set in imm?
+             {
+-                if (((imm == 0) && !hasLR) || // imm has no bits set, but hasLR is set
+-                    (!hasPC && !hasLR))       // imm has one bit set, and neither of hasPC/hasLR are set
++//                if (((imm == 0) && !hasLR) || // imm has no bits set, but hasLR is set
++//                    (!hasPC && !hasLR))       // imm has one bit set, and neither of hasPC/hasLR are set
++                if (imm != 0)
+                 {
+-                    onlyT1 = true; // if only one bit is set we must use the T1 encoding
++//                    onlyT1 = true; // if only one bit is set we must use the T1 encoding
++                      isSingleBit = true; 
+                 }
+             }
+ 
+@@ -1572,13 +1575,18 @@
+             {
+                 fmt = IF_T1_L1;
+             }
+-            else if (!onlyT1)
++//            else if (!onlyT1)
++	    else if (!isSingleBit)
+             {
+                 fmt = IF_T2_I1;
+             }
+             else
+             {
+                 // We have to use the Thumb-2 push single register encoding
++		if (hasLR)
++		{
++			imm |= 0x4000;
++		}
+                 regNumber reg = genRegNumFromMask(imm);
+                 emitIns_R(ins, attr, reg);
+                 return;
