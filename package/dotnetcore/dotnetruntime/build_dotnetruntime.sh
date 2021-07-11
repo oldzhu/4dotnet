@@ -20,7 +20,7 @@ else
 fi
 
 $4/build.sh \
--subset clr+clr.paltests+libs++libs.Tests+host+packs \
+-subset clr+libs+host+packs \
 -arch $3 \
 -cross \
 -c release
