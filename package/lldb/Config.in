@@ -4,12 +4,16 @@ config BR2_PACKAGE_LLDB_ARCH_SUPPORTS
 	default y if BR2_x86_64
 	default y if BR2_aarch64
 	default y if BR2_arm || BR2_armeb
+        default y if BR2_riscv || BR2_RISCV_32
+        default y if BR2_RISCV_64
 
 config BR2_PACKAGE_LLDB_TARGET_ARCH
 	string
 	default "AArch64" if BR2_aarch64
 	default "ARM" if BR2_arm || BR2_armeb
 	default "X86" if BR2_i386 || BR2_x86_64
+        default "RISCV32" if BR2_riscv || BR2_RISCV_32
+        default "RISCV64" if BR2_RISCV_64
 
 config BR2_PACKAGE_LLDB
 	bool "lldb"
@@ -50,7 +54,7 @@ endchoice
 
 config BR2_PACKAGE_LLDB_CUSTOM_TARBALL_LOCATION
         string "URL of Tarball"
-        default "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-12.0.1-rc2.tar.gz"
+        default "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-12.0.1.tar.gz"
         depends on BR2_PACKAGE_LLDB_CUSTOM_TARBALL
 
 if BR2_PACKAGE_LLDB_CUSTOM_GIT

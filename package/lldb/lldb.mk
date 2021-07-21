@@ -52,12 +52,20 @@ LLDB_TARGET_ARCH = $(call qstrip,$(BR2_PACKAGE_LLDB_TARGET_ARCH))
 LLDB_TARGETS_TO_BUILD = $(LLDB_TARGET_ARCH)
 
 ifneq ($(LLDB_TARGET_ARCH),X86)
+#ifeq ($(LLDB_TARGET_ARCH),RISCV)
+#HOST_LLDB_CONF_OPTS += -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="X86;$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
+#else
 HOST_LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="X86;$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
+#endif
 else
 HOST_LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
 endif
 
+#ifeq ($(LLDB_TARGET_ARCH),RISCV)
+#LLDB_CONF_OPTS += -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
+#else
 LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
+#endif
 
 # LLVM target to use for native code generation. This is required for JIT generation.
 # It must be set to LLVM_TARGET_ARCH for host and target, otherwise we get
