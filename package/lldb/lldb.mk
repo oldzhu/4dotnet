@@ -20,8 +20,16 @@ LLDB_SUPPORTS_IN_SOURCE_BUILD = NO
 #LLDB_INSTALL_STAGING = YES
 LLDB_SUBDIR=llvm
 
+LLDB_TARGET_ARCH = $(call qstrip,$(BR2_PACKAGE_LLDB_TARGET_ARCH))
+
+ifneq ($(LLDB_TARGET_ARCH),RISCV32)
+ifneq ($(LLDB_TARGET_ARCH),RISCV64)
+ifneq ($(LLDB_TARGET_ARCH),RISCV)
 LLDB_MAKE_OPTS = lldb
 LLDB_MAKE_OPTS += lldb-server
+endif
+endif
+endif
 
 #LLDB_INSTALL_OPTS += lldb
 #LLDB_INSTALL_OPTS += lldb-server
@@ -35,7 +43,16 @@ HOST_LLDB_DEPENDENCIES = host-python3
 LLDB_DEPENDENCIES = host-lldb
 
 HOST_LLDB_CONF_OPTS += -DLLVM_ENABLE_PROJECTS="clang;lldb"
+
+ifeq ($(LLDB_TARGET_ARCH),RISCV32)
+LLDB_CONF_OPTS += -DLLVM_ENABLE_PROJECTS="clang"
+else ifeq ($(LLDB_TARGET_ARCH),RISCV64)
+LLDB_CONF_OPTS += -DLLVM_ENABLE_PROJECTS="clang"
+else ifeq ($(LLDB_TARGET_ARCH),RISCV)
+LLDB_CONF_OPTS += -DLLVM_ENABLE_PROJECTS="clang"
+else
 LLDB_CONF_OPTS += -DLLVM_ENABLE_PROJECTS="clang;lldb"
+endif
 
 HOST_LLDB_CONF_OPTS += -DLLVM_CCACHE_BUILD=$(if $(BR2_CCACHE),ON,OFF)
 LLDB_CONF_OPTS += -DLLVM_CCACHE_BUILD=$(if $(BR2_CCACHE),ON,OFF)
@@ -46,7 +63,7 @@ LLDB_CONF_OPTS += -DLLVM_CCACHE_BUILD=$(if $(BR2_CCACHE),ON,OFF)
 HOST_LLDB_CONF_OPTS += -DCMAKE_INSTALL_RPATH="$(HOST_DIR)/lib"
 
 # Get target architecture
-LLDB_TARGET_ARCH = $(call qstrip,$(BR2_PACKAGE_LLDB_TARGET_ARCH))
+#LLDB_TARGET_ARCH = $(call qstrip,$(BR2_PACKAGE_LLDB_TARGET_ARCH))
 
 # Build backend for target architecture. This include backends like AMDGPU.
 LLDB_TARGETS_TO_BUILD = $(LLDB_TARGET_ARCH)
@@ -287,20 +304,24 @@ LLDB_CONF_OPTS += \
 	-DLLVM_INCLUDE_GO_TESTS=OFF \
 	-DLLVM_INCLUDE_TESTS=OFF
 
+ifneq ($(LLDB_TARGET_ARCH),RISCV32)
+ifneq ($(LLDB_TARGET_ARCH),RISCV64)
+ifneq ($(LLDB_TARGET_ARCH),RISCV)
 define LLDB_INSTALL_TARGET_CMDS
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/bin/lldb $(TARGET_DIR)/usr/bin
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/bin/lldb-server  $(TARGET_DIR)/usr/bin
+     cp -a $(LLDB_BUILDDIR)/lib/liblldb.so* $(TARGET_DIR)/usr/lib
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libLLVM*.so $(TARGET_DIR)/usr/lib
-#     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libclang-cpp.so.*git $(TARGET_DIR)/usr/lib
-#     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/liblldb.so.*git $(TARGET_DIR)/usr/lib
-#      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libclang-cpp.so $(TARGET_DIR)/usr/lib
-#      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/liblldb.so $(TARGET_DIR)/usr/lib
-      cp -a $(LLDB_BUILDDIR)/lib/libclang-cpp.so* $(TARGET_DIR)/usr/lib
-      cp -a $(LLDB_BUILDDIR)/lib/liblldb.so* $(TARGET_DIR)/usr/lib
-#     ln -rsf $(TARGET_DIR)/usr/lib/libclang-cpp.so.11git libclang-cpp.so
-#     ln -rsf $(TARGET_DIR)/usr/lib/liblldb.so.11.0.0git liblldb.so.11git
-#     ln -rsf $(TARGET_DIR)/usr/lib/liblldb.so.11.0.0git liblldb.so
+     cp -a $(LLDB_BUILDDIR)/lib/libclang-cpp.so* $(TARGET_DIR)/usr/lib
 endef
+endif
+endif
+else
+define LLDB_INSTALL_TARGET_CMDS
+     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libLLVM*.so $(TARGET_DIR)/usr/lib
+     cp -a $(LLDB_BUILDDIR)/lib/libclang-cpp.so* $(TARGET_DIR)/usr/lib
+endef
+endif
 
 # Copy llvm-config (host variant) to STAGING_DIR
 # llvm-config (host variant) returns include and lib directories
