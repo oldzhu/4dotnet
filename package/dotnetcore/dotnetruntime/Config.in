@@ -45,6 +45,12 @@ config BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_GIT
           This option is to get the dotnetruntime source
           code from the Git repo.
 
+config BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_LOCAL
+        bool "Local Runtime"
+        help
+          This option is to get the dotnetruntime source 
+          code from from the local folder
+
 endchoice
 
 config BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_TARBALL_LOCATION
@@ -66,6 +72,15 @@ config BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_REPO_VERSION
           Git/Mercurial/Subversion E.G. a sha id, a tag, branch, ..
 
 endif
+
+if BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_LOCAL
+config BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_LOCAL_FOLDER
+        string "The local folder of Runtime"
+        default "~/my_runtime"
+        help
+          The local folder to the runtime source code
+endif
+
 endif
 
 comment "dotnetruntime needs lldb package" 

@@ -14,6 +14,10 @@ if [ $3 == "ARM64" ]; then
 elif [ $3 == "ARM" ]; then
         patch -N -d $4/src/coreclr/vm/arm -p0 -u -b cgencpu.h -i $6/cgencpu.h.mypatch
         toolchain=arm-buildroot-linux-gnueabihf
+elif [ $3 == "RISCV32" ]; then
+	toolchain=riscv32-buildroot-linux-gnu
+elif [ $3 == "RISCV64" ]; then
+	toolchain=riscv64-buildroot-linux-gnu
 else
         toolchain=x86_64-buildroot-linux-gnu
 fi

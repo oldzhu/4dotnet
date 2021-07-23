@@ -15,6 +15,10 @@ if [ $3 == "ARM" ]; then
 	export TOOLCHAIN=arm-buildroot-linux-gnueabihf;
 elif [ $3 == "ARM64" ]; then
 	export TOOLCHAIN=aarch64-buildroot-linux-gnu;
+elif [ $3 == "RISCV32" ]; then
+	export TOOLCHAIN=riscv32-buildroot-linux-gnu;
+elif [ $3 == "RISCV64" ]; then
+	export TOOLCHAIN=riscv64-buildroot-linux-gnu;
 else
 	export TOOLCHAIN=x86_64-buildroot-linux-gnu;
 fi
