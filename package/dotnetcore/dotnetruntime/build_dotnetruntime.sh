@@ -24,9 +24,9 @@ else
 fi
 
 $4/build.sh \
--subset clr+libs+host+packs \
+-subset clr.native \
 -arch $3 \
 -cross \
 -c release
-#-v d 
+-v d 
 #/p:EnableSourceLink=false
