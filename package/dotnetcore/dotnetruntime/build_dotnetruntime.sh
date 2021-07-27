@@ -27,6 +27,6 @@ $4/build.sh \
 -subset clr.native \
 -arch $3 \
 -cross \
--c release
+-c release \
 -v d 
 #/p:EnableSourceLink=false
