@@ -28,5 +28,5 @@ $4/build.sh \
 -arch $3 \
 -cross \
 -c release \
--v d 
+#-v d 
 #/p:EnableSourceLink=false
