@@ -1,0 +1,23 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/src/coreclr/gcdump/i386/gcdumpx86.cpp	2021-07-03 05:28:19.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/gcdumpx86.cpp	2021-08-12 11:00:39.921660374 +0800
+@@ -907,7 +907,7 @@
+                         curOffs        += lastSkip;
+                         callArgCnt      = *PTR_DWORD(table); table += sizeof(DWORD);
+                         callPndTabCnt   = *PTR_DWORD(table); table += sizeof(DWORD);
+-                        callPndTabSize  = *PTR_DWORD(table); table += sizeof(DWORD);
++                        callPndTabSize  = *PTR_DWORD(table); table += sizeof(DWORD); (void)callPndTabSize;
+                         callPndTab      = true;
+                         goto PRINT_CALL;
+ 
+@@ -1027,7 +1027,10 @@
+     dblAlign   = header.doubleAlign;
+     argSize    = header.argCount * 4;
+     stackSize  = header.frameSize;
+-
++    (void)stackSize;
++    (void)secCheck;
++    (void)dblAlign;
++    (void)argSize; 
+ #ifdef DEBUG
+     if  (offs == 0)
+     {

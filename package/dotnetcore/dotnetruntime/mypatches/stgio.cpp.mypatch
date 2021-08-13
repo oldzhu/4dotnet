@@ -1,0 +1,10 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/src/coreclr/md/enc/stgio.cpp	2021-07-03 05:28:19.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/stgio.cpp	2021-08-11 22:40:33.588452394 +0800
+@@ -1359,6 +1359,7 @@
+     {
+         hr = GetPtrForMem(0, 1, ptrStart);
+         _ASSERTE(hr == S_OK && "GetPtrForMem failed");
++	(void)hr;
+         _ASSERTE(Value > (ULONG_PTR) ptrStart);
+         return (((Value - (ULONG_PTR) ptrStart) % iAlignment) == 0);
+     }

@@ -1,0 +1,10 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/src/coreclr/md/ceefilegen/cceegen.cpp	2021-07-03 05:28:19.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/cceegen.cpp	2021-08-11 11:18:09.418078395 +0800
+@@ -593,6 +593,7 @@
+             HRESULT hr;
+             hr = emitter->QueryInterface(IID_IMetaDataImport, (PVOID *) &pMapper->m_pIImport);
+             _ASSERTE(SUCCEEDED(hr));
++	    (void)hr;
+         }
+         m_pTokenMap = pMapper;
+         m_fTokenMapSupported = (emitter == 0);

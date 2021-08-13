@@ -1,0 +1,20 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/src/coreclr/pal/src/sync/cs.cpp	2021-07-03 05:28:19.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/cs.cpp	2021-08-12 17:10:58.811554005 +0800
+@@ -477,7 +477,7 @@
+                     "[err=%d]\n", pPalCriticalSection, iRet);
+ 
+         // destroy mutex
+-        iRet = pthread_mutex_destroy(&pPalCriticalSection->csndNativeData.mutex);
++        iRet = pthread_mutex_destroy(&pPalCriticalSection->csndNativeData.mutex);(void)iRet;
+         _ASSERT_MSG(0 == iRet, "Failed destroying mutex in CS @ %p "
+                     "[err=%d]\n", pPalCriticalSection, iRet);
+     }
+@@ -1215,7 +1215,7 @@
+ #endif // _DEBUG
+ 
+         // Do the actual native wait
+-        palErr = PALCS_DoActualWait(pPalCriticalSection);
++        palErr = PALCS_DoActualWait(pPalCriticalSection);(void)palErr;
+         _ASSERT_MSG(NO_ERROR == palErr, "Native CS wait failed\n");
+ 
+         return PalCsReturnWaiterAwakened;

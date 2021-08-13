@@ -1,0 +1,26 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/src/coreclr/inc/sbuffer.inl	2021-07-03 05:28:19.000000000 +0800
++++ package/dotnetcore/dotnetruntime/modified/sbuffer.inl	2021-08-11 10:43:46.588059552 +0800
+@@ -631,23 +631,19 @@
+     }
+     CONTRACT_END;
+ 
+-    COUNT_T smaller;
+     int equals;
+     int result;
+ 
+     if (m_size < size)
+     {
+-        smaller = m_size;
+         equals = -1;
+     }
+     else if (m_size > size)
+     {
+-        smaller = size;
+         equals = 1;
+     }
+     else
+     {
+-        smaller = size;
+         equals = 0;
+     }
+ 

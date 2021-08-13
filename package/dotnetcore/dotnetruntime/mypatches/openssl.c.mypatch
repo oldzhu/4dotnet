@@ -1,0 +1,10 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/src/libraries/Native/Unix/System.Security.Cryptography.Native/openssl.c	2021-07-03 05:28:19.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/openssl.c	2021-08-11 19:16:50.568340744 +0800
+@@ -1292,6 +1292,7 @@
+ 
+     result = pthread_mutex_unlock(&g_err_mutex);
+     assert(!result && "Releasing the error string table mutex failed.");
++    (void)result;
+ }
+ 
+ static int32_t EnsureOpenSsl11Initialized()

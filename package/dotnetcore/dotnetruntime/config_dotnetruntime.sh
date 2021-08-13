@@ -22,6 +22,7 @@ cplusplusver=$(cd $2/$toolchain/include/c++;echo *)
 
 $6/patch-2021-05-06.sh "$@"
 $6/patch-to-v6.0.0-preview.3.21201.4-001.sh "$@"
+$6/patch-for-clang13-Wunused-but-set-variable.sh "$@"
 
 #fix FALSE/TRUE compilation error in src/libraries/Native/Unix/System.Globalization.Native
 sed -i 's/FALSE/0/g'  $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
@@ -70,7 +71,7 @@ $1/$3/myinclude
 }
 
 function apply_mypatches {
-	patch -N -d $1/src/libraries/Native/Unix/System.Native -p0 -u -b pal_process.c -i $2/pal_process.c.mypatch
+	#patch -N -d $1/src/libraries/Native/Unix/System.Native -p0 -u -b pal_process.c -i $2/pal_process.c.mypatch
 	patch -N -d $1/src/libraries/Native/Unix/System.Security.Cryptography.Native -p0 -u -b apibridge.h -i $2/apibridge.h.mypatch
 	patch -N -d $1/src/libraries/Native/Unix/System.Security.Cryptography.Native -p0 -u -b apibridge.c -i $2/apibridge.c.mypatch
 }

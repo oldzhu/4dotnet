@@ -1,0 +1,13 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/src/coreclr/pal/src/synchmgr/synchcontrollers.cpp	2021-07-03 05:28:19.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/synchcontrollers.cpp	2021-08-12 17:14:29.811552995 +0800
+@@ -459,8 +459,8 @@
+                 LONG lLocalSynchLockCount;
+                 LONG lSharedSynchLockCount;
+ 
+-                lSharedSynchLockCount = CPalSynchronizationManager::ResetSharedSynchLock(m_pthrOwner);
+-                lLocalSynchLockCount = CPalSynchronizationManager::ResetLocalSynchLock(m_pthrOwner);
++                lSharedSynchLockCount = CPalSynchronizationManager::ResetSharedSynchLock(m_pthrOwner);(void)lSharedSynchLockCount;
++                lLocalSynchLockCount = CPalSynchronizationManager::ResetLocalSynchLock(m_pthrOwner);(void)lLocalSynchLockCount;
+ 
+                 _ASSERTE(0 < lLocalSynchLockCount);
+ 

@@ -1,0 +1,11 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/src/coreclr/pal/src/loader/module.cpp	2021-07-03 05:28:19.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/module.cpp	2021-08-12 11:29:26.801652107 +0800
+@@ -320,7 +320,7 @@
+         }
+ 
+         ProcAddress = (FARPROC) dlsym(module->dl_handle, lpPALProcName);
+-        symbolName = lpPALProcName;
++        symbolName = lpPALProcName;(void)symbolName;
+     }
+ 
+     // If we aren't looking inside the PAL or we didn't find a PAL_ variant

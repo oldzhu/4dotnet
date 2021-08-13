@@ -1,0 +1,20 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/src/coreclr/pal/src/cruntime/wchar.cpp	2021-07-03 05:28:19.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/wchar.cpp	2021-08-12 11:16:26.141655844 +0800
+@@ -319,7 +319,7 @@
+     PAL_free(s_nptr);
+     LOGEXIT("wcstoul returning unsigned long %lu\n", res);
+     PERF_EXIT(wcstoul);
+-
++    (void)dwLastError;
+     /* When returning unsigned long res from this function, it will be
+     implicitly cast to ULONG. This handles situations where a string that
+     represents a negative number is passed in to wcstoul. The Windows
+@@ -390,7 +390,7 @@
+     PAL_free(s_nptr);
+     LOGEXIT("_wcstoui64 returning unsigned long long %llu\n", res);
+     PERF_EXIT(_wcstoui64);
+-
++    (void)dwLastError;
+     return res;
+ }
+ 

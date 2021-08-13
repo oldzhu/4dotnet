@@ -1,0 +1,18 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/src/libraries/Native/Unix/System.Globalization.Native/pal_collation.c	2021-08-11 11:27:41.038083616 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/pal_collation.c	2021-08-11 17:18:39.838275975 +0800
+@@ -616,6 +616,7 @@
+         int32_t r;
+         r = RestoreSearchHandle(pSortHandle, *pSearchIterator, options);
+         assert(r && "restoring search handle shouldn't fail.");
++	(void)r;
+         return -1;
+     }
+ 
+@@ -625,6 +626,7 @@
+         int32_t r;
+         r = RestoreSearchHandle(pSortHandle, *pSearchIterator, options);
+         assert(r && "restoring search handle shouldn't fail.");
++	(void)r;
+         return -1;
+     }
+ 
