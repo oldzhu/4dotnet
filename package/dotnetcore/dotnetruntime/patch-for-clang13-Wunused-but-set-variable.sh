@@ -35,4 +35,4 @@ patch -N -d $4/src/libraries/Native/Unix/System.Native -p0 -u -b pal_process.c -
 #patch -N -d $4/src/coreclr/pal/src/sync -p0 -u -b cs.cpp  -i $6/mypatches/cs.cpp.mypatch
 #patch -N -d $4/src/coreclr/pal/src/synchmgr -p0 -u -b synchcontrollers.cpp -i $6/mypatches/synchcontrollers.cpp.mypatch
 #patch -N -d $4/src/coreclr/pal/src/synchmgr -p0 -u -b synchmanager.cpp -i $6/mypatches/synchmanager.cpp.mypatch
-patch -N -d $4/eng/native -p0 -u -b configurecompiler.cmake -i $6/mypatches/configurecompiler.cmake.mypatch
+#patch -N -d $4/eng/native -p0 -u -b configurecompiler.cmake -i $6/mypatches/configurecompiler.cmake.mypatch

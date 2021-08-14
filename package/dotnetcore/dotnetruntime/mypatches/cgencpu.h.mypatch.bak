@@ -1,0 +1,11 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-origin_main/src/coreclr/src/vm/arm/cgencpu.h	2020-12-02 11:07:10.960000000 +0800
++++ 4dotnet/package/dotnetcore/dotnetruntime/modified/cgencpu.h	2020-12-02 11:09:08.620000000 +0800
+@@ -292,7 +292,7 @@
+ 
+     // ldr pc, [pc, #0]
+     pCode[0] = 0xf000f8df;
+-    pCode[1] = (DWORD)target;
++    pCode[1] = (DWORD)(long)target;
+ }
+ 
+ //------------------------------------------------------------------------

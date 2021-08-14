@@ -1,10 +1,13 @@
---- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/eng/native/configurecompiler.cmake	2021-07-03 05:28:19.000000000 +0800
-+++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/configurecompiler.cmake	2021-08-13 09:38:13.201835575 +0800
-@@ -361,6 +361,7 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.7.21377.19/eng/native/configurecompiler.cmake	2021-07-28 08:53:55.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/configurecompiler.cmake	2021-08-14 11:31:24.902289098 +0800
+@@ -368,6 +368,10 @@
      # to a struct or a class that has virtual members or a base class. In that case, clang
      # may not generate the same object layout as MSVC.
      add_compile_options(-Wno-incompatible-ms-struct)
++
++    #fix llvm 13 compile error
 +    add_compile_options(-Wno-unused-but-set-variable)
++    add_compile_options(-Wno-reserved-identifier)
    else()
      add_compile_options(-Wno-unused-but-set-variable)
      add_compile_options(-Wno-unknown-pragmas)

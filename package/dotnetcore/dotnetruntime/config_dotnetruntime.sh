@@ -12,7 +12,7 @@
 if [ $3 == "ARM64" ]; then
 	toolchain=aarch64-buildroot-linux-gnu
 elif [ $3 == "ARM" ]; then
-        patch -N -d $4/src/coreclr/vm/arm -p0 -u -b cgencpu.h -i $6/cgencpu.h.mypatch
+        #patch -N -d $4/src/coreclr/vm/arm -p0 -u -b cgencpu.h -i $6/cgencpu.h.mypatch
         toolchain=arm-buildroot-linux-gnueabihf
 else
         toolchain=x86_64-buildroot-linux-gnu
@@ -20,13 +20,13 @@ fi
 
 cplusplusver=$(cd $2/$toolchain/include/c++;echo *)
 
-$6/patch-2021-05-06.sh "$@"
-$6/patch-to-v6.0.0-preview.3.21201.4-001.sh "$@"
-$6/patch-for-clang13-Wunused-but-set-variable.sh "$@"
+#$6/patch-2021-05-06.sh "$@"
+#$6/patch-to-v6.0.0-preview.3.21201.4-001.sh "$@"
+#$6/patch-for-clang13-Wunused-but-set-variable.sh "$@"
 
 #fix FALSE/TRUE compilation error in src/libraries/Native/Unix/System.Globalization.Native
-sed -i 's/FALSE/0/g'  $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
-sed -i 's/TRUE/1/g' $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
+#sed -i 's/FALSE/0/g'  $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
+#sed -i 's/TRUE/1/g' $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
 
 function add_includes {
 echo >> $1/$2
@@ -65,15 +65,20 @@ type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwc
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
 algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
 ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
-climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf,bit} \
+climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf,bit,cxxabi.h} \
 $1/$3/myinclude
         cp -u -v $1/lib/gcc/$3/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $2/usr/lib
 }
 
 function apply_mypatches {
 	#patch -N -d $1/src/libraries/Native/Unix/System.Native -p0 -u -b pal_process.c -i $2/pal_process.c.mypatch
-	patch -N -d $1/src/libraries/Native/Unix/System.Security.Cryptography.Native -p0 -u -b apibridge.h -i $2/apibridge.h.mypatch
-	patch -N -d $1/src/libraries/Native/Unix/System.Security.Cryptography.Native -p0 -u -b apibridge.c -i $2/apibridge.c.mypatch
+	#patch -N -d $1/src/libraries/Native/Unix/System.Security.Cryptography.Native -p0 -u -b apibridge.h -i $2/apibridge.h.mypatch
+	#patch -N -d $1/src/libraries/Native/Unix/System.Security.Cryptography.Native -p0 -u -b apibridge.c -i $2/apibridge.c.mypatch
+	shopt -s globstar
+	for mypatchfile in $2/mypatches/*.mypatch
+	do
+            patch -N -d $1 -p7 -u -b -i $mypatchfile
+        done
 }
 
 apply_mypatches $4 $6
