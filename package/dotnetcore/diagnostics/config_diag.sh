@@ -24,15 +24,23 @@ function add_includes {
 #	echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/myinclude\) >> $1/$2
 #	echo endif\(\) >> $1/$2
 }
+function apply_mypatches {
+        shopt -s globstar
+        for mypatchfile in $2/mypatches/*.mypatch
+	do
+	    patch -N -d $1 -p7 -u -b -i $mypatchfile
+	done
+}
 
+apply_mypatches $4 $6
 add_includes $4 eng/cross/toolchain.cmake
 
-patch -N -d $4/eng -p0 -u -b build.sh -i $6/diag_eng_build.sh.mypatch
+#patch -N -d $4/eng -p0 -u -b build.sh -i $6/diag_eng_build.sh.mypatch
 #patch -N -d $4/eng/cross -p0 -u -b toolchain.cmake -i $6/toolchain.cmake.mypatch
 
-if [ $3 == "ARM64" ]; then
-	patch -N -d $4/src/pal/src/locale -p0 -u -b utf8.cpp -i $6/utf8.cpp.mypatch
-fi
+#if [ $3 == "ARM64" ]; then
+#	patch -N -d $4/src/pal/src/locale -p0 -u -b utf8.cpp -i $6/utf8.cpp.mypatch
+#fi
 
 cp -u -v $2/lib/gcc/$toolchain/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $5/usr/lib
 

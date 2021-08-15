@@ -1,0 +1,12 @@
+--- /home/oldzhu/buildroot/output/build/diagnostics-origin_main/compileoptions.cmake	2021-08-14 20:51:47.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/diagnostics/modified/compileoptions.cmake	2021-08-15 08:28:02.104987457 +0800
+@@ -65,6 +65,9 @@
+   # Some architectures (e.g., ARM) assume char type is unsigned while CoreCLR assumes char is signed
+   # as x64 does. It has been causing issues in ARM (https://github.com/dotnet/coreclr/issues/4746)
+   add_compile_options(-fsigned-char)
++
++  #fix llvm13 clang compile for variable set not used error
++  add_compile_options(-Wno-unused-but-set-variable)
+ endif(CLR_CMAKE_PLATFORM_UNIX)
+ 
+ if(CLR_CMAKE_PLATFORM_UNIX_ARM)
