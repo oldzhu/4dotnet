@@ -1,0 +1,83 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.7.21377.19/src/coreclr/jit/emitarm.cpp	2021-07-28 08:53:55.000000000 +0800
++++ /home/oldzhu/my_runtime/src/coreclr/jit/emitarm.cpp	2021-08-21 16:33:30.295424905 +0800
+@@ -621,18 +621,24 @@
+ bool emitter::emitInsMayWriteMultipleRegs(instrDesc* id)
+ {
+     instruction ins = id->idIns();
++    insFormat   fmt = id->idInsFmt();
+ 
+     switch (ins)
+     {
+         case INS_ldm:
+         case INS_ldmdb:
+-        case INS_pop:
+         case INS_smlal:
+         case INS_smull:
+         case INS_umlal:
+         case INS_umull:
+         case INS_vmov_d2i:
+             return true;
++        case INS_pop:
++            if (fmt != IF_T2_E2) // T2_E2 is pop single register encoding
++            {
++                return true;
++            }
++            return false;
+         default:
+             return false;
+     }
+@@ -1504,12 +1510,11 @@
+ 
+ void emitter::emitIns_I(instruction ins, emitAttr attr, target_ssize_t imm)
+ {
+-    insFormat fmt    = IF_NONE;
+-    bool      hasLR  = false;
+-    bool      hasPC  = false;
+-    bool      useT2  = false;
+-    bool      onlyT1 = false;
+-
++    insFormat fmt         = IF_NONE;
++    bool      hasLR       = false;
++    bool      hasPC       = false;
++    bool      useT2       = false;
++    bool      isSingleBit = false;
+     /* Figure out the encoding format of the instruction */
+     switch (ins)
+     {
+@@ -1559,10 +1564,9 @@
+ 
+             if (((imm - 1) & imm) == 0) // Is only one or zero bits set in imm?
+             {
+-                if (((imm == 0) && !hasLR) || // imm has no bits set, but hasLR is set
+-                    (!hasPC && !hasLR))       // imm has one bit set, and neither of hasPC/hasLR are set
++                if (imm != 0)
+                 {
+-                    onlyT1 = true; // if only one bit is set we must use the T1 encoding
++                    isSingleBit = true; // only one bits set in imm
+                 }
+             }
+ 
+@@ -1570,15 +1574,21 @@
+ 
+             if (((imm & 0x00ff) == imm) && !useT2)
+             {
++                // for push {LR,} <reglist8> and pop  {PC,} <regist8> encoding
+                 fmt = IF_T1_L1;
+             }
+-            else if (!onlyT1)
++            else if (!isSingleBit)
+             {
++                // for other push and pop multiple registers encoding
+                 fmt = IF_T2_I1;
+             }
+             else
+             {
+-                // We have to use the Thumb-2 push single register encoding
++                // We have to use the Thumb-2 push/pop single register encoding
++                if (hasLR)
++                {
++                    imm |= 0x4000;
++                }
+                 regNumber reg = genRegNumFromMask(imm);
+                 emitIns_R(ins, attr, reg);
+                 return;
