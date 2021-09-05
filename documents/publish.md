@@ -54,7 +54,7 @@ dotnet publish -r linux-arm64 -c Release
 ~~~
 5. Run the pub2img.sh which is lcoated in the same folder as the arm/arm64 VM to publish the self-contained app to the arm/arm64 VM image. 
 ~~~
-[usage]pub2img.sh [local publish path] [target folder name]
+[usage]pub2img.sh [local publish path] [target folder name] [path to rootfs]
 ~~~
 for arm example
 ~~~
