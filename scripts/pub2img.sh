@@ -1,6 +1,7 @@
 #!/bin/bash
 # $1 local publish path
 # $2 target folder name
+# $3 path to vm rootfs
 
 if [ $# != 3 ]; then
 	echo "[usage]$(basename $0) [local publish path] [target folder name] [path to rootfs]"
