@@ -17,7 +17,7 @@ patch -N -d $runtimepath/src/coreclr/jit -p0 -u -b emitarm.cpp -i $HOME/4dotnet/
 pushd $HOME/buildroot
 
 export PATH=`echo $PATH|tr -d ' '`
-#rm -rf $runtimepath/artifacts
+rm -rf $runtimepath/artifacts
 make dotnetruntime-rebuild
 rm -r $HOME/buildroot/output/build/dotnethello-1.0/localcache
 make dotnethello-rebuild

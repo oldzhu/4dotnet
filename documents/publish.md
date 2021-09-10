@@ -52,27 +52,33 @@ for linux-arm64
 cd myhello
 dotnet publish -r linux-arm64 -c Release
 ~~~
+or publish ReadyToRun application
+~~~
+dotnet publish -r linux-arm -c Release -p:PulishReadyToRun=true
+dotnet publish -r linux-arm64 -c Release -p:PulishReadyToRun=true
+~~~
+
 5. Run the pub2img.sh which is lcoated in the same folder as the arm/arm64 VM to publish the self-contained app to the arm/arm64 VM image. 
 ~~~
-[usage]pub2img.sh [local publish path] [target folder name]
+[usage]pub2img.sh [local publish path] [target folder name] [path to rootfs]
 ~~~
 for arm example
 ~~~
-~/vm_releases/04-04-2021/arm/pub2img.sh /home/oldzhu/myhello/bin/Release/netcoreapp3.1/linux-arm/publish/ myhello
+~/4dotnet/scripts/pub2img.sh /home/oldzhu/myhello/bin/Release/netcoreapp3.1/linux-arm/publish/ myhello /home/oldzhu/vm_releases/arm/buildroot/output/images
 ~~~
 for arm64 example
 ~~~
-~/vm_releases/04-04-2021/arm64/pub2img.sh /home/oldzhu/myhello/bin/Release/netcoreapp3.1/linux-arm64/publish/ myhello
+~/4dotnet/scripts/pub2img.sh /home/oldzhu/myhello/bin/Release/netcoreapp3.1/linux-arm64/publish/ myhello /home/oldzhu/vm_releases/arm64/buildroot/output/images
 ~~~
 ***04-04-2021 could be different for the different VM release ***
 6. Start the VM for debugging.
 for arm example
 ~~~
-~/vm_releases/04-04-2021/arm/start-qemu.sh
+~/vm_releases/arm/4dotnet/scripts/arm/start-qemu.sh
 ~~~
 for arm 64 example
 ~~~
-~/vm_releases/04-04-2021/arm64/start-qemu.sh
+~/vm_releases/arm64/4dotnet/scripts/arm64/start-qemu.sh
 ~~~
 7. Login as root and enjoy the debugging.
 for arm example

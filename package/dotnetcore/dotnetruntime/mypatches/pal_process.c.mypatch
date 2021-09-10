@@ -1,0 +1,29 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.6.21352.12/src/libraries/Native/Unix/System.Native/pal_process.c	2021-07-03 05:28:19.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/pal_process.c.002	2021-08-12 10:38:51.711666637 +0800
+@@ -371,12 +371,21 @@
+             }
+             if (!sigaction(sig, NULL, &sa_old))
+             {
+-                void (*oldhandler)(int) = (((unsigned int)sa_old.sa_flags) & SA_SIGINFO) ? (void (*)(int))sa_old.sa_sigaction : sa_old.sa_handler;
+-                if (oldhandler != SIG_IGN && oldhandler != SIG_DFL)
++                if (((unsigned int)sa_old.sa_flags) & SA_SIGINFO)
+                 {
+-                    // It has a custom handler, put the default handler back.
+-                    // We check first to preserve flags on default handlers.
+-                    sigaction(sig, &sa_default, NULL);
++                        void (*oldhandler)(int,struct sigaction *,void *);
++                        oldhandler =  (void (*)(int,struct sigaction *,void *))sa_old.sa_sigaction;
++                        (void)oldhandler;
++                }
++                else
++                {
++                        void (*oldhandler)(int) = sa_old.sa_handler;
++                        if (oldhandler != SIG_IGN && oldhandler != SIG_DFL)
++                        {
++                                // It has a custom handler, put the default handler back.
++                                // We check first to preserve flags on default handlers.
++                                sigaction(sig, &sa_default, NULL);
++                        }
+                 }
+             }
+         }
