@@ -17,5 +17,3 @@ cp -v $nativesympath/*.so.dbg $7/root/dotnethello
 #cp -v $1/dotnetruntime-origin_main/artifacts/bin/*/corehost/{libhostfxr.so.dbg,libhostpolicy.so.dbg} $7/root/dotnethello
 cp -v $dotnetruntimepath/artifacts/bin/*/corehost/{libhostfxr.so.dbg,libhostpolicy.so.dbg} $7/root/dotnethello
 
-# fix the issue #3 sos clrstack throw System.ArgumentNullException
-cp -v $7/root/dotnethello/{System.Collections.Immutable.dll,System.Reflection.Metadata.dll} $7/root/.dotnet/sos

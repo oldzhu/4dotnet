@@ -1,0 +1,70 @@
+config BR2_PACKAGE_SYMSTORE_ARCH_SUPPORTS
+        bool
+	default y if BR2_i386
+	default y if BR2_x86_64
+        default y if BR2_aarch64
+        default y if BR2_arm || BR2_armeb
+
+config BR2_PACKAGE_SYMSTORE_TARGET_ARCH
+        string
+        default "ARM64" if BR2_aarch64
+        default "ARM" if BR2_arm || BR2_armeb
+	default "X86" if BR2_i386 || BR2_x86_64
+
+config BR2_PACKAGE_SYMSTORE
+	bool "symstore"
+	depends on BR2_PACKAGE_SYMSTORE_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_LLDB
+        depends on BR2_PACKAGE_DOTNETRUNTIME
+	help
+          Implements API for retrieval of symbols and other debug artifacts from symbol store
+	  https://github.com/dotnet/symstore
+
+if BR2_PACKAGE_SYMSTORE
+choice
+        prompt "where to get the source"
+        default BR2_PACKAGE_SYMSTORE_CUSTOM_GIT
+        help
+          Select how to get the latest symstore source
+          one is to clone from the github repo
+          another is to download fom the github release tarball(default)
+
+config BR2_PACKAGE_SYMSTORE_CUSTOM_TARBALL
+        bool "Release Tarball"
+        help
+          This option allows you to specify a URL pointing to the specified
+          release source tarball for symstore.
+
+config BR2_PACKAGE_SYMSTORE_CUSTOM_GIT
+        bool "Git Repo"
+        help
+          This option is to get the symstore source
+          code from the Git repo.
+
+endchoice
+
+config BR2_PACKAGE_SYMSTORE_CUSTOM_TARBALL_LOCATION
+        string "URL of Tarball"
+        default "https://github.com/dotnet/symstore/archive/refs/tags/EmbedIndex.tar.gz"
+        depends on BR2_PACKAGE_SYMSTORE_CUSTOM_TARBALL
+
+if BR2_PACKAGE_SYMSTORE_CUSTOM_GIT
+
+config BR2_PACKAGE_SYMSTORE_CUSTOM_REPO_URL
+        string "URL of Git Repo"
+        default "git://github.com/dotnet/symstore.git"
+
+config BR2_PACKAGE_SYMSTORE_CUSTOM_REPO_VERSION
+        string "Custom repo version"
+        default "origin/main"
+        help
+          Revision to use in the typical format used by
+          Git/Mercurial/Subversion E.G. a sha id, a tag, branch, ..
+
+endif
+endif
+
+comment "symstore needs lldb and dotnetruntime package" 
+	depends on BR2_PACKAGE_SYMSTORE_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_LLDB
+        depends on BR2_PACKAGE_DOTNETRUNTIME
