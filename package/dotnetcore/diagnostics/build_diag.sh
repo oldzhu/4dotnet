@@ -12,15 +12,19 @@ export PATH=$hostlldbpath/llvm/buildroot-build/bin:$PATH:$2/bin;
 
 if [ $3 == "ARM" ]; then
 	export TOOLCHAIN=arm-buildroot-linux-gnueabihf;
+	rid=linux-arm;
 elif [ $3 == "ARM64" ]; then
 	export TOOLCHAIN=aarch64-buildroot-linux-gnu;
+	rid=linux-arm64;
 else
 	export TOOLCHAIN=x86_64-buildroot-linux-gnu;
+	rid=linux-x64
 fi
 
 $4/build.sh \
 --architecture $3 \
 --rootfs  $5 \
 -c release \
-/p:EnableSourceLink=false
+/p:EnableSourceLink=false \
+/p:Platform=$3
 #-v d
