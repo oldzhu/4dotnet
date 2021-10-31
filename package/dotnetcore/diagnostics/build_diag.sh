@@ -9,6 +9,7 @@
 
 hostlldbpath=$(find $1 -maxdepth 1  -name host-lldb-\* -type d -print -quit)
 export PATH=$hostlldbpath/llvm/buildroot-build/bin:$PATH:$2/bin;
+export ROOTFS_DIR=$5
 
 if [ $3 == "ARM" ]; then
 	export TOOLCHAIN=arm-buildroot-linux-gnueabihf;
@@ -22,9 +23,10 @@ else
 fi
 
 $4/build.sh \
---architecture $3 \
---rootfs  $5 \
--c release \
-/p:EnableSourceLink=false \
-/p:Platform=$3
+-architecture $3 \
+-cross \
+-c release
+#/p:EnableSourceLink=false 
+#/p:Platform=$3
 #-v d
+#-rootfs  $5 

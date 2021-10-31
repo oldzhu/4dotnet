@@ -71,9 +71,6 @@ $1/$3/myinclude
 }
 
 function apply_mypatches {
-	#patch -N -d $1/src/libraries/Native/Unix/System.Native -p0 -u -b pal_process.c -i $2/pal_process.c.mypatch
-	#patch -N -d $1/src/libraries/Native/Unix/System.Security.Cryptography.Native -p0 -u -b apibridge.h -i $2/apibridge.h.mypatch
-	#patch -N -d $1/src/libraries/Native/Unix/System.Security.Cryptography.Native -p0 -u -b apibridge.c -i $2/apibridge.c.mypatch
 	shopt -s globstar
 	for mypatchfile in $2/mypatches/*.mypatch
 	do
