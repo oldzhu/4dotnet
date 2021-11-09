@@ -36,7 +36,6 @@ echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/myinclude\) >> $1/$2
 echo endif\(\) >> $1/$2
 }
 
-#add_includes $4 src/coreclr/hosts/unixcorerun/CMakeLists.txt
 add_includes $4 src/coreclr/pal/src/eventprovider/lttngprovider/CMakeLists.txt
 add_includes $4 src/coreclr/pal/src/CMakeLists.txt
 add_includes $4 src/coreclr/debug/dbgutil/CMakeLists.txt
@@ -49,13 +48,13 @@ add_includes $4 src/native/corehost/hostcommon/CMakeLists.txt
 add_includes $4 src/native/corehost/dotnet/CMakeLists.txt
 add_includes $4 src/native/corehost/nethost/CMakeLists.txt
 add_includes $4 src/native/corehost/test/mockcoreclr/CMakeLists.txt
-add_includes $4 src/native/corehost/test/mockhostfxr/CMakeLists.txt
 add_includes $4 src/native/corehost/test/mockhostpolicy/CMakeLists.txt
 add_includes $4 src/native/corehost/test/nativehost/CMakeLists.txt
 add_includes $4 src/native/corehost/hostpolicy/standalone/CMakeLists.txt
-#add_includes $4 src/native/corehost/test_fx_ver/CMakeLists.txt
 add_includes $4 src/coreclr/hosts/corerun/CMakeLists.txt
 add_includes $4 src/native/corehost/test/fx_ver/CMakeLists.txt
+add_includes $4 src/native/corehost/test/mockhostfxr/2_2/CMakeLists.txt
+add_includes $4 src/native/corehost/test/mockhostfxr/5_0/CMakeLists.txt
 
 function copy_headslibs {
         mkdir -p -v $1/$3/myinclude
