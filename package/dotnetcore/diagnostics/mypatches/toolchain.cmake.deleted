@@ -1,9 +1,0 @@
---- /home/oldzhu/buildroot/output/build/diagnostics-origin_master/eng/cross/toolchain.cmake	2020-10-15 05:37:55.000000000 +0800
-+++ /home/oldzhu/4dotnet/package/dotnetcore/diagnostics/modified/toolchain.cmake	2020-10-19 16:06:31.280000000 +0800
-@@ -155,3 +155,6 @@
- set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
- set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
- set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
-+
-+include_directories($ENV{HOST_DIR}/$(TOOLCHAIN)/include/c++/10.2.0)
-+include_directories($ENV{HOST_DIR}/$(TOOLCHAIN)/include/c++/10.2.0/$(TOOLCHAIN))

@@ -44,7 +44,7 @@ $1/$3/myinclude
         cp -u -v $1/lib/gcc/$3/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $2/usr/lib
 }
 
-#apply_mypatches $4 $6
+apply_mypatches $4 $6
 #add_includes $4 eng/cross/toolchain.cmake
 copy_headslibs $2 $5 $toolchain
 
