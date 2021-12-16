@@ -8,5 +8,6 @@
 # p7 TARGET_DIR
 
 $4/build.sh \
--c release \
-/p:EnableSourceLink=false
+-c release 
+#/p:PublishReadyToRun=true
+#/p:EnableSourceLink=false

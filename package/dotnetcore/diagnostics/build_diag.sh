@@ -25,7 +25,8 @@ fi
 $4/build.sh \
 -architecture $3 \
 -cross \
--c release
+-c release 
+#/p:PublishReadyToRun=true
 #/p:EnableSourceLink=false 
 #/p:Platform=$3
 #-v d

@@ -25,6 +25,17 @@ ridver=${ridverpkg%%.nupkg*}
 rid=${ridver%%.*}
 ver=${ridver#*.}
 
+global_json_file="${dotnetruntimepath}/global.json"
+
+function ReadGlobalVersion {
+  local key=$1
+  if command -v jq &> /dev/null; then
+     _ReadGlobalVersion="$(jq -r ".[] | select(has(\"$key\")) | .\"$key\"" "$global_json_file")"
+  elif [[ "$(cat "$global_json_file")" =~ \"$key\"[[:space:]\:]*\"([^\"]+) ]]; then
+     _ReadGlobalVersion=${BASH_REMATCH[1]}
+  fi
+}
+
 if [ ! -f "$4/.dotnet/dotnet" ]; then
 	mkdir -p -v $4/.dotnet
 	mkdir -p -v $4/localcache
@@ -33,7 +44,12 @@ if [ ! -f "$4/.dotnet/dotnet" ]; then
 	pushd $4
 	wget https://dot.net/v1/dotnet-install.sh
 	chmod +x ./dotnet-install.sh
-	./dotnet-install.sh --channel master --install-dir $4/.dotnet
+	#ReadGlobalVersion "dotnet"
+	if [[ -z "$_ReadGlobalVersion" ]]; then
+	   ./dotnet-install.sh --channel master --install-dir $4/.dotnet
+	else
+	   ./dotnet-install.sh --version $_ReadGlobalVersion --install-dir $4/.dotnet
+	fi
 	popd
 fi
 
