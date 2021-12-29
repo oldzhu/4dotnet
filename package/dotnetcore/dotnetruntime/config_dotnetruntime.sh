@@ -66,6 +66,8 @@ algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chro
 ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
 climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf,bit,cxxabi.h} \
 $1/$3/myinclude
+	cp -r -v $1/$3/include/c++/$cplusplusver/type_traits $2/usr/include
+	cp -r -v $1/$3/include/c++/$cplusplusver/$3/bits $2/usr/include
         cp -u -v $1/lib/gcc/$3/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $2/usr/lib
 }
 
