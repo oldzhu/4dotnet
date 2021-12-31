@@ -19,6 +19,8 @@ else
 fi
 
 cplusplusver=$(cd $2/$toolchain/include/c++;echo *)
+bldver=${4##*-}
+echo $bldver
 
 #$6/patch-2021-05-06.sh "$@"
 #$6/patch-to-v6.0.0-preview.3.21201.4-001.sh "$@"
@@ -73,9 +75,15 @@ $1/$3/myinclude
 
 function apply_mypatches {
 	shopt -s globstar
-	for mypatchfile in $2/mypatches/*.mypatch
+	for mypatchfile in $2/mypatches/*.local.$bldver.mypatch
 	do
+	    [ -f "$mypatchfile" ] || continue
             patch -N -d $1 -p7 -u -b -i $mypatchfile
+        done
+        for mypatchfile in $2/mypatches/*.git.$bldver.mypatch
+	do
+	    [ -f "$mypatchfile" ] || continue
+            patch -N -d $1 -p1 -u -b -i $mypatchfile
         done
 }
 
