@@ -31,11 +31,13 @@ echo $bldver
 #sed -i 's/TRUE/1/g' $4/src/libraries/Native/Unix/System.Globalization.Native/*.c
 
 function add_includes {
-echo >> $1/$2
-echo if\(\$ENV{CROSSCOMPILE} EQUAL 1\) >> $1/$2
-echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/include/c++/$cplusplusver/\$ENV{TOOLCHAIN}\) >> $1/$2
-echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/myinclude\) >> $1/$2
-echo endif\(\) >> $1/$2
+if [ -f "$1/$2" ]; then
+   echo >> $1/$2
+   echo if\(\$ENV{CROSSCOMPILE} EQUAL 1\) >> $1/$2
+   echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/include/c++/$cplusplusver/\$ENV{TOOLCHAIN}\) >> $1/$2
+   echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/myinclude\) >> $1/$2
+   echo endif\(\) >> $1/$2
+fi
 }
 
 add_includes $4 src/coreclr/pal/src/eventprovider/lttngprovider/CMakeLists.txt
@@ -57,6 +59,7 @@ add_includes $4 src/coreclr/hosts/corerun/CMakeLists.txt
 add_includes $4 src/native/corehost/test/fx_ver/CMakeLists.txt
 add_includes $4 src/native/corehost/test/mockhostfxr/2_2/CMakeLists.txt
 add_includes $4 src/native/corehost/test/mockhostfxr/5_0/CMakeLists.txt
+add_includes $4 src/coreclr/nativeaot/Runtime/Full/CMakeLists.txt
 
 function copy_headslibs {
         mkdir -p -v $1/$3/myinclude
@@ -66,7 +69,7 @@ type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwc
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
 algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
 ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
-climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf,bit,cxxabi.h} \
+climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf,bit,cxxabi.h,cmath} \
 $1/$3/myinclude
 	cp -r -v $1/$3/include/c++/$cplusplusver/type_traits $2/usr/include
 	cp -r -v $1/$3/include/c++/$cplusplusver/$3/bits $2/usr/include
