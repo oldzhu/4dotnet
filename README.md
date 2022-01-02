@@ -5,7 +5,7 @@ Two goals of the project:
 1. Lower the gate to play .net core app on Linux arm/arm64.
 2. Provide a "All-In-One" package and a "Full Stack" debugging experience in OSS world(from qemu,linux kernel,clang/llvm,lldb/gdb,sos,.net core app)
 
-<img src="documents/armdemo.gif" alt=".net core debugging demo on arm vm" width="1500"/>
+<img src="documents/demo01012022.01.gif" alt=".net core debugging demo on arm64 vm" width="1500"/>
 
 The target arm/arm64 VM contains:
 
