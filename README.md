@@ -17,7 +17,7 @@ The target arm/arm64 VM contains:
 
 Also have the following tools built for the host x86-64:
 
-* The qemu (6.0.1) - build by the buildroot gcc toochain, which is used to host the arm/arm64 vm built.  
+* The qemu (6.1.0) - build by the buildroot gcc toochain, which is used to host the arm/arm64 vm built.  
 * The latest clang/llvm (main branch) - build by buildroot gcc toolchain, which is used to cross compile the above SOS lldb plugin and the native part of the .NET core runtime for arm/arm64 target.  
   
 There are two ways to get the VM package to play:
