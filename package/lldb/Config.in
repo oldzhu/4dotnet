@@ -50,7 +50,7 @@ endchoice
 
 config BR2_PACKAGE_LLDB_CUSTOM_TARBALL_LOCATION
         string "URL of Tarball"
-        default "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-13.0.1-rc3.tar.gz"
+        default "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-13.0.1.tar.gz"
         depends on BR2_PACKAGE_LLDB_CUSTOM_TARBALL
 
 if BR2_PACKAGE_LLDB_CUSTOM_GIT
