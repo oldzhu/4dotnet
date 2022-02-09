@@ -49,8 +49,8 @@ apply_mypatches $4 $6
 copy_headslibs $2 $5 $toolchain
 
 add_includes $4 src/SOS/extensions/CMakeLists.txt
-add_includes $4 src/pal/src/CMakeLists.txt
-add_includes $4 src/SOS/dbgutil/CMakeLists.txt
+add_includes $4 src/shared/pal/src/CMakeLists.txt
+add_includes $4 src/shared/dbgutil/CMakeLists.txt
 add_includes $4 src/SOS/lldbplugin/CMakeLists.txt
 add_includes $4 src/SOS/Strike/CMakeLists.txt
 
