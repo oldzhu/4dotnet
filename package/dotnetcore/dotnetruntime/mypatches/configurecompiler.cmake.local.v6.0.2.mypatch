@@ -1,0 +1,12 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.2/eng/native/configurecompiler.cmake	2022-03-01 11:26:03.679700604 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/configurecompiler.cmake.v6.0.2	2022-03-01 11:27:04.329701061 +0800
+@@ -367,6 +367,9 @@
+     add_compile_options(-Wno-incompatible-ms-struct)
+ 
+     add_compile_options(-Wno-reserved-identifier)
++#fix llvm14 clang compilation error
++    add_compile_options(-Wno-bitwise-instead-of-logical)
++    add_compile_options(-Wno-unused-command-line-argument)
+   else()
+     add_compile_options(-Wno-unknown-pragmas)
+     add_compile_options(-Wno-uninitialized)
