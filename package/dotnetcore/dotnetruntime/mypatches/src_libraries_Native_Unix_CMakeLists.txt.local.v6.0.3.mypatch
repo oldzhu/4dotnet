@@ -1,0 +1,11 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.2/src/libraries/Native/Unix/CMakeLists.txt	2022-03-01 11:08:51.419692832 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/src_libraries_Native_Unix_CMakeLists_v6.0.2.txt	2022-03-01 11:09:21.539693059 +0800
+@@ -51,6 +51,8 @@
+     add_compile_options(-Wthread-safety)
+     add_compile_options(-Wno-thread-safety-analysis)
+     add_compile_options(-Wno-reserved-identifier)
++#fix llvm14 clang compilation error
++    add_compile_options(-Wno-declaration-after-statement)
+ elseif(CMAKE_C_COMPILER_ID STREQUAL GNU)
+     add_compile_options(-Wno-stringop-truncation)
+ endif()

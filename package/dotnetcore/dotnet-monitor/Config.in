@@ -46,7 +46,7 @@ if BR2_PACKAGE_DOTNET-MONITOR_CUSTOM_GIT
 
 config BR2_PACKAGE_DOTNET-MONITOR_CUSTOM_REPO_URL
         string "URL of Git Repo"
-        default "git://github.com/dotnet/dotnet-monitor.git"
+        default "https://github.com/dotnet/dotnet-monitor.git"
 
 config BR2_PACKAGE_DOTNET-MONITOR_CUSTOM_REPO_VERSION
         string "Custom repo version"

@@ -50,14 +50,14 @@ endchoice
 
 config BR2_PACKAGE_LLDB_CUSTOM_TARBALL_LOCATION
         string "URL of Tarball"
-        default "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-14.0.0-rc1.tar.gz"
+        default "https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-14.0.0-rc4.tar.gz"
         depends on BR2_PACKAGE_LLDB_CUSTOM_TARBALL
 
 if BR2_PACKAGE_LLDB_CUSTOM_GIT
 
 config BR2_PACKAGE_LLDB_CUSTOM_REPO_URL
         string "URL of Git Repo"
-        default "git://github.com/llvm/llvm-project.git"
+        default "https://github.com/llvm/llvm-project.git"
 
 config BR2_PACKAGE_LLDB_CUSTOM_REPO_VERSION
         string "Custom repo version"

@@ -55,7 +55,7 @@ if BR2_PACKAGE_DIAGNOSTICS_CUSTOM_GIT
 
 config BR2_PACKAGE_DIAGNOSTICS_CUSTOM_REPO_URL
         string "URL of Git Repo"
-        default "git://github.com/dotnet/diagnostics.git"
+        default "https://github.com/dotnet/diagnostics.git"
 
 config BR2_PACKAGE_DIAGNOSTICS_CUSTOM_REPO_VERSION
         string "Custom repo version"
