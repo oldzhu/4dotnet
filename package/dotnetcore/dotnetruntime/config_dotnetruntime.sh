@@ -19,7 +19,7 @@ else
 fi
 
 cplusplusver=$(cd $2/$toolchain/include/c++;echo *)
-bldver=${4##*-}
+bldver=${4#*-}
 echo $bldver
 
 #$6/patch-2021-05-06.sh "$@"
