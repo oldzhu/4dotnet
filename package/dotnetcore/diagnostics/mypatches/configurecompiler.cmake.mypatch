@@ -1,6 +1,6 @@
---- /home/oldzhu/buildroot/output/build/diagnostics-origin_main/eng/native/configurecompiler.cmake	2021-12-01 16:14:17.000000000 +0800
-+++ /home/oldzhu/4dotnet/package/dotnetcore/diagnostics/modified/configurecompiler.cmake	2021-12-02 20:44:48.648914074 +0800
-@@ -392,6 +392,10 @@
+--- /home/oldzhu/buildroot/output/build/diagnostics-origin_main/eng/native/configurecompiler.cmake	2022-04-16 22:06:51.000000000 +0800
++++ package/dotnetcore/diagnostics/modified/configurecompiler.cmake	2022-04-17 09:47:12.520353415 +0800
+@@ -413,6 +413,11 @@
      add_compile_options(-Wno-incompatible-ms-struct)
  
      add_compile_options(-Wno-reserved-identifier)
@@ -8,6 +8,7 @@
 +    #fix llvm 14 compile error
 +    add_compile_options(-Wno-bitwise-instead-of-logical)
 +    add_compile_options(-Wno-unused-command-line-argument)
++    add_compile_options(-Wno-void-pointer-to-int-cast)
    else()
      add_compile_options(-Wno-uninitialized)
      add_compile_options(-Wno-strict-aliasing)
