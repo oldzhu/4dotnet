@@ -1,0 +1,15 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v7.0.0-preview.2.22152.2/eng/common/cross/toolchain.cmake	2022-03-02 23:05:27.000000000 +0800
++++ package/dotnetcore/dotnetruntime/modified/toolchain.cmake.v7.0.0-preview.2.22152.2	2022-03-27 15:44:22.224625965 +0800
+@@ -155,9 +155,9 @@
+ else()
+     set(CMAKE_SYSROOT "${CROSS_ROOTFS}")
+ 
+-    set(CMAKE_C_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
+-    set(CMAKE_CXX_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
+-    set(CMAKE_ASM_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
++    #set(CMAKE_C_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
++    #set(CMAKE_CXX_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
++    #set(CMAKE_ASM_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
+ endif()
+ 
+ # Specify link flags
