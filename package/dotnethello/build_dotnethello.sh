@@ -8,5 +8,5 @@
 # p7 TARGET_DIR
 	
 pushd $4
-.dotnet/dotnet publish 
+.dotnet/dotnet publish -p:Configuration=Release
 popd

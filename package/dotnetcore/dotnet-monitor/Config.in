@@ -1,0 +1,63 @@
+config BR2_PACKAGE_DOTNET-MONITOR_ARCH_SUPPORTS
+        bool
+        default y if BR2_aarch64
+
+config BR2_PACKAGE_DOTNET-MONITOR_TARGET_ARCH
+        string
+        default "ARM64" if BR2_aarch64
+
+config BR2_PACKAGE_DOTNET-MONITOR
+	bool "dotnet-monitor"
+	depends on BR2_PACKAGE_DOTNET-MONITOR_ARCH_SUPPORTS
+        depends on BR2_PACKAGE_DOTNETRUNTIME
+	help
+          dotnet-monitor is an tool that makes it easier to get access to diagnostics information in a dotnet process.
+	  https://github.com/dotnet/dotnet-monitor
+
+if BR2_PACKAGE_DOTNET-MONITOR
+choice
+        prompt "where to get the source"
+        default BR2_PACKAGE_DOTNET-MONITOR_CUSTOM_GIT
+        help
+          Select how to get the latest dotnet-monitor source
+          one is to clone from the github repo
+          another is to download fom the github release tarball(default)
+
+config BR2_PACKAGE_DOTNET-MONITOR_CUSTOM_TARBALL
+        bool "Release Tarball"
+        help
+          This option allows you to specify a URL pointing to the specified
+          release source tarball for symstore.
+
+config BR2_PACKAGE_DOTNET-MONITOR_CUSTOM_GIT
+        bool "Git Repo"
+        help
+          This option is to get the dotnet-monitor source
+          code from the Git repo.
+
+endchoice
+
+config BR2_PACKAGE_DOTNET-MONITOR_CUSTOM_TARBALL_LOCATION
+        string "URL of Tarball"
+        default "https://github.com/dotnet/dotnet-monitor/archive/refs/tags/v5.0.0-preview.7.21425.3.tar.gz"
+        depends on BR2_PACKAGE_DOTNET-MONITOR_CUSTOM_TARBALL
+
+if BR2_PACKAGE_DOTNET-MONITOR_CUSTOM_GIT
+
+config BR2_PACKAGE_DOTNET-MONITOR_CUSTOM_REPO_URL
+        string "URL of Git Repo"
+        default "https://github.com/dotnet/dotnet-monitor.git"
+
+config BR2_PACKAGE_DOTNET-MONITOR_CUSTOM_REPO_VERSION
+        string "Custom repo version"
+        default "origin/main"
+        help
+          Revision to use in the typical format used by
+          Git/Mercurial/Subversion E.G. a sha id, a tag, branch, ..
+
+endif
+endif
+
+comment "dotnet-monitor needs dotnetruntime package" 
+	depends on BR2_PACKAGE_DOTNET-MONITOR_ARCH_SUPPORTS
+        depends on BR2_PACKAGE_DOTNETRUNTIME

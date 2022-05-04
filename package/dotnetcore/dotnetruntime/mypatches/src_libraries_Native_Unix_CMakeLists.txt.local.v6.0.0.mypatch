@@ -1,0 +1,13 @@
+--- /home/oldzhu/buildroot/output/build/dotnetruntime-v6.0.0-preview.7.21377.19/src/libraries/Native/Unix/CMakeLists.txt	2021-07-28 08:53:55.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/dotnetruntime/modified/src_libraries_Native_Unix_CMakeLists.txt	2021-08-14 17:35:51.462218947 +0800
+@@ -37,6 +37,10 @@
+ add_compile_options(-Wno-c11-extensions)
+ add_compile_options(-Wno-unknown-pragmas)
+ 
++#fix llvm13 clang compile error
++add_compile_options(-Wno-reserved-identifier)
++add_compile_options(-Wno-unused-but-set-variable)
++
+ check_c_compiler_flag(-Wimplicit-fallthrough COMPILER_SUPPORTS_W_IMPLICIT_FALLTHROUGH)
+ if (COMPILER_SUPPORTS_W_IMPLICIT_FALLTHROUGH)
+   add_compile_options(-Wimplicit-fallthrough)

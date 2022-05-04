@@ -20,6 +20,7 @@ config BR2_PACKAGE_DIAGNOSTICS
 	depends on BR2_PACKAGE_DIAGNOSTICS_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB
 	depends on BR2_PACKAGE_CLRMD
+        depends on BR2_PACKAGE_SYMSTORE
         depends on BR2_PACKAGE_DOTNETRUNTIME
 	help
 	  diagnostics is .net core runtime diagnostics package
@@ -58,7 +59,7 @@ if BR2_PACKAGE_DIAGNOSTICS_CUSTOM_GIT
 
 config BR2_PACKAGE_DIAGNOSTICS_CUSTOM_REPO_URL
         string "URL of Git Repo"
-        default "git://github.com/dotnet/diagnostics.git"
+        default "https://github.com/dotnet/diagnostics.git"
 
 config BR2_PACKAGE_DIAGNOSTICS_CUSTOM_REPO_VERSION
         string "Custom repo version"
@@ -70,7 +71,7 @@ config BR2_PACKAGE_DIAGNOSTICS_CUSTOM_REPO_VERSION
 endif
 endif
 
-comment "diagnostics needs lldb,ClrMD and dotnetruntime package" 
+comment "diagnostics needs lldb,ClrMD,SymStore and dotnetruntime package" 
 	depends on BR2_PACKAGE_DIAGNOSTICS_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB
 	depends on BR2_PACKAGE_CLRMD

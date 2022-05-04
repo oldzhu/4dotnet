@@ -1,0 +1,37 @@
+################################################################################
+#
+## symstore 
+#
+#################################################################################
+
+ifeq ($(BR2_PACKAGE_SYMSTORE_CUSTOM_GIT),y)
+#SYMSTORE_VERSION = origin/master
+SYMSTORE_VERSION = $(call qstrip,$(BR2_PACKAGE_SYMSTORE_CUSTOM_REPO_VERSION))
+SYMSTORE_SITE = $(call qstrip,$(BR2_PACKAGE_SYMSTORE_CUSTOM_REPO_URL))
+SYMSTORE_SITE_METHOD=git
+else
+SYMSTORE_CUSTOM_TARBALL_LOCATION = $(call qstrip,$(BR2_PACKAGE_SYMSTORE_CUSTOM_TARBALL_LOCATION))
+SYMSTORE_SOURCE = $(notdir $(SYMSTORE_CUSTOM_TARBALL_LOCATION))
+SYMSTORE_VERSION = $(basename $(basename $(SYMSTORE_SOURCE)))
+SYMSTORE_SITE = $(patsubst %/,%,$(dir $(SYMSTORE_CUSTOM_TARBALL_LOCATION)))
+endif
+
+
+SYMSTORE_INSTALL_TARGET = YES
+
+SYMSTORE_DEPENDENCIES += lldb
+SYMSTORE_DEPENDENCIES += dotnetruntime
+
+define SYMSTORE_CONFIGURE_CMDS
+	$(SYMSTORE_PKGDIR)/config_symstore.sh $(BUILD_DIR) $(HOST_DIR) $(BR2_PACKAGE_SYMSTORE_TARGET_ARCH) $(@D) $(STAGING_DIR) $(SYMSTORE_PKGDIR) $(TARGET_DIR)
+endef
+
+define SYMSTORE_BUILD_CMDS
+$(SYMSTORE_PKGDIR)/build_symstore.sh $(BUILD_DIR) $(HOST_DIR) $(BR2_PACKAGE_SYMSTORE_TARGET_ARCH) $(@D) $(STAGING_DIR) $(SYMSTORE_PKGDIR) $(TARGET_DIR)
+endef
+
+define SYMSTORE_INSTALL_TARGET_CMDS
+	$(SYMSTORE_PKGDIR)/install_symstore.sh $(BUILD_DIR) $(HOST_DIR) $(BR2_PACKAGE_SYMSTORE_TARGET_ARCH) $(@D) $(STAGING_DIR) $(SYMSTORE_PKGDIR) $(TARGET_DIR)
+endef
+
+$(eval $(generic-package))

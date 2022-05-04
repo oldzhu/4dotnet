@@ -1,9 +1,16 @@
---- /home/oldzhu/buildroot/output/build/diagnostics-origin_master/eng/cross/toolchain.cmake	2020-10-15 05:37:55.000000000 +0800
-+++ /home/oldzhu/4dotnet/package/dotnetcore/diagnostics/modified/toolchain.cmake	2020-10-19 16:06:31.280000000 +0800
-@@ -155,3 +155,6 @@
- set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
- set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
- set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
-+
-+include_directories($ENV{HOST_DIR}/$(TOOLCHAIN)/include/c++/10.2.0)
-+include_directories($ENV{HOST_DIR}/$(TOOLCHAIN)/include/c++/10.2.0/$(TOOLCHAIN))
+--- /home/oldzhu/buildroot/output/build/diagnostics-origin_main/eng/common/cross/toolchain.cmake	2021-12-01 16:14:17.000000000 +0800
++++ /home/oldzhu/4dotnet/package/dotnetcore/diagnostics/modified/toolchain.cmake	2021-12-02 20:28:51.018909039 +0800
+@@ -128,9 +128,10 @@
+ else()
+     set(CMAKE_SYSROOT "${CROSS_ROOTFS}")
+ 
+-    set(CMAKE_C_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
+-    set(CMAKE_CXX_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
+-    set(CMAKE_ASM_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
++    #fix llvm 14 compile error - clang-14 does not support -gcc-toolchain    
++    #set(CMAKE_C_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
++    #set(CMAKE_CXX_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
++    #set(CMAKE_ASM_COMPILER_EXTERNAL_TOOLCHAIN "${CROSS_ROOTFS}/usr")
+ endif()
+ 
+ # Specify link flags

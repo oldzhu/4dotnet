@@ -10,12 +10,7 @@ it contains the steps to build arm/arm64 vm for .net core debugging.
     * liblttng-ust-dev 
  ~~~
  sudo apt-get update
- sudo apt intstall make
- sudo apt install unzip
- sudo apt install gcc
- sudo apt install g++
- sudo apt install libncurses-dev
- sudo apt install liblttng-ust-dev
+ sudo apt install make unzip gcc g++ libncurses-dev liblttng-ust-dev
  ~~~
 3. Clone buildroot and 4dotnet to your home folder. 
 ~~~
