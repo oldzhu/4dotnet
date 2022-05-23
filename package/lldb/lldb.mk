@@ -7,7 +7,7 @@ ifeq ($(BR2_PACKAGE_LLDB_CUSTOM_GIT),y)
 #LLDB_VERSION = origin/master
 LLDB_VERSION = $(call qstrip,$(BR2_PACKAGE_LLDB_CUSTOM_REPO_VERSION))
 LLDB_SITE = $(call qstrip,$(BR2_PACKAGE_LLDB_CUSTOM_REPO_URL))
-LLDB_SITE_METHOD=git 
+LLDB_SITE_METHOD=git
 else
 LLDB_CUSTOM_TARBALL_LOCATION = $(call qstrip,$(BR2_PACKAGE_LLDB_CUSTOM_TARBALL_LOCATION))
 LLDB_SOURCE = $(notdir $(LLDB_CUSTOM_TARBALL_LOCATION))
@@ -15,22 +15,13 @@ LLDB_TARBALL_FILENAME = $(basename $(basename $(LLDB_SOURCE)))
 LLDB_VERSION = $(patsubst llvmorg-%,v%,$(LLDB_TARBALL_FILENAME))
 LLDB_SITE = $(patsubst %/,%,$(dir $(LLDB_CUSTOM_TARBALL_LOCATION)))
 endif
-#LLDB_VERSION = origin/main
-#LLDB_SITE = git://github.com/llvm/llvm-project.git
 LLDB_SUPPORTS_IN_SOURCE_BUILD = NO
-#LLDB_INSTALL_STAGING = YES
 LLDB_SUBDIR=llvm
 
 LLDB_TARGET_ARCH = $(call qstrip,$(BR2_PACKAGE_LLDB_TARGET_ARCH))
 
-ifneq ($(LLDB_TARGET_ARCH),RISCV32)
-ifneq ($(LLDB_TARGET_ARCH),RISCV64)
-ifneq ($(LLDB_TARGET_ARCH),RISCV)
 LLDB_MAKE_OPTS = lldb
 LLDB_MAKE_OPTS += lldb-server
-endif
-endif
-endif
 
 #LLDB_INSTALL_OPTS += lldb
 #LLDB_INSTALL_OPTS += lldb-server
@@ -45,15 +36,7 @@ LLDB_DEPENDENCIES = host-lldb
 
 HOST_LLDB_CONF_OPTS += -DLLVM_ENABLE_PROJECTS="clang;lldb"
 
-ifeq ($(LLDB_TARGET_ARCH),RISCV32)
-LLDB_CONF_OPTS += -DLLVM_ENABLE_PROJECTS="clang"
-else ifeq ($(LLDB_TARGET_ARCH),RISCV64)
-LLDB_CONF_OPTS += -DLLVM_ENABLE_PROJECTS="clang"
-else ifeq ($(LLDB_TARGET_ARCH),RISCV)
-LLDB_CONF_OPTS += -DLLVM_ENABLE_PROJECTS="clang"
-else
 LLDB_CONF_OPTS += -DLLVM_ENABLE_PROJECTS="clang;lldb"
-endif
 
 HOST_LLDB_CONF_OPTS += -DLLVM_CCACHE_BUILD=$(if $(BR2_CCACHE),ON,OFF)
 LLDB_CONF_OPTS += -DLLVM_CCACHE_BUILD=$(if $(BR2_CCACHE),ON,OFF)
@@ -69,28 +52,30 @@ HOST_LLDB_CONF_OPTS += -DCMAKE_INSTALL_RPATH="$(HOST_DIR)/lib"
 # Build backend for target architecture. This include backends like AMDGPU.
 LLDB_TARGETS_TO_BUILD = $(LLDB_TARGET_ARCH)
 
-ifneq ($(LLDB_TARGET_ARCH),X86)
-#ifeq ($(LLDB_TARGET_ARCH),RISCV)
-#HOST_LLDB_CONF_OPTS += -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="X86;$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
-#else
-HOST_LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="X86;$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
-#endif
+#ifneq ($(LLDB_TARGET_ARCH),X86)
+#HOST_LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="X86;$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
+ifeq ($(LLDB_TARGET_ARCH),RISCV32)
+HOST_LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="RISCV"
+else ifeq ($(LLDB_TARGET_ARCH),RISCV64)
+HOST_LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="RISCV"
 else
 HOST_LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
 endif
 
-#ifeq ($(LLDB_TARGET_ARCH),RISCV)
-#LLDB_CONF_OPTS += -DLLVM_EXPERIMENTAL_TARGETS_TO_BUILD="$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
-#else
+ifeq ($(LLDB_TARGET_ARCH),RISCV32)
+LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="RISCV"
+else ifeq ($(LLDB_TARGET_ARCH),RISCV64)
+LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="RISCV"
+else
 LLDB_CONF_OPTS += -DLLVM_TARGETS_TO_BUILD="$(subst $(space),;,$(LLDB_TARGETS_TO_BUILD))"
-#endif
+endif
 
 # LLVM target to use for native code generation. This is required for JIT generation.
 # It must be set to LLVM_TARGET_ARCH for host and target, otherwise we get
 # "No available targets are compatible for this triple" with llvmpipe when host
 # and target architectures are different.
-#HOST_LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=$(LLDB_TARGET_ARCH)
-HOST_LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=x86_64
+HOST_LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=$(LLDB_TARGET_ARCH)
+#HOST_LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=x86_64
 
 LLDB_CONF_OPTS += -DLLVM_TARGET_ARCH=$(LLDB_TARGET_ARCH)
 
@@ -305,9 +290,6 @@ LLDB_CONF_OPTS += \
 	-DLLVM_INCLUDE_GO_TESTS=OFF \
 	-DLLVM_INCLUDE_TESTS=OFF
 
-ifneq ($(LLDB_TARGET_ARCH),RISCV32)
-ifneq ($(LLDB_TARGET_ARCH),RISCV64)
-ifneq ($(LLDB_TARGET_ARCH),RISCV)
 define LLDB_INSTALL_TARGET_CMDS
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/bin/lldb $(TARGET_DIR)/usr/bin
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/bin/lldb-server  $(TARGET_DIR)/usr/bin
@@ -315,14 +297,6 @@ define LLDB_INSTALL_TARGET_CMDS
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libLLVM*.so $(TARGET_DIR)/usr/lib
      cp -a $(LLDB_BUILDDIR)/lib/libclang-cpp.so* $(TARGET_DIR)/usr/lib
 endef
-endif
-endif
-else
-define LLDB_INSTALL_TARGET_CMDS
-     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libLLVM*.so $(TARGET_DIR)/usr/lib
-     cp -a $(LLDB_BUILDDIR)/lib/libclang-cpp.so* $(TARGET_DIR)/usr/lib
-endef
-endif
 
 # Copy llvm-config (host variant) to STAGING_DIR
 # llvm-config (host variant) returns include and lib directories

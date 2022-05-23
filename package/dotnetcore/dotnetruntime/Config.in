@@ -27,7 +27,7 @@ config BR2_PACKAGE_DOTNETRUNTIME
 if BR2_PACKAGE_DOTNETRUNTIME
 choice
 	prompt "where to get the source"
-	default BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_LOCAL 
+	default BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_GIT
 	help
 	  Select how to get the latest donetcore runtime source
 	  one is to clone from the github repo 
@@ -62,11 +62,11 @@ if BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_GIT
 
 config BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_REPO_URL
         string "URL of Git Repo"
-	default "https://github.com/dotnet/runtime.git"
+	default "https://github.com/oldzhu/runtime.git"
 
 config BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_REPO_VERSION
         string "Custom repo version"
-	default "origin/main"
+	default "origin/risc-v"
         help
           Revision to use in the typical format used by
           Git/Mercurial/Subversion E.G. a sha id, a tag, branch, ..
