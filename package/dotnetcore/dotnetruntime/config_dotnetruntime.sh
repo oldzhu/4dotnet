@@ -67,7 +67,7 @@ function copy_headslibs {
         cp -r -v $1/$3/include/c++/$cplusplusver/{\
 type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwchar,\
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
-algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
+algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,compare,array,mutex,chrono,\
 ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
 climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf,bit,cxxabi.h,cmath} \
 $1/$3/myinclude
