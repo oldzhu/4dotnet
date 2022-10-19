@@ -9,15 +9,15 @@ Two goals of the project:
 
 The target arm/arm64 VM contains:
 
-- The linux system (5.15.x) - build by the buildroot gcc toolchain
-- The gdb (11.x) - build by the buildroot gcc toolchain
-- The lldb (13/14) - build by the buildroot gcc toolchain
+- The linux system (6.0.x) - build by the buildroot gcc toolchain
+- The gdb (12) - build by the buildroot gcc toolchain
+- The lldb (15.0.x) - build by the buildroot gcc toolchain
 - The SOS lldb plugin (main branch) - build by the clang/llvm(for native part) + MS compilers(for managed part)
 - A selfcontained .NET core applciation with the .NET core runtime (.net core 6.0 or 7.0-dev) - build by the host clang/llvm(for native part) and MS compilers(for managed part))
 
 Also have the following tools built for the host x86-64:
 
-* The qemu (6.1.0) - build by the buildroot gcc toochain, which is used to host the arm/arm64 vm built.  
+* The qemu (7.1.0) - build by the buildroot gcc toochain, which is used to host the arm/arm64 vm built.  
 * The latest clang/llvm (main branch) - build by buildroot gcc toolchain, which is used to cross compile the above SOS lldb plugin and the native part of the .NET core runtime for arm/arm64 target.  
   
 There are two ways to get the VM package to play:
