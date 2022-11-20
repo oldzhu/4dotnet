@@ -33,9 +33,11 @@ echo $bldver
 function add_includes {
 if [ -f "$1/$2" ]; then
    echo >> $1/$2
-   echo if\(\$ENV{CROSSCOMPILE} EQUAL 1\) >> $1/$2
+#   echo if\(\$ENV{CROSSCOMPILE} EQUAL 1\) >> $1/$2
+   echo if\(NOT CLR_CROSS_COMPONENTS_BUILD\) >> $1/$2
    echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/include/c++/$cplusplusver/\$ENV{TOOLCHAIN}\) >> $1/$2
    echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/myinclude\) >> $1/$2
+#   echo endif\(\) >> $1/$2
    echo endif\(\) >> $1/$2
 fi
 }
@@ -63,7 +65,7 @@ add_includes $4 src/coreclr/nativeaot/Runtime/Full/CMakeLists.txt
 
 function copy_headslibs {
         mkdir -p -v $1/$3/myinclude
-        cp -r -v $2/usr/include/{features.h,stdc-predef.h,sys,bits,gnu} $1/$3/myinclude
+        cp -r -v $2/usr/include/{features.h,features-time64.h,stdc-predef.h,sys,bits,gnu,math.h} $1/$3/myinclude
         cp -r -v $1/$3/include/c++/$cplusplusver/{\
 type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwchar,\
 backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
