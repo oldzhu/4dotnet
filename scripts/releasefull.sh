@@ -17,7 +17,7 @@ relpath=$HOME/vm_releases
 
 mkdir -p $relpath
 
-fileexts="-iname *.c -o -iname *.h -o -iname *.cpp -o -iname *.cs -o -iname *.s -o -iname *.dbg -o -iname *.pdb"
+fileexts="-iname *.c -o -iname *.h -o -iname *.hpp -o -iname *.cpp -o -iname *.cs -o -iname *.s -o -iname *.dbg -o -iname *.pdb"
 ex1=/test
 ex2=test/
 ex3=tests/
@@ -26,11 +26,12 @@ ex3=tests/
 
 pushd $HOME
 
-find buildroot/output/build -type f \( $fileexts \) -print|grep -v $ex1|grep -v $ex2|grep -v $ex3 > $HOME/includefiles.txt
+find buildroot/output/build -type f \( $fileexts \) -print|grep -iv $ex1|grep -iv $ex2|grep -iv $ex3 > $HOME/includefiles.txt
+#find buildroot/output/host -type f \( $fileexts \) -print|grep -iv $ex1|grep -iv $ex2|grep -iv $ex3 >> $HOME/includefiles.txt
 linuxbuilddir=`find buildroot/output/build/ -maxdepth 1 -type d -iname linux-[0-9]*`
 cat >>$HOME/includefiles.txt <<EOF
-buildroot/output/host
 buildroot/output/images
+buildroot/output/host
 $linuxbuilddir/vmlinux
 4dotnet/scripts/pub2img.sh
 4dotnet/scripts/syncsrc.sh

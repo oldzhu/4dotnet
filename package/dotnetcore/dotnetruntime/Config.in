@@ -45,7 +45,7 @@ endchoice
 
 config BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_TARBALL_LOCATION
         string "URL of Tarball"
-	default "https://github.com/dotnet/runtime/archive/refs/tags/v7.0.0.tar.gz"
+	default "https://github.com/dotnet/runtime/archive/refs/tags/v7.0.2.tar.gz"
         depends on BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_TARBALL
 
 if BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_GIT
