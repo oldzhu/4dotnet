@@ -45,11 +45,15 @@ fi
 add_includes $4 src/coreclr/pal/src/eventprovider/lttngprovider/CMakeLists.txt
 add_includes $4 src/coreclr/pal/src/CMakeLists.txt
 add_includes $4 src/coreclr/debug/dbgutil/CMakeLists.txt
-add_includes $4 src/coreclr/gc/CMakeLists.txt
 add_includes $4 src/coreclr/debug/createdump/CMakeLists.txt
+add_includes $4 src/coreclr/gc/CMakeLists.txt
+add_includes $4 src/coreclr/gc/unix/CMakeLists.txt
+add_includes $4 src/native/watchdog/CMakeLists.txt
+add_includes $4 src/coreclr/nativeaot/Runtime/eventpipe/CMakeLists.txt
 add_includes $4 src/native/corehost/apphost/standalone/CMakeLists.txt
 add_includes $4 src/native/corehost/apphost/static/CMakeLists.txt
 add_includes $4 src/native/corehost/fxr/standalone/CMakeLists.txt
+add_includes $4 src/native/corehost/fxr/staticlib/CMakeLists.txt
 add_includes $4 src/native/corehost/hostcommon/CMakeLists.txt
 add_includes $4 src/native/corehost/dotnet/CMakeLists.txt
 add_includes $4 src/native/corehost/nethost/CMakeLists.txt
