@@ -37,4 +37,4 @@ it contains the steps to build arm/arm64 vm for .net core debugging.
     export PATH=`echo $PATH|tr -d ' '`
     make
 ~~~
-6. Done and now you can go to [Using the arm VM to debug](documents/debug-arm-netcoreapp.md) or [Using the arm64 VM to debug](documents/debug-arm64-netcoreapp.md) to enjoy a .netcore app debugging.
+6. Done and now you can go to [Using the arm VM to debug](debug-arm-netcoreapp.md) or [Using the arm64 VM to debug](debug-arm64-netcoreapp.md) to enjoy a .netcore app debugging.

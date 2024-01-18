@@ -1,0 +1,12 @@
+--- a/llvm/lib/Support/BLAKE3/CMakeLists.txt
++++ b/llvm/lib/Support/BLAKE3/CMakeLists.txt
+@@ -66,6 +66,9 @@
+         blake3_avx2_x86-64_unix.S
+         blake3_avx512_x86-64_unix.S
+       )
++      set(ASM_FILES blake3_sse2_x86-64_unix.S blake3_sse41_x86-64_unix.S blake3_avx2_x86-64_unix.S blake3_avx512_x86-64_unix.S)
++      set(ASM_OPTIONS "-x assembler-with-cpp")
++      set_source_files_properties(${ASM_FILES} PROPERTIES LANGUAGE C COMPILE_FLAGS "${ASM_OPTIONS}")
+       # Clang before 7 needs -mavx512vl to assemble some instructions.
+       set_source_files_properties(blake3_avx512_x86-64_unix.S
+         PROPERTIES COMPILE_OPTIONS "-mavx512vl")

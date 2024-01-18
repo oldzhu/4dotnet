@@ -61,7 +61,7 @@ config BR2_PACKAGE_CLRMD_CUSTOM_REPO_URL
 
 config BR2_PACKAGE_CLRMD_CUSTOM_REPO_VERSION
         string "Custom repo version"
-        default "origin/master"
+        default "origin/main"
         help
           Revision to use in the typical format used by
           Git/Mercurial/Subversion E.G. a sha id, a tag, branch, ..

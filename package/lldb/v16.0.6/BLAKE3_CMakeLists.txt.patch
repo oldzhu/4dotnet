@@ -1,0 +1,13 @@
+--- a/llvm/lib/Support/BLAKE3/CMakeLists.txt
++++ b/llvm/lib/Support/BLAKE3/CMakeLists.txt
+@@ -66,6 +66,10 @@ if (CAN_USE_ASSEMBLER)
+         blake3_avx2_x86-64_unix.S
+         blake3_avx512_x86-64_unix.S
+       )
++      set_property(SOURCE blake3_sse2_x86-64_unix.S PROPERTY LANGUAGE C)
++      set_property(SOURCE blake3_sse41_x86-64_unix.S PROPERTY LANGUAGE C)
++      set_property(SOURCE blake3_avx2_x86-64_unix.S PROPERTY LANGUAGE C)
++      set_property(SOURCE blake3_avx512_x86-64_unix.S PROPERTY LANGUAGE C)
+       # Clang-6 needs this flag.
+       set_source_files_properties(blake3_avx512_x86-64_unix.S
+         PROPERTIES COMPILE_OPTIONS "-mavx512vl")

@@ -1,0 +1,13 @@
+--- a/src/libraries/Native/Unix/CMakeLists.txt	2022-08-23 08:20:18.219455924 +0800
++++ b/src_libraries_Native_Unix_CMakeLists.txt.v6.0.8	2022-08-23 07:46:14.913102942 +0800
+@@ -51,6 +51,10 @@
+     add_compile_options(-Wthread-safety)
+     add_compile_options(-Wno-thread-safety-analysis)
+     add_compile_options(-Wno-reserved-identifier)
++#fix llvm14 clang compilation error
++    add_compile_options(-Wno-declaration-after-statement)
++#fix llvm15 clang compilation error
++    add_compile_options(-Wno-strict-prototypes)
+ elseif(CMAKE_C_COMPILER_ID STREQUAL GNU)
+     add_compile_options(-Wno-stringop-truncation)
+ endif()

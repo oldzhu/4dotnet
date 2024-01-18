@@ -1,0 +1,11 @@
+--- a/src/coreclr/tools/aot/crossgen2/crossgen2.csproj 
++++ b/src/coreclr/tools/aot/crossgen2/crossgen2.csproj
+@@ -79,7 +79,7 @@
+       <CrossCompileArch Condition="$(CrossCompileRid.EndsWith('-arm64')) and '$(_IsApplePlatform)' == 'true'">arm64</CrossCompileArch>
+ 
+       <TargetTriple />
+-      <TargetTriple Condition="'$(CrossCompileArch)' != ''">$(CrossCompileArch)-linux-gnu</TargetTriple>
++      <TargetTriple Condition="'$(CrossCompileArch)' != ''">$(CrossCompileArch)-buildroot-linux-gnu</TargetTriple>
+       <TargetTriple Condition="'$(CrossCompileArch)' != '' and ($(CrossCompileRid.StartsWith('linux-musl')) or $(CrossCompileRid.StartsWith('alpine')))">$(CrossCompileArch)-alpine-linux-musl</TargetTriple>
+       <TargetTriple Condition="'$(CrossCompileArch)' != '' and ($(CrossCompileRid.StartsWith('freebsd')))">$(CrossCompileArch)-unknown-freebsd12</TargetTriple>
+     </PropertyGroup>
