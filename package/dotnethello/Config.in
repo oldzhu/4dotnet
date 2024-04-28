@@ -4,22 +4,23 @@ config BR2_PACKAGE_DOTNETHELLO_ARCH_SUPPORTS
 	default y if BR2_x86_64
         default y if BR2_aarch64
         default y if BR2_arm || BR2_armeb
-	default y if BR2_riscv || BR2_RISCV_32
-	default y if BR2_RISCV_64
+	default y if BR2_riscv && BR2_RISCV_32
+	default y if BR2_riscv && BR2_RISCV_64
 
 config BR2_PACKAGE_DOTNETHELLO_TARGET_ARCH
         string
         default "ARM64" if BR2_aarch64
         default "ARM" if BR2_arm || BR2_armeb
 	default "X86" if BR2_i386 || BR2_x86_64
-	default "RISCV32" if BR2_riscv || BR2_RISCV_32
-	default "RISCV64" if BR2_RISCV_64
+	default "RISCV32" if BR2_riscv && BR2_RISCV_32
+	default "RISCV64" if BR2_riscv && BR2_RISCV_64
 
 config BR2_PACKAGE_DOTNETHELLO
 	bool "dotnethello"
 	depends on BR2_PACKAGE_DOTNETHELLO_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB
 	depends on BR2_PACKAGE_CLRMD
+	depends on BR2_PACKAGE_SYMSTORE
 	depends on BR2_PACKAGE_DOTNETRUNTIME
 	depends on BR2_PACKAGE_DIAGNOSTICS
 	help
@@ -27,9 +28,10 @@ config BR2_PACKAGE_DOTNETHELLO
 
           http://example.com
 
-comment "dotnet core hello world package need lldb,clrmd,dotnetruntime and diagnostics package"
+comment "dotnet core hello world package need lldb,clrmd,symstore,dotnetruntime and diagnostics package"
 	depends on BR2_PACKAGE_DOTNETHELLO_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB
 	depends on BR2_PACKAGE_CLRMD
+	depends on BR2_PACKAGE_SYMSTORE
 	depends on BR2_PACKAGE_DOTNETRUNTIME	
 	depends on BR2_PACKAGE_DIAGNOSTICS

@@ -11,6 +11,10 @@ if [ $3 == "ARM64" ]; then
         toolchain=aarch64-buildroot-linux-gnu
 elif [ $3 == "ARM" ]; then
         toolchain=arm-buildroot-linux-gnueabihf
+elif [ $3 == "RISCV32" ]; then
+        toolchain=riscv32-buildroot-linux-gnu
+elif [ $3 == "RISCV64" ]; then
+        toolchain=riscv64-buildroot-linux-gnu
 else
         toolchain=x86_64-buildroot-linux-gnu
 fi
@@ -18,8 +22,9 @@ cplusplusver=$(cd $2/$toolchain/include/c++;echo *)
 
 function add_includes {
 	echo >> $1/$2
-	echo if\(\$ENV{CROSSCOMPILE} EQUAL 1\) >> $1/$2
-	echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/include/c++/$cplusplusver\) >> $1/$2
+#	echo if\(\$ENV{CROSSCOMPILE} EQUAL 1\) >> $1/$2
+	echo if\(NOT CLR_CROSS_COMPONENTS_BUILD\) >> $1/$2
+#	echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/include/c++/$cplusplusver\) >> $1/$2
 	echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/include/c++/$cplusplusver/\$ENV{TOOLCHAIN}\) >> $1/$2
 	echo include_directories\(\$ENV{HOST_DIR}/\$ENV{TOOLCHAIN}/myinclude\) >> $1/$2
 	echo endif\(\) >> $1/$2
@@ -44,7 +49,7 @@ $1/$3/myinclude
         cp -u -v $1/lib/gcc/$3/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $2/usr/lib
 }
 
-apply_mypatches $4 $6
+#apply_mypatches $4 $6
 #add_includes $4 eng/cross/toolchain.cmake
 copy_headslibs $2 $5 $toolchain
 

@@ -24,7 +24,7 @@ else
 fi
 
 $4/build.sh \
--subset clr.native \
+-subset clr+libs+tools+host+packs \
 -arch $3 \
 -cross \
 -c release \
