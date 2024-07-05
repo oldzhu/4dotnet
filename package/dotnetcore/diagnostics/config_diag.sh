@@ -65,3 +65,5 @@ mkdir -p -v $5/usr/include/lldb/API
 cp -u -v $2/include/lldb/API/* $5/usr/include/lldb/API
 cp -u -v $2/include/lldb/*.h  $5/usr/include/lldb
 
+# Insert the line "sed -e" at the 2nd line of eng/build.sh
+sed -i '2i set -e' $4/eng/build.sh
