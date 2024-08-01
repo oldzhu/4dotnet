@@ -6,7 +6,7 @@
 # p5 STAGING_DIR
 # p6 [PKGNAME}_PKGDIR
 # p7 TARGET_DIR
-	
+set -e	
 pushd $4
 .dotnet/dotnet publish -p:Configuration=Release
 popd

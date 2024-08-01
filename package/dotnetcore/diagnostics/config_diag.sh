@@ -41,7 +41,7 @@ function copy_headslibs {
         cp -r -v $2/usr/include/{features.h,stdc-predef.h,sys,bits,gnu} $1/$3/myinclude
         cp -r -v $1/$3/include/c++/$cplusplusver/{\
 type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwchar,\
-backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
+backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,deque,vector,\
 algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,array,mutex,chrono,\
 ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
 climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf,bit,cxxabi.h} \
@@ -67,3 +67,18 @@ cp -u -v $2/include/lldb/*.h  $5/usr/include/lldb
 
 # Insert the line "sed -e" at the 2nd line of eng/build.sh
 sed -i '2i set -e' $4/eng/build.sh
+
+# Define the file to modify
+file="$4/src/SOS/lldbplugin/services.cpp"
+
+# Use sed to find and insert lines
+
+sed -i '/#elif DBG_TARGET_ARM64/{N;/\n    DWORD64 spToFind = dtcontext->Sp;/a #elif DBG_TARGET_RISCV64\n    DWORD64 spToFind = dtcontext->Sp;
+}' "$file"
+
+sed -i '/#elif DBG_TARGET_X86/{
+    N
+    /    \*type = IMAGE_FILE_MACHINE_I386;/a\
+#elif DBG_TARGET_RISCV64\
+    \*type = IMAGE_FILE_MACHINE_RISCV64;
+}' "$file"

@@ -114,16 +114,18 @@ add_includes $4 src/coreclr/nativeaot/Runtime/Full/CMakeLists.txt
 
 function copy_headslibs {
         mkdir -p -v $1/$3/myinclude
-        cp -r -v $2/usr/include/{features.h,features-time64.h,stdc-predef.h,sys,bits,gnu,math.h} $1/$3/myinclude
+#        cp -r -v $2/usr/include/{features.h,features-time64.h,stdc-predef.h,sys,bits,gnu,math.h} $1/$3/myinclude
+        cp -r -v $2/usr/include/{features.h,features-time64.h,stdc-predef.h,sys,bits,gnu} $1/$3/myinclude
         cp -r -v $1/$3/include/c++/$cplusplusver/{\
 type_traits,cstdlib,new,exception,bits,cstring,string,typeinfo,ext,set,debug,cwchar,\
-backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,vector,\
+backward,cstdint,initializer_list,clocale,concepts,iosfwd,cctype,cstdio,cerrno,deque,vector,\
 algorithm,utility,cstddef,cassert,limits,cinttypes,memory,tuple,compare,array,mutex,chrono,\
 ratio,ctime,system_error,stdexcept,map,iostream,fstream,istream,ostream,cwctype,sstream,cstdarg,unordered_map,unordered_set,\
 climits,functional,locale,codecvt,iterator,list,atomic,condition_variable,thread,future,ios,streambuf,bit,cxxabi.h,cmath} \
 $1/$3/myinclude
 	cp -r -v $1/$3/include/c++/$cplusplusver/type_traits $2/usr/include
 	cp -r -v $1/$3/include/c++/$cplusplusver/$3/bits $2/usr/include
+        cp -r -v $1/$3/include/c++/$cplusplusver/bits/version.h $2/usr/include/bits/version.h
         cp -u -v $1/lib/gcc/$3/$cplusplusver/{crtbegin.o,crtend.o,crtbeginS.o,crtendS.o,libgcc.a} $2/usr/lib
 }
 

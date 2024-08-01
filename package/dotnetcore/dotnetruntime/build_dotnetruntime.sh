@@ -27,6 +27,8 @@ $4/build.sh \
 -subset clr+libs+tools+host+packs \
 -arch $3 \
 -cross \
--c release \
+-c release 
+#-cmakeargs --debug-output \
+#-cmakeargs --trace-expand \
 #-v d 
 #/p:EnableSourceLink=false
