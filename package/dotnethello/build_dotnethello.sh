@@ -8,5 +8,5 @@
 # p7 TARGET_DIR
 set -e	
 pushd $4
-.dotnet/dotnet publish -p:Configuration=Release
+lldb -- .dotnet/dotnet publish -p:Configuration=Release
 popd

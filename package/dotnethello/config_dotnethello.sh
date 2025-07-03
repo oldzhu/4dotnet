@@ -29,6 +29,7 @@ ver=${ridver#*.}
 
 # Extract the major version number from $ver
 major_version=${ver%%.*}
+major_minor=$(echo $ver | cut -d. -f1,2)
 
 global_json_file="${dotnetruntimepath}/global.json"
 
@@ -99,7 +100,7 @@ cat <<EOF > $4/dotnethello.csproj
 <Project Sdk="Microsoft.NET.Sdk">
         <PropertyGroup>
                 <OutputType>Exe</OutputType>
-                <TargetFramework>net${ver:0:3}</TargetFramework>
+                <TargetFramework>net${major_minor}</TargetFramework>
                 <RuntimeFrameworkVersion>$ver</RuntimeFrameworkVersion>
                 <RuntimeIdentifier>$rid</RuntimeIdentifier>
                 <SelfContained>true</SelfContained>

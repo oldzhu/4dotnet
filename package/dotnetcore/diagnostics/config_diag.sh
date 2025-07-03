@@ -56,6 +56,11 @@ copy_headslibs $2 $5 $toolchain
 add_includes $4 src/SOS/extensions/CMakeLists.txt
 add_includes $4 src/shared/pal/src/CMakeLists.txt
 add_includes $4 src/shared/dbgutil/CMakeLists.txt
+add_includes $4 src/shared/debug/dbgutil/CMakeLists.txt
+add_includes $4 src/shared/palrt/CMakeLists.txt
+add_includes $4 src/shared/utilcode/CMakeLists.txt
+add_includes $4 src/shared/inc/CMakeLists.txt
+add_includes $4 src/dbgshim/CMakeLists.txt
 add_includes $4 src/SOS/lldbplugin/CMakeLists.txt
 add_includes $4 src/SOS/Strike/CMakeLists.txt
 
