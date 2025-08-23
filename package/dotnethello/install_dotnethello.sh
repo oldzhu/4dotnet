@@ -15,7 +15,7 @@ cp -v $publishpath/* $7/root/dotnethello
 nativesympath=($dotnetruntimepath/artifacts/bin/microsoft.netcore.app.runtime.*/Release/runtimes/*/native)
 cp -v $nativesympath/*.so.dbg $7/root/dotnethello
 #cp -v $1/dotnetruntime-origin_main/artifacts/bin/*/corehost/{libhostfxr.so.dbg,libhostpolicy.so.dbg} $7/root/dotnethello
-cp -v $dotnetruntimepath/artifacts/bin/*/corehost/{libhostfxr.so.dbg,libhostpolicy.so.dbg} $7/root/dotnethello
+#cp -v $dotnetruntimepath/artifacts/bin/*/corehost/{libhostfxr.so.dbg,libhostpolicy.so.dbg} $7/root/dotnethello
 
 #cp -v $dotnetruntimepath/artifacts/bin/coreclr/*/{corerun,corerun.dbg} $7/root/dotnethello
 

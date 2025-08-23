@@ -32,7 +32,9 @@ export LDFLAGS="-L$2/lib/gcc/$TOOLCHAIN/$cplusplusver -Wl,-rpath=$2/lib/gcc/$TOO
 $4/build.sh \
 -architecture $3 \
 -cross \
--c release 
+-c release \
+-cmakeargs "-DCMAKE_CXX_COMPILER=$hostlldbpath/llvm/buildroot-build/bin/clang++" \
+-cmakeargs "-DCMAKE_C_COMPILER=$hostlldbpath/llvm/buildroot-build/bin/clang"
 #/p:PublishReadyToRun=true
 #/p:EnableSourceLink=false 
 #/p:Platform=$3

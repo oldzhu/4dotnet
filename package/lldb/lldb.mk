@@ -181,7 +181,7 @@ HOST_LLDB_CONF_OPTS += -DLLVM_ENABLE_LIBCXX=OFF
 LLDB_CONF_OPTS += -DLLVM_ENABLE_LIBCXX=OFF
 
 # Don't use lld as a linker.
-HOST_LLDB_CONF_OPTS += -DLLVM_ENABLE_LLD=OFF
+HOST_LLDB_CONF_OPTS += -DLLVM_ENABLE_LLD=ON
 LLDB_CONF_OPTS += -DLLVM_ENABLE_LLD=OFF
 
 # Generate code for the target. LLVM selects a target by looking at the
@@ -267,7 +267,10 @@ HOST_LLDB_CONF_OPTS += \
 	-DLLVM_INCLUDE_EXAMPLES=OFF \
 	-DLLVM_INCLUDE_DOCS=OFF \
 	-DLLVM_INCLUDE_GO_TESTS=OFF \
-	-DLLVM_INCLUDE_TESTS=OFF
+	-DLLVM_INCLUDE_TESTS=OFF \
+        -DCMAKE_C_COMPILER=/usr/bin/clang-12 \
+        -DCMAKE_CXX_COMPILER=/usr/bin/clang++-12
+
 LLDB_CONF_OPTS += \
 	-DLLVM_BUILD_EXAMPLES=OFF \
 	-DLLVM_BUILD_DOCS=OFF \
@@ -283,13 +286,14 @@ LLDB_CONF_OPTS += \
 define LLDB_INSTALL_TARGET_CMDS
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/bin/lldb $(TARGET_DIR)/usr/bin
      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/bin/lldb-server  $(TARGET_DIR)/usr/bin
-     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libLLVM*.so $(TARGET_DIR)/usr/lib
+#     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libLLVM*.so $(TARGET_DIR)/usr/lib
 #     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libclang-cpp.so.*git $(TARGET_DIR)/usr/lib
 #     $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/liblldb.so.*git $(TARGET_DIR)/usr/lib
 #      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/libclang-cpp.so $(TARGET_DIR)/usr/lib
 #      $(INSTALL) -D -m 0755 $(LLDB_BUILDDIR)/lib/liblldb.so $(TARGET_DIR)/usr/lib
       cp -a $(LLDB_BUILDDIR)/lib/libclang-cpp.so* $(TARGET_DIR)/usr/lib
       cp -a $(LLDB_BUILDDIR)/lib/liblldb.so* $(TARGET_DIR)/usr/lib
+      cp -a $(LLDB_BUILDDIR)/lib/libLLVM.so* $(TARGET_DIR)/usr/lib
 #     ln -rsf $(TARGET_DIR)/usr/lib/libclang-cpp.so.11git libclang-cpp.so
 #     ln -rsf $(TARGET_DIR)/usr/lib/liblldb.so.11.0.0git liblldb.so.11git
 #     ln -rsf $(TARGET_DIR)/usr/lib/liblldb.so.11.0.0git liblldb.so
