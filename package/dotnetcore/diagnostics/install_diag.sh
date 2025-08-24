@@ -9,7 +9,7 @@
 
 dotnetruntimepath=$(find $1 -maxdepth 1  -name dotnetruntime-\* -type d -print -quit)
 clrmdpath=$(find $1 -maxdepth 1  -name clrmd-\* -type d -print -quit)
-symstorepath=$(find $1 -maxdepth 1  -name symstore-\* -type d -print -quit)
+#symstorepath=$(find $1 -maxdepth 1  -name symstore-\* -type d -print -quit)
 
 # Check if the directory '$4/artifacts/bin/Linux.*' exists
 if [ -d "$4/artifacts/bin/Linux.*" ]; then
@@ -57,8 +57,8 @@ copy_dynamic_files() {
 
 # Copy files using dynamic detection
 copy_dynamic_files "$clrmdpath/artifacts/bin/Microsoft.Diagnostics.Runtime" "$7/root/.dotnet/sos" "*.dll"
-copy_dynamic_files "$symstorepath/artifacts/bin/SymClient" "$7/root/.dotnet/sos" "Microsoft.FileFormats.*"
-copy_dynamic_files "$symstorepath/artifacts/bin/SymClient" "$7/root/.dotnet/sos" "Microsoft.SymbolStore.*"
+#copy_dynamic_files "$symstorepath/artifacts/bin/SymClient" "$7/root/.dotnet/sos" "Microsoft.FileFormats.*"
+#copy_dynamic_files "$symstorepath/artifacts/bin/SymClient" "$7/root/.dotnet/sos" "Microsoft.SymbolStore.*"
 
 # Determine runtime architecture
 case $3 in
