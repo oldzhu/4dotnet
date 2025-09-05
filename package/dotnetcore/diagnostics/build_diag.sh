@@ -26,10 +26,19 @@ else
 	rid=linux-x64
 fi
 
+cplusplusver=$(cd $2/$TOOLCHAIN/include/c++;echo *)
+
+export CPLUS_INCLUDE_PATH="$2/$TOOLCHAIN/include/c++/$cplusplusver:$2/$TOOLCHAIN/include/c++/$cplusplusver/$TOOLCHAIN:$2/$TOOLCHAIN/sysroot/usr/include"
+export C_INCLUDE_PATH="$2/$TOOLCHAIN/sysroot/usr/include"
+export LIBRARY_PATH="$2/lib/gcc/$TOOLCHAIN/$cplusplusver"
+export LDFLAGS="-L$2/lib/gcc/$TOOLCHAIN/$cplusplusver -Wl,-rpath=$2/lib/gcc/$TOOLCHAIN/$cplusplusver"
+
 $4/build.sh \
 -architecture $3 \
 -cross \
--c release 
+-c release \
+-cmakeargs "-DCMAKE_CXX_COMPILER=$hostlldbpath/llvm/buildroot-build/bin/clang++" \
+-cmakeargs "-DCMAKE_C_COMPILER=$hostlldbpath/llvm/buildroot-build/bin/clang"
 #/p:PublishReadyToRun=true
 #/p:EnableSourceLink=false 
 #/p:Platform=$3
