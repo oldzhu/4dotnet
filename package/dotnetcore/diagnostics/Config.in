@@ -16,7 +16,6 @@ config BR2_PACKAGE_DIAGNOSTICS
 	depends on BR2_PACKAGE_DIAGNOSTICS_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB
 	depends on BR2_PACKAGE_CLRMD
-#        depends on BR2_PACKAGE_SYMSTORE
         depends on BR2_PACKAGE_DOTNETRUNTIME
 	help
 	  diagnostics is .net core runtime diagnostics package
@@ -67,7 +66,7 @@ config BR2_PACKAGE_DIAGNOSTICS_CUSTOM_REPO_VERSION
 endif
 endif
 
-comment "diagnostics needs lldb,ClrMD,SymStore and dotnetruntime package" 
+comment "diagnostics needs lldb,ClrMD and dotnetruntime package" 
 	depends on BR2_PACKAGE_DIAGNOSTICS_ARCH_SUPPORTS
 	depends on BR2_PACKAGE_LLDB
 	depends on BR2_PACKAGE_CLRMD
