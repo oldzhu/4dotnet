@@ -56,6 +56,8 @@ $4/build.sh \
 -cmakeargs "--debug-trycompile" \
 -cmakeargs "-DCMAKE_VERBOSE_MAKEFILE=ON" \
 -cmakeargs "-DCMAKE_CXX_COMPILER=$hostlldbpath/llvm/buildroot-build/bin/clang++" \
--cmakeargs "-DCMAKE_C_COMPILER=$hostlldbpath/llvm/buildroot-build/bin/clang"
+-cmakeargs "-DCMAKE_C_COMPILER=$hostlldbpath/llvm/buildroot-build/bin/clang" \
+/p:LinkerFlavor=lld \
+/p:CustomLinkerArg="-B$hostlldbpath/llvm/buildroot-build/bin"
 #-v d
 #/p:EnableSourceLink=false
