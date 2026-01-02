@@ -4,6 +4,19 @@ SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 echo $SCRIPTPATH
 
+# --- NEW: Strip massive LLVM/Clang libraries to fix filesystem generation ---
+echo "Stripping massive libraries in $TARGET_DIR..."
+# We use the cross-strip tool from the host directory to shrink files in the target directory
+# This keeps the unstripped versions safe in the staging directory for debugging
+if [ -f "$TARGET_DIR/usr/lib/libLLVM.so.22.0git" ]; then
+    $HOST_DIR/bin/aarch64-linux-strip "$TARGET_DIR/usr/lib/libLLVM.so.22.0git"
+fi
+
+if [ -f "$TARGET_DIR/usr/lib/libclang-cpp.so.22.0git" ]; then
+    $HOST_DIR/bin/aarch64-linux-strip "$TARGET_DIR/usr/lib/libclang-cpp.so.22.0git"
+fi
+# ----------------------------------------------------------------------------
+
 echo 'PermitRootLogin yes' >> $TARGET_DIR/etc/ssh/sshd_config
 echo 'PermitEmptyPasswords yes' >> $TARGET_DIR/etc/ssh/sshd_config
 
