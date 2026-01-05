@@ -27,6 +27,10 @@ There are two ways to get the VM package to play:
   or  
 2. [You can donwload the released VM and use it directly](documents/download.md)
 
+If you want to avoid installing most build dependencies on your host, you can also build inside a container:
+
+3. [build with Docker/Podman](documents/build-container.md)
+
 After build or download the VM package, you can  
 
 1. [.net core app on arm64 vm debugging](documents/debug-arm64-netcoreapp.md)

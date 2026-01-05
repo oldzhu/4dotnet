@@ -12,6 +12,13 @@ it contains the steps to build arm/arm64 vm for .net core debugging.
  sudo apt-get update
  sudo apt install make unzip gcc g++ libncurses-dev liblttng-ust-dev
  ~~~
+
+## Option: build inside a container (recommended on Linux)
+
+If you have Docker or Podman installed, you can build without installing most dependencies on your host:
+
+- [build with Docker/Podman](build-container.md)
+
 3. Clone buildroot and 4dotnet to your home folder. 
 ~~~
     git clone https://github.com/oldzhu/buildroot.git 
