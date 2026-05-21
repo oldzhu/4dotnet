@@ -1,0 +1,1 @@
+PASS: defconfig succeeded, packages enabled

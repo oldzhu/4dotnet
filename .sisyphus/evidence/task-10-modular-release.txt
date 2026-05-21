@@ -1,0 +1,1 @@
+T10: Modular release design doc + scripts/release-modular.sh created. Dry-run works. Supports --dry-run, --full, and individual arch targets.

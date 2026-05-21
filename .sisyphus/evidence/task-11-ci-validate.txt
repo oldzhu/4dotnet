@@ -1,0 +1,1 @@
+T11: .github/workflows/ci.yml created (4 jobs: container-image, defconfig-arm64, defconfig-arm, shellcheck). YAML validated. CI badge added to README.

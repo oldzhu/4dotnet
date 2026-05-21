@@ -1,0 +1,1 @@
+T12: Build verification tests implemented. ARM64: 4/4 pass (defconfig + LLDB + dotnetruntime). ARM: 2/2 pass (defconfig).
