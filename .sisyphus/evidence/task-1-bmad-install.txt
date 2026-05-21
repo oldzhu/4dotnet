@@ -1,0 +1,1 @@
+T1: BMAD project context created and verified (12 Buildroot mentions, 8 ARM64 mentions)

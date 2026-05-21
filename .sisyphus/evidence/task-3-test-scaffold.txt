@@ -1,0 +1,1 @@
+T3: Test infrastructure scaffold created (8 files: common.sh, run-tests.sh, 5 test placeholders, README.md). run-tests.sh executes successfully.

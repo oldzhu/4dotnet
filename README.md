@@ -1,4 +1,7 @@
 # 4dotnet
+
+> 📖 **中文文档**: [documents/zh/](documents/zh/) | **English Docs**: [documents/](documents/)
+
 The repository is building a Linux arm/arm64 VM in WSL2 so you can play with .NET core debugging on arm/arm64 system as the below without buying a real hardware. 
 
 Two goals of the project:  
