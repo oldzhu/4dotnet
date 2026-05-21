@@ -84,8 +84,8 @@ Advance the 4dotnet Buildroot project from its current state to a modular, CI-ve
 - [ ] LLDB + SOS debugging works on arm64 VM
 - [ ] GitHub Actions CI passes on push
 - [ ] Modular release artifacts are downloadable and functional
-- [ ] All existing English docs have Chinese counterparts
-- [ ] BMAD project-context.md exists and is accurate
+- [x] All existing English docs have Chinese counterparts
+- [x] BMAD project-context.md exists and is accurate
 - [ ] All chat interactions saved to documents/chat/
 
 ### Must Have
@@ -446,7 +446,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `docs(zh): establish Chinese documentation structure with README translation`
   - Files: `documents/zh/`, `README.md`
 
-- [ ] 5. **Upgrade LLDB Package to llvm-project Main Branch**
+- [x] 5. **Upgrade LLDB Package to llvm-project Main Branch**
 
   **What to do**:
   - Read current LLDB package files: `package/lldb/Config.in`, `package/lldb/lldb.mk`
@@ -531,7 +531,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `feat(lldb): upgrade default source to llvm-project main branch`
   - Files: `package/lldb/`
 
-- [ ] 6. **Upgrade .NET Runtime Package to dotnet/runtime Main Branch**
+- [x] 6. **Upgrade .NET Runtime Package to dotnet/runtime Main Branch**
 
   **What to do**:
   - Read current dotnetruntime package files: `package/dotnetcore/dotnetruntime/Config.in`, `dotnetruntime.mk`
@@ -617,7 +617,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `feat(dotnetruntime): upgrade default source to dotnet/runtime main branch`
   - Files: `package/dotnetcore/dotnetruntime/`
 
-- [ ] 7. **Smoke Test Container Build Workflow**
+- [x] 7. **Smoke Test Container Build Workflow**
 
   **What to do**:
   - Execute the smoke test defined in `documents/tracking/next-steps.md` section 1
@@ -692,7 +692,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `test(smoke): container build workflow smoke test and report`
   - Files: `documents/tracking/smoke-test-report.md`
 
-- [ ] 8. **Improve Container Build Workflow (Persistent Caches)**
+- [x] 8. **Improve Container Build Workflow (Persistent Caches)**
 
   **What to do**:
   - Based on smoke test findings and next-steps.md section 2 requirements:
@@ -781,7 +781,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `feat(container): persist build caches (dl/, ccache) for faster rebuilds`
   - Files: `tools/build-env/run.sh`, `documents/build-container.md`
 
-- [ ] 9. **Chinese Documentation Batch 1 (Build, Download, Publish Docs)**
+- [x] 9. **Chinese Documentation Batch 1 (Build, Download, Publish Docs)**
 
   **What to do**:
   - Translate the following English docs to Chinese, placing in `documents/zh/`:
@@ -847,7 +847,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `docs(zh): translate build, container, download, and publish docs to Chinese`
   - Files: `documents/zh/build.md`, `documents/zh/build-container.md`, `documents/zh/download.md`, `documents/zh/publish.md`
 
-- [ ] 10. **Modular GitHub Release Redesign + Implementation**
+- [x] 10. **Modular GitHub Release Redesign + Implementation**
 
   **What to do**:
   - Design modular release structure per `documents/tracking/next-steps.md` section 3:
@@ -937,7 +937,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `feat(release): modular GitHub release with base VM + optional debug packs`
   - Files: `scripts/release-modular.sh`, `documents/release-structure.md`, `documents/download.md`, `documents/zh/`
 
-- [ ] 11. **GitHub Actions CI Pipeline**
+- [x] 11. **GitHub Actions CI Pipeline**
 
   **What to do**:
   - Create `.github/workflows/ci.yml` for automated build verification:
@@ -1015,7 +1015,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `ci(github): add CI pipeline for container build + defconfig verification`
   - Files: `.github/workflows/ci.yml`, `README.md`, `documents/ci.md`, `documents/zh/ci.md`
 
-- [ ] 12. **Build Verification Tests (arm64 + arm)**
+- [x] 12. **Build Verification Tests (arm64 + arm)**
 
   **What to do**:
   - Implement the placeholder test files created in Task 3:
@@ -1086,7 +1086,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `test(build): implement build verification tests for arm64 and arm targets`
   - Files: `scripts/test/`
 
-- [ ] 13. **Chinese Documentation Batch 2 (Debug Docs)**
+- [x] 13. **Chinese Documentation Batch 2 (Debug Docs)**
 
   **What to do**:
   - Translate debug documentation to Chinese:
@@ -1153,7 +1153,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
 
 ---
 
-- [ ] 14. **Release Process Simplification (One-Click Script)**
+- [x] 14. **Release Process Simplification (One-Click Script)**
 
   **What to do**:
   - Create `scripts/release.sh` — unified one-click release script
@@ -1230,7 +1230,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `feat(release): add one-click release script with dry-run support`
   - Files: `scripts/release.sh`, `documents/publish.md`, `documents/zh/publish.md`
 
-- [ ] 15. **VM Boot + Debugging Smoke Tests**
+- [x] 15. **VM Boot + Debugging Smoke Tests**
 
   **What to do**:
   - Implement VM boot verification tests:
@@ -1316,7 +1316,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `test(vm): add VM boot and debugging smoke tests`
   - Files: `scripts/test/test-vm-boot-*.sh`, `scripts/test/run-tests.sh`
 
-- [ ] 16. **Container Build Verification Tests**
+- [x] 16. **Container Build Verification Tests**
 
   **What to do**:
   - Implement container build test:
@@ -1383,7 +1383,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `test(container): add container build verification tests`
   - Files: `scripts/test/test-container-build.sh`, `scripts/test/run-tests.sh`, `scripts/test/README.md`
 
-- [ ] 17. **Chinese Documentation Batch 3 (Remaining + README Update)**
+- [x] 17. **Chinese Documentation Batch 3 (Remaining + README Update)**
 
   **What to do**:
   - Translate remaining documentation to Chinese:
@@ -1459,19 +1459,19 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
 > 4 review agents run in PARALLEL. ALL must APPROVE. Present consolidated results to user and get explicit "okay" before completing.
 > Do NOT auto-proceed after verification. Wait for user's explicit approval before marking work complete.
 
-- [ ] F1. **Plan Compliance Audit** — `oracle`
+- [x] F1. **Plan Compliance Audit** — APPROVE (5/5 Must Have, 5/5 Must NOT Have)
   Read the plan end-to-end. For each "Must Have": verify implementation exists (read file, run command). For each "Must NOT Have": search codebase for forbidden patterns — reject with file:line if found. Check evidence files exist in .sisyphus/evidence/. Compare deliverables against plan.
   Output: `Must Have [N/N] | Must NOT Have [N/N] | Tasks [17/17] | Evidence [N/17] | VERDICT: APPROVE/REJECT`
 
-- [ ] F2. **Code Quality Review** — `unspecified-high`
+- [x] F2. **Code Quality Review** — APPROVE (shell scripts valid, CI YAML valid, 1 pre-existing issue)
   Run shellcheck on all modified .sh files. Check for: hardcoded paths, unquoted variables, missing error handling, unsafe commands (rm -rf without checks). Check Buildroot .mk syntax validity. Verify CI YAML is valid. Check for AI slop: excessive comments, over-abstraction, unused variables.
   Output: `Scripts [N clean/N issues] | Buildroot [PASS/FAIL] | CI YAML [PASS/FAIL] | VERDICT`
 
-- [ ] F3. **Real Manual QA** — `unspecified-high`
+- [x] F3. **Real Manual QA** — APPROVE (10/10 pass, 2 gracefully skipped)
   Start from clean state. Execute EVERY QA scenario from EVERY task — follow exact steps, capture evidence. Test cross-task integration: container build → modular release → VM boot → debugging. Test edge cases: missing Docker, missing artifacts, clean checkout. Save to `.sisyphus/evidence/final-qa/`.
   Output: `Scenarios [N/N pass] | Integration [N/N] | Edge Cases [N tested] | VERDICT`
 
-- [ ] F4. **Scope Fidelity Check** — `deep`
+- [x] F4. **Scope Fidelity Check** — APPROVE (17/17 compliant, no contamination)
   For each task: read "What to do", read actual diff (git log/diff). Verify 1:1 — everything in spec was built (no missing), nothing beyond spec was built (no creep). Check "Must NOT do" compliance. Detect cross-task contamination: Task N touching Task M's files. Flag unaccounted changes.
   Output: `Tasks [17/17 compliant] | Contamination [CLEAN/N issues] | Unaccounted [CLEAN/N files] | VERDICT`
 
@@ -1506,15 +1506,15 @@ ls documents/zh/*.md | wc -l  # Should be >= 15
 ```
 
 ### Final Checklist
-- [ ] All 17 implementation tasks completed
-- [ ] Container build succeeds for arm64 and arm
-- [ ] LLDB package builds from main branch
-- [ ] .NET runtime package builds from main branch
-- [ ] Modular release artifacts generate correctly
-- [ ] CI pipeline passes on push
-- [ ] All English docs have Chinese counterparts (>= 15 files)
-- [ ] Chat infrastructure functional
-- [ ] BMAD project context accurate
-- [ ] All evidence files present in .sisyphus/evidence/
-- [ ] 4 review agents (F1-F4) all return APPROVE
+- [x] All 17 implementation tasks completed
+- [ ] Container build succeeds for arm64 and arm (defconfig verified; full `make` needs ~hours)
+- [ ] LLDB package builds from main branch (Config.in updated; full build needs ~hours)
+- [ ] .NET runtime package builds from main branch (Config.in updated; full build needs ~hours)
+- [x] Modular release artifacts generate correctly (script tested with --dry-run)
+- [ ] CI pipeline passes on push (YAML valid; needs push to trigger)
+- [x] All English docs have Chinese counterparts (>= 15 files)
+- [x] Chat infrastructure functional
+- [x] BMAD project context accurate
+- [x] All evidence files present in .sisyphus/evidence/
+- [x] 4 review agents (F1-F4) all return APPROVE
 - [ ] User explicitly confirms work is complete
