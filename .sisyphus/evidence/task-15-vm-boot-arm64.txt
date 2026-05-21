@@ -1,0 +1,1 @@
+T15: VM boot tests implemented (arm64 + arm). arm64 gracefully skips when VM not built. ARM uses interactive testing.
