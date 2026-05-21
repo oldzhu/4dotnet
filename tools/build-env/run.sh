@@ -14,10 +14,14 @@ ENGINE="${ENGINE:-}"
 # Optional knobs for restricted networks / proxies
 BUILD_NETWORK="${BUILD_NETWORK:-}"
 
+# Cache directories (persistent across container runs)
+CCACHE_DIR_HOST="${CCACHE_DIR_HOST:-$HOME/.cache/4dotnet-ccache}"
+DL_DIR="${DL_DIR:-$BUILDROOT_DIR/dl}"
+
 usage() {
   cat <<'USAGE'
 Usage:
-  tools/build-env/run.sh [--engine docker|podman] [--build] [--] [command...]
+  tools/build-env/run.sh [--engine docker|podman] [--build] [--clean-caches] [--] [command...]
 
 Examples:
   # Build the container image (once)
@@ -31,10 +35,16 @@ Examples:
   # Build
   tools/build-env/run.sh -- make
 
+  # Clean build caches
+  tools/build-env/run.sh --clean-caches
+
 Notes:
   - This wrapper sets HOME=/work inside the container so repo scripts using
     "$HOME/buildroot" continue to work.
   - Override BUILDROOT_DIR if your buildroot folder is elsewhere.
+  - Persistent caches: dl/ (downloads) and ccache are mounted from the host.
+    Set CCACHE_DIR_HOST and DL_DIR to customize paths.
+  - The --clean-caches flag removes dl/ contents and ccache.
 USAGE
 }
 
@@ -56,6 +66,7 @@ if [[ -z "$ENGINE" ]]; then
 fi
 
 DO_BUILD=0
+DO_CLEAN_CACHES=0
 if [[ ${1:-} == "-h" || ${1:-} == "--help" ]]; then
   usage
   exit 0
@@ -67,6 +78,8 @@ while [[ $# -gt 0 ]]; do
       ENGINE="$2"; shift 2 ;;
     --build)
       DO_BUILD=1; shift ;;
+    --clean-caches)
+      DO_CLEAN_CACHES=1; shift ;;
     --)
       shift; break ;;
     *)
@@ -77,6 +90,21 @@ done
 if [[ "$ENGINE" != "docker" && "$ENGINE" != "podman" ]]; then
   echo "ERROR: Unsupported engine: $ENGINE (expected docker or podman)" >&2
   exit 2
+fi
+
+# Handle cache cleanup
+if [[ $DO_CLEAN_CACHES -eq 1 ]]; then
+  echo "Cleaning build caches..."
+  if [[ -d "$DL_DIR" ]]; then
+    echo "  Removing dl/ contents: $DL_DIR"
+    rm -rf "$DL_DIR"/*
+  fi
+  if [[ -d "$CCACHE_DIR_HOST" ]]; then
+    echo "  Removing ccache: $CCACHE_DIR_HOST"
+    rm -rf "$CCACHE_DIR_HOST"/*
+  fi
+  echo "Caches cleaned."
+  exit 0
 fi
 
 if [[ $DO_BUILD -eq 1 ]]; then
@@ -115,11 +143,24 @@ fi
 
 UID_GID="$(id -u):$(id -g)"
 
-exec "$ENGINE" run --rm -it \
+# Detect TTY: use -it only if stdin is a terminal
+if [[ -t 0 ]]; then
+  TTY_FLAGS="-it"
+else
+  TTY_FLAGS="-i"
+fi
+
+# Ensure cache directories exist
+mkdir -p "$DL_DIR" "$CCACHE_DIR_HOST"
+
+exec "$ENGINE" run --rm $TTY_FLAGS \
   --user "$UID_GID" \
   -e HOME=/work \
   -e BR2_EXTERNAL=/work/4dotnet \
+  -e CCACHE_DIR=/work/.ccache \
   -w /work/buildroot \
   -v "$BUILDROOT_DIR:/work/buildroot" \
   -v "$FOURDOTNET_ROOT:/work/4dotnet" \
+  -v "$DL_DIR:/work/buildroot/dl" \
+  -v "$CCACHE_DIR_HOST:/work/.ccache" \
   "$IMAGE_NAME" "$@"

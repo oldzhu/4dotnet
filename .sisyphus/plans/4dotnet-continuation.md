@@ -199,7 +199,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
 > Implementation + Test = ONE Task. Never separate.
 > EVERY task MUST have: Recommended Agent Profile + Parallelization info + QA Scenarios.
 
-- [ ] 1. **BMAD Method Installation + Project Context**
+- [x] 1. **BMAD Method Installation + Project Context**
 
   **What to do**:
   - Install BMAD Method framework into the 4dotnet project
@@ -260,7 +260,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `chore(bmad): install BMAD Method framework and project context`
   - Files: `.bmad-output/`
 
-- [ ] 2. **Chat Tracking Infrastructure (documents/chat/)**
+- [x] 2. **Chat Tracking Infrastructure (documents/chat/)**
 
   **What to do**:
   - Create `documents/chat/` directory
@@ -319,7 +319,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `docs(chat): establish chat tracking infrastructure with bilingual README`
   - Files: `documents/chat/`
 
-- [ ] 3. **Test Infrastructure Scaffold**
+- [x] 3. **Test Infrastructure Scaffold**
 
   **What to do**:
   - Create `scripts/test/` directory
@@ -384,7 +384,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews):
   - Message: `test(infra): scaffold test framework with placeholder test files`
   - Files: `scripts/test/`
 
-- [ ] 4. **Chinese Documentation Template + First Doc**
+- [x] 4. **Chinese Documentation Template + First Doc**
 
   **What to do**:
   - Create `documents/zh/` directory for Chinese documents

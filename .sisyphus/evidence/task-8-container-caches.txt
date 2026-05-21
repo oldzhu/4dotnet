@@ -1,0 +1,1 @@
+T8: run.sh updated: TTY detection (-it vs -i), persistent dl/ and ccache mounts, --clean-caches flag. Defconfig verified working inside container.

@@ -1,0 +1,1 @@
+T6: .NET Runtime Config.in changed from CUSTOM_TARBALL to CUSTOM_GIT default. Git repo: https://github.com/dotnet/runtime.git, version: origin/main. Build scripts pass syntax check.

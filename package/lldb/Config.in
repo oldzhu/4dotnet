@@ -28,7 +28,7 @@ config BR2_PACKAGE_LLDB
 if BR2_PACKAGE_LLDB
 choice
         prompt "where to get the source"
-        default BR2_PACKAGE_LLDB_CUSTOM_TARBALL
+        default BR2_PACKAGE_LLDB_CUSTOM_GIT
         help
           Select how to get the latest donetcore runtime source
           one is to clone from the github repo

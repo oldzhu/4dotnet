@@ -71,3 +71,31 @@ APT_MIRROR=http://<your-mirror>/ubuntu/ APT_SECURITY_MIRROR=http://<your-mirror>
 
 - If you are behind a proxy, export `http_proxy` / `https_proxy` / `no_proxy` on the host;
   the build wrapper passes them through as build args.
+
+## Persistent Caches (NEW)
+
+The wrapper now automatically mounts persistent build caches to speed up repeated builds:
+
+- **dl/**: Buildroot download directory (source tarballs) — mounted from `$BUILDROOT_DIR/dl`
+- **ccache**: Compiler cache — mounted from `$HOME/.cache/4dotnet-ccache`
+
+### Customizing cache paths
+~~~
+DL_DIR=/custom/path/dl CCACHE_DIR_HOST=/custom/path/ccache ./tools/build-env/run.sh -- make
+~~~
+
+### Cleaning caches
+~~~
+./tools/build-env/run.sh --clean-caches
+~~~
+
+### Enabling ccache in Buildroot
+After `make menuconfig`, enable `BR2_CCACHE` in the Build options menu. The container sets `CCACHE_DIR=/work/.ccache` automatically.
+
+## Non-TTY Support
+
+The wrapper now detects whether stdin is a terminal. In non-TTY environments (CI, scripts), it omits the `-t` flag, allowing automated execution:
+
+~~~
+./tools/build-env/run.sh -- make defconfig  # Works in CI/scripts
+~~~

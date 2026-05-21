@@ -1,0 +1,1 @@
+T7: Container image built (4dotnet-build-env:local). Smoke test report at documents/tracking/smoke-test-report.md. TTY issue identified and resolved in T8.
