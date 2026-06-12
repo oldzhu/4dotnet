@@ -1,0 +1,245 @@
+[7m>>> host-skeleton  Extracting[27m
+[7m>>> host-skeleton  Patching[27m
+[7m>>> host-skeleton  Configuring[27m
+[7m>>> host-skeleton  Building[27m
+[7m>>> host-skeleton  Installing to host directory[27m
+# check-package DoNotInstallToHostdirUsr
+[7m>>> host-pkgconf 2.3.0 Downloading[27m
+wget -nd -t 3 --connect-timeout=10 -O '/home/oldzhu/buildroot/output/build/.pkgconf-2.3.0.tar.xz.0A4ofq/output' 'https://distfiles.ariadne.space/pkgconf/pkgconf-2.3.0.tar.xz' 
+--2026-06-12 10:38:14--  https://distfiles.ariadne.space/pkgconf/pkgconf-2.3.0.tar.xz
+Connecting to 172.20.32.1:10808... connected.
+Proxy request sent, awaiting response... 200 OK
+Length: 316160 (309K) [application/octet-stream]
+Saving to: ‘/home/oldzhu/buildroot/output/build/.pkgconf-2.3.0.tar.xz.0A4ofq/output’
+
+     0K .......... .......... .......... .......... .......... 16% 28.6K 9s
+    50K .......... .......... .......... .......... .......... 32% 16.8K 10s
+   100K .......... .......... .......... .......... .......... 48% 20.0K 8s
+   150K .......... .......... .......... .......... .......... 64% 24.2K 5s
+   200K .......... .......... .......... .......... .......... 80% 33.2K 3s
+   250K .......... .......... .......... .......... .......... 97% 38.0K 0s
+   300K ........                                              100% 16.3T=12s
+
+2026-06-12 10:38:30 (25.5 KB/s) - ‘/home/oldzhu/buildroot/output/build/.pkgconf-2.3.0.tar.xz.0A4ofq/output’ saved [316160/316160]
+
+pkgconf-2.3.0.tar.xz: OK (sha256: 3a9080ac51d03615e7c1910a0a2a8df08424892b5f13b0628a204d3fcce0ea8b)
+[7m>>> host-pkgconf 2.3.0 Extracting[27m
+xzcat /home/oldzhu/buildroot/dl/pkgconf/pkgconf-2.3.0.tar.xz | tar --strip-components=1 -C /home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0   -xf -
+[7m>>> host-pkgconf 2.3.0 Patching[27m
+
+Applying 0001-Only-prefix-with-the-sysroot-a-subset-of-variables.patch using patch: 
+patching file libpkgconf/tuple.c
+[7m>>> host-pkgconf 2.3.0 Updating config.sub and config.guess[27m
+for file in config.guess config.sub; do for i in $(find /home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0 -name $file); do cp support/gnuconfig/$file $i; done; done
+[7m>>> host-pkgconf 2.3.0 Patching libtool[27m
+patching file /home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0/ltmain.sh
+Hunk #1 succeeded at 2947 (offset 260 lines).
+Hunk #2 succeeded at 4540 (offset 263 lines).
+Hunk #3 succeeded at 6836 (offset 282 lines).
+Hunk #4 succeeded at 6846 (offset 282 lines).
+Hunk #5 succeeded at 7146 (offset 289 lines).
+Hunk #6 succeeded at 7450 (offset 301 lines).
+Hunk #7 succeeded at 8426 (offset 314 lines).
+Hunk #8 succeeded at 11064 (offset 354 lines).
+[7m>>> host-pkgconf 2.3.0 Configuring[27m
+(cd /home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0/ && rm -rf config.cache; GIT_DIR=. PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig" AR="/usr/bin/ar" AS="/usr/bin/as" LD="/usr/bin/ld" NM="/usr/bin/nm" CC="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc" GCC="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc" CXX="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/g++" CPP="/usr/bin/cpp" OBJCOPY="/usr/bin/objcopy" RANLIB="/usr/bin/ranlib" CPPFLAGS="-I/home/oldzhu/buildroot/output/host/include" CFLAGS="-O2 -I/home/oldzhu/buildroot/output/host/include" CXXFLAGS="-O2 -I/home/oldzhu/buildroot/output/host/include" LDFLAGS="-L/home/oldzhu/buildroot/output/host/lib -Wl,-rpath,/home/oldzhu/buildroot/output/host/lib" INTLTOOL_PERL=/usr/bin/perl CC="/usr/bin/gcc" CXX="/usr/bin/g++" CONFIG_SITE=/dev/null ./configure --prefix="/home/oldzhu/buildroot/output/host" --sysconfdir="/home/oldzhu/buildroot/output/host/etc" --localstatedir="/home/oldzhu/buildroot/output/host/var" --enable-shared --disable-static --disable-gtk-doc --disable-gtk-doc-html --disable-doc --disable-docs --disable-documentation --disable-debug --with-xmlto=no --with-fop=no --disable-nls --disable-dependency-tracking   )
+configure: WARNING: unrecognized options: --disable-gtk-doc, --disable-gtk-doc-html, --disable-doc, --disable-docs, --disable-documentation, --disable-debug, --with-xmlto, --with-fop, --disable-nls
+checking for gcc... /usr/bin/gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether /usr/bin/gcc accepts -g... yes
+checking for /usr/bin/gcc option to enable C11 features... none needed
+checking whether /usr/bin/gcc understands -c and -o together... yes
+checking whether C compiler accepts -Wall... yes
+checking whether C compiler accepts -Wextra... yes
+checking whether C compiler accepts -Wformat=2... yes
+checking whether C compiler accepts -std=gnu99... yes
+checking for /usr/bin/gcc options needed to detect all undeclared functions... none needed
+checking whether strlcpy is declared... yes
+checking whether strlcat is declared... yes
+checking whether strndup is declared... yes
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking whether reallocarray is declared... yes
+checking for sys/stat.h... (cached) yes
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether sleep supports fractional seconds... yes
+checking filesystem timestamp resolution... 0.01
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports the include directive... yes (GNU style)
+checking whether make supports nested variables... yes
+checking xargs -n works... yes
+checking dependency style of /usr/bin/gcc... none
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by /usr/bin/gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm
+checking the name lister (/usr/bin/nm) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for file... file
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... /usr/bin/ranlib
+checking command to parse /usr/bin/nm output from /usr/bin/gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if /usr/bin/gcc supports -fno-rtti -fno-exceptions... no
+checking for /usr/bin/gcc option to produce PIC... -fPIC -DPIC
+checking if /usr/bin/gcc PIC flag -fPIC -DPIC works... yes
+checking if /usr/bin/gcc static flag -static works... yes
+checking if /usr/bin/gcc supports -c -o file.o... yes
+checking if /usr/bin/gcc supports -c -o file.o... (cached) yes
+checking whether the /usr/bin/gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking for /usr/bin/gcc option to enable large file support... none needed
+checking how to run the C preprocessor... /usr/bin/cpp
+checking for gcc... (cached) /usr/bin/gcc
+checking whether the compiler supports GNU C... (cached) yes
+checking whether /usr/bin/gcc accepts -g... (cached) yes
+checking for /usr/bin/gcc option to enable C11 features... (cached) none needed
+checking whether /usr/bin/gcc understands -c and -o together... (cached) yes
+checking whether ln -s works... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating Kyuafile
+config.status: creating libpkgconf.pc
+config.status: creating tests/Kyuafile
+config.status: creating tests/test_env.sh
+config.status: creating libpkgconf/config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+configure: WARNING: unrecognized options: --disable-gtk-doc, --disable-gtk-doc-html, --disable-doc, --disable-docs, --disable-documentation, --disable-debug, --with-xmlto, --with-fop, --disable-nls
+[7m>>> host-pkgconf 2.3.0 Building[27m
+GIT_DIR=. PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig"  /usr/bin/make -j33  -C /home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0/
+make[1]: Entering directory '/home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0'
+  CC       cli/pkgconf-main.o
+  CC       cli/pkgconf-getopt_long.o
+  CC       cli/pkgconf-renderer-msvc.o
+  CC       cli/bomtool/bomtool-main.o
+  CC       cli/bomtool-getopt_long.o
+  CC       libpkgconf/audit.lo
+  CC       libpkgconf/cache.lo
+  CC       libpkgconf/client.lo
+  CC       libpkgconf/pkg.lo
+  CC       libpkgconf/bsdstubs.lo
+  CC       libpkgconf/fragment.lo
+  CC       libpkgconf/argvsplit.lo
+  CC       libpkgconf/fileio.lo
+  CC       libpkgconf/tuple.lo
+  CC       libpkgconf/dependency.lo
+  CC       libpkgconf/queue.lo
+  CC       libpkgconf/path.lo
+  CC       libpkgconf/personality.lo
+  CC       libpkgconf/parser.lo
+  CCLD     libpkgconf.la
+  CCLD     bomtool
+  CCLD     pkgconf
+make[1]: Leaving directory '/home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0'
+[7m>>> host-pkgconf 2.3.0 Installing to host directory[27m
+GIT_DIR=. PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig"  /usr/bin/make -j33 install -C /home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0/
+make[1]: Entering directory '/home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0'
+make[2]: Entering directory '/home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0'
+ /usr/bin/mkdir -p '/home/oldzhu/buildroot/output/host/lib'
+ /usr/bin/mkdir -p '/home/oldzhu/buildroot/output/host/share/aclocal'
+ /usr/bin/mkdir -p '/home/oldzhu/buildroot/output/host/share/doc/pkgconf'
+ /bin/bash ./libtool   --mode=install /usr/bin/install -c   libpkgconf.la '/home/oldzhu/buildroot/output/host/lib'
+ /usr/bin/mkdir -p '/home/oldzhu/buildroot/output/host/share/man/man1'
+ /usr/bin/mkdir -p '/home/oldzhu/buildroot/output/host/include/pkgconf'
+ /usr/bin/mkdir -p '/home/oldzhu/buildroot/output/host/share/man/man5'
+ /usr/bin/mkdir -p '/home/oldzhu/buildroot/output/host/lib/pkgconfig'
+ /usr/bin/mkdir -p '/home/oldzhu/buildroot/output/host/share/man/man7'
+ /usr/bin/install -c -m 644 pkg.m4 '/home/oldzhu/buildroot/output/host/share/aclocal'
+ /usr/bin/install -c -m 644 libpkgconf.pc '/home/oldzhu/buildroot/output/host/lib/pkgconfig'
+ /usr/bin/install -c -m 644 README.md AUTHORS '/home/oldzhu/buildroot/output/host/share/doc/pkgconf'
+ /usr/bin/mkdir -p '/home/oldzhu/buildroot/output/host/include/pkgconf/libpkgconf'
+ /usr/bin/install -c -m 644 man/pc.5 man/pkgconf-personality.5 '/home/oldzhu/buildroot/output/host/share/man/man5'
+ /usr/bin/install -c -m 644 man/pkgconf.1 '/home/oldzhu/buildroot/output/host/share/man/man1'
+ /usr/bin/install -c -m 644  libpkgconf/bsdstubs.h libpkgconf/iter.h libpkgconf/libpkgconf.h libpkgconf/stdinc.h libpkgconf/libpkgconf-api.h '/home/oldzhu/buildroot/output/host/include/pkgconf/libpkgconf'
+ /usr/bin/install -c -m 644 man/pkg.m4.7 '/home/oldzhu/buildroot/output/host/share/man/man7'
+libtool: install: /usr/bin/install -c .libs/libpkgconf.so.5.0.0 /home/oldzhu/buildroot/output/host/lib/libpkgconf.so.5.0.0
+libtool: install: (cd /home/oldzhu/buildroot/output/host/lib && { ln -s -f libpkgconf.so.5.0.0 libpkgconf.so.5 || { rm -f libpkgconf.so.5 && ln -s libpkgconf.so.5.0.0 libpkgconf.so.5; }; })
+libtool: install: (cd /home/oldzhu/buildroot/output/host/lib && { ln -s -f libpkgconf.so.5.0.0 libpkgconf.so || { rm -f libpkgconf.so && ln -s libpkgconf.so.5.0.0 libpkgconf.so; }; })
+libtool: install: /usr/bin/install -c .libs/libpkgconf.lai /home/oldzhu/buildroot/output/host/lib/libpkgconf.la
+libtool: finish: PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin:/sbin" ldconfig -n /home/oldzhu/buildroot/output/host/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /home/oldzhu/buildroot/output/host/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the '-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the 'LD_RUN_PATH' environment variable
+     during linking
+   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+ /usr/bin/mkdir -p '/home/oldzhu/buildroot/output/host/bin'
+  /bin/bash ./libtool   --mode=install /usr/bin/install -c pkgconf bomtool '/home/oldzhu/buildroot/output/host/bin'
+libtool: install: /usr/bin/install -c pkgconf /home/oldzhu/buildroot/output/host/bin/pkgconf
+libtool: install: /usr/bin/install -c bomtool /home/oldzhu/buildroot/output/host/bin/bomtool
+make[2]: Leaving directory '/home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0'
+make[1]: Leaving directory '/home/oldzhu/buildroot/output/build/host-pkgconf-2.3.0'
+/usr/bin/install -m 0755 -D package/pkgconf/pkg-config.in /home/oldzhu/buildroot/output/host/bin/pkg-config
+/usr/bin/sed -i -e 's,@STAGING_SUBDIR@,aarch64-buildroot-linux-gnu/sysroot,g' /home/oldzhu/buildroot/output/host/bin/pkg-config
+/usr/bin/sed -i -e 's,@STATIC@,,' /home/oldzhu/buildroot/output/host/bin/pkg-config
+[7m>>> host-blake3 1.8.3 Downloading[27m
+wget -nd -t 3 --connect-timeout=10 -O '/home/oldzhu/buildroot/output/build/.blake3-1.8.3.tar.gz.42yq1P/output' 'https://github.com/BLAKE3-team/BLAKE3/archive/1.8.3/blake3-1.8.3.tar.gz' 
+--2026-06-12 10:38:34--  https://github.com/BLAKE3-team/BLAKE3/archive/1.8.3/blake3-1.8.3.tar.gz
+Connecting to 172.20.32.1:10808... connected.
+Proxy request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/BLAKE3-team/BLAKE3/tar.gz/refs/tags/1.8.3 [following]
+--2026-06-12 10:38:35--  https://codeload.github.com/BLAKE3-team/BLAKE3/tar.gz/refs/tags/1.8.3
+Connecting to 172.20.32.1:10808... connected.
+Proxy request sent, awaiting response... 200 OK
+Length: unspecified [application/x-gzip]
+Saving to: ‘/home/oldzhu/buildroot/output/build/.blake3-1.8.3.tar.gz.42yq1P/output’
+
+     0K .......... .......... .......... .......... .......... 34.2K
+    50K .......... .......... .......... .......... .......... 34.0K
+   100K .......... .......
