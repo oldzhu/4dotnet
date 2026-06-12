@@ -1,0 +1,20 @@
+config BR2_PACKAGE_GDB_SOS_ARCH_SUPPORTS
+	bool
+	default y if BR2_aarch64
+	default y if BR2_arm || BR2_armeb
+
+config BR2_PACKAGE_GDB_SOS
+	bool "gdb-sos"
+	depends on BR2_PACKAGE_GDB_SOS_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_GDB
+	depends on BR2_PACKAGE_DOTNETRUNTIME
+	help
+	  GDB SOS plugin — managed .NET debugging for GDB.
+	  Provides SOS-style commands (clrstack, dumpheap, dumpobj)
+	  within GDB for .NET Core applications.
+
+	  https://github.com/oldzhu/gdbsos
+
+comment "gdb-sos needs GDB and dotnetruntime"
+	depends on BR2_PACKAGE_GDB_SOS_ARCH_SUPPORTS
+	depends on !BR2_PACKAGE_GDB || !BR2_PACKAGE_DOTNETRUNTIME

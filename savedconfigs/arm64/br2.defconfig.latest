@@ -1,0 +1,48 @@
+# 4dotnet ARM64 defconfig — Latest Everything Preset
+# Uses newest available versions of all components.
+# WARNING: May be unstable. Use br2.defconfig for stable builds.
+#
+# To use:
+#   make BR2_EXTERNAL=~/4dotnet defconfig BR2_DEFCONFIG=~/4dotnet/savedconfigs/arm64/br2.defconfig.latest
+
+BR2_aarch64=y
+BR2_cortex_a53=y
+BR2_ARM_FPU_VFPV4=y
+
+# Toolchain: use latest available versions
+# (Edit via: make menuconfig → Toolchain)
+BR2_GCC_VERSION_15_X=y
+BR2_BINUTILS_VERSION_2_45_1=y  
+BR2_GDB_VERSION_16_X=y
+
+# Kernel: latest stable
+BR2_LINUX_KERNEL=y
+BR2_LINUX_KERNEL_CUSTOM_VERSION=y
+BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE="6.12"
+BR2_LINUX_KERNEL_USE_ARCH_DEFAULT_CONFIG=y
+BR2_LINUX_KERNEL_NEEDS_HOST_OPENSSL=y
+
+# System
+BR2_SYSTEM_BIN_SH_BASH=y
+BR2_TARGET_GENERIC_HOSTNAME="4dotnet"
+BR2_TARGET_GENERIC_ISSUE="Welcome to 4dotnet (latest)"
+BR2_ROOTFS_OVERLAY="$(BR2_EXTERNAL_4dotnet_PATH)/overlay"
+BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_4dotnet_PATH)/scripts/post-build.sh"
+BR2_ROOTFS_POST_IMAGE_SCRIPT="$(BR2_EXTERNAL_4dotnet_PATH)/scripts/post-build.sh"
+
+# Packages — all enabled, latest sources
+BR2_PACKAGE_HELLO=y
+BR2_PACKAGE_LLDB=y
+BR2_PACKAGE_LLDB_CUSTOM_GIT=y
+BR2_PACKAGE_LLDB_CUSTOM_REPO_URL="https://github.com/llvm/llvm-project.git"
+BR2_PACKAGE_LLDB_CUSTOM_REPO_VERSION="origin/main"
+BR2_PACKAGE_DOTNETRUNTIME=y
+BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_GIT=y
+BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_REPO_URL="https://github.com/dotnet/runtime.git"
+BR2_PACKAGE_DOTNETRUNTIME_CUSTOM_REPO_VERSION="origin/main"
+BR2_PACKAGE_CLRMD=y
+BR2_PACKAGE_DIAGNOSTICS=y
+BR2_PACKAGE_DOTNET_MONITOR=y
+BR2_PACKAGE_DOTNETHELLO=y
+BR2_PACKAGE_GDB=y
+# BR2_PACKAGE_GDB_SOS=y  # Enable after GDB SOS build scripts complete
