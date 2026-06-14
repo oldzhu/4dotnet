@@ -261,3 +261,389 @@ sed -i 's,getenv("XDG_CONFIG_HOME"),nullptr,' /home/oldzhu/buildroot/output/buil
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- The ASM compiler identification is GNU
+-- Found assembler: /usr/bin/gcc
+-- Ccache version: 4.13.6
+-- Ccache dev mode: OFF
+-- Setting CMAKE_BUILD_TYPE to Release as none was specified
+-- Performing Test std_atomic_without_libatomic
+-- Performing Test std_atomic_without_libatomic - Success
+-- Looking for cpuid.h
+-- Looking for cpuid.h - found
+-- Looking for dirent.h
+-- Looking for dirent.h - found
+-- Looking for linux/fs.h
+-- Looking for linux/fs.h - found
+-- Looking for pwd.h
+-- Looking for pwd.h - found
+-- Looking for sys/clonefile.h
+-- Looking for sys/clonefile.h - not found
+-- Looking for sys/file.h
+-- Looking for sys/file.h - found
+-- Looking for sys/ioctl.h
+-- Looking for sys/ioctl.h - found
+-- Looking for sys/mman.h
+-- Looking for sys/mman.h - found
+-- Looking for sys/sendfile.h
+-- Looking for sys/sendfile.h - found
+-- Looking for sys/utime.h
+-- Looking for sys/utime.h - not found
+-- Looking for sys/wait.h
+-- Looking for sys/wait.h - found
+-- Looking for syslog.h
+-- Looking for syslog.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Looking for utime.h
+-- Looking for utime.h - found
+-- Looking for copy_file_range
+-- Looking for copy_file_range - found
+-- Looking for getopt_long
+-- Looking for getopt_long - found
+-- Looking for getpwuid
+-- Looking for getpwuid - found
+-- Looking for localtime_r
+-- Looking for localtime_r - found
+-- Looking for posix_fallocate
+-- Looking for posix_fallocate - found
+-- Looking for setenv
+-- Looking for setenv - found
+-- Looking for syslog
+-- Looking for syslog - found
+-- Looking for unsetenv
+-- Looking for unsetenv - found
+-- Looking for utimensat
+-- Looking for utimensat - found
+-- Looking for utimes
+-- Looking for utimes - found
+-- Performing Test HAVE_STRUCT_STAT_ST_ATIM
+-- Performing Test HAVE_STRUCT_STAT_ST_ATIM - Success
+-- Performing Test HAVE_STRUCT_STAT_ST_ATIMENSEC
+-- Performing Test HAVE_STRUCT_STAT_ST_ATIMENSEC - Failed
+-- Performing Test HAVE_STRUCT_STAT_ST_ATIMESPEC
+-- Performing Test HAVE_STRUCT_STAT_ST_ATIMESPEC - Failed
+-- Performing Test HAVE_STRUCT_STAT_ST_CTIM
+-- Performing Test HAVE_STRUCT_STAT_ST_CTIM - Success
+-- Performing Test HAVE_STRUCT_STAT_ST_CTIMENSEC
+-- Performing Test HAVE_STRUCT_STAT_ST_CTIMENSEC - Failed
+-- Performing Test HAVE_STRUCT_STAT_ST_CTIMESPEC
+-- Performing Test HAVE_STRUCT_STAT_ST_CTIMESPEC - Failed
+-- Performing Test HAVE_STRUCT_STAT_ST_MTIM
+-- Performing Test HAVE_STRUCT_STAT_ST_MTIM - Success
+-- Performing Test HAVE_STRUCT_STAT_ST_MTIMENSEC
+-- Performing Test HAVE_STRUCT_STAT_ST_MTIMENSEC - Failed
+-- Performing Test HAVE_STRUCT_STAT_ST_MTIMESPEC
+-- Performing Test HAVE_STRUCT_STAT_ST_MTIMESPEC - Failed
+-- Performing Test HAVE_STRUCT_STATFS_F_FSTYPENAME
+-- Performing Test HAVE_STRUCT_STATFS_F_FSTYPENAME - Failed
+-- Performing Test HAVE_AVX2
+-- Performing Test HAVE_AVX2 - Success
+-- Using system Blake3 (/home/oldzhu/buildroot/output/host/usr/lib/libblake3.so)
+-- Using bundled CppHttplib as requested
+-- Using bundled Fmt as requested
+-- Using bundled TlExpected as requested
+-- Using system Xxhash (/home/oldzhu/buildroot/output/host/usr/lib/libxxhash.so)
+-- Using system Zstd (/home/oldzhu/buildroot/output/host/usr/lib/libzstd.so)
+-- Using system Hiredis (/home/oldzhu/buildroot/output/host/usr/lib/libhiredis.so)
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- 
+-- Configuration summary:
+--   Storage backends:
+--     file  ON
+--     http  ON
+--     redis ON
+--   Dependencies:
+--     Blake3     1.8.3  SYSTEM (/home/oldzhu/buildroot/output/host/usr/lib/libblake3.so)
+--     CppHttplib 0.20.0 BUNDLED
+--     Fmt        12.0.0 BUNDLED
+--     Hiredis    1.3.0  SYSTEM (/home/oldzhu/buildroot/output/host/usr/lib/libhiredis.so)
+--     TlExpected 1.1.0  BUNDLED
+--     Xxhash     0.8.3  SYSTEM (/home/oldzhu/buildroot/output/host/usr/lib/libxxhash.so)
+--     Zstd       1.5.7  SYSTEM (/home/oldzhu/buildroot/output/host/usr/lib/libzstd.so)
+-- 
+-- Configuring done (15.1s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_DOC
+    BUILD_DOCS
+    BUILD_EXAMPLE
+    BUILD_EXAMPLES
+    BUILD_TEST
+    BUILD_TESTING
+    BUILD_TESTS
+    DEP_NONSTDSPAN
+
+
+-- Build files have been written to: /home/oldzhu/buildroot/output/build/host-ccache-4.13.6
+[7m>>> host-ccache 4.13.6 Building[27m
+GIT_DIR=. PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig"  /usr/bin/cmake --build /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/ -j33 -- 
+make[1]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[2]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+[  2%] Building CXX object src/third_party/cxxurl/CMakeFiles/dep_cxxurl.dir/cxxurl/url.cpp.o
+[  2%] Building CXX object src/third_party/fmt/CMakeFiles/dep_fmt.dir/fmt/format.cc.o
+[  3%] Linking CXX static library libdep_cxxurl.a
+make[3]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+[  3%] Built target dep_cxxurl
+[  5%] Linking CXX static library libdep_fmt.a
+make[3]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+[  5%] Built target dep_fmt
+make[3]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+[  7%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/argprocessing.cpp.o
+[  7%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/ccache.cpp.o
+[  9%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/compopt.cpp.o
+[ 11%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/hash.cpp.o
+[ 13%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/context.cpp.o
+[ 13%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/config.cpp.o
+[ 14%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/hashutil.cpp.o
+[ 15%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/execute.cpp.o
+[ 17%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/version.cpp.o
+[ 18%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/inodecache.cpp.o
+[ 19%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/compiler/clang.cpp.o
+[ 21%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/progressbar.cpp.o
+[ 22%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/signalhandler.cpp.o
+[ 23%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/cacheentry.cpp.o
+[ 25%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/common.cpp.o
+[ 26%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/filerecompressor.cpp.o
+[ 27%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/depfile.cpp.o
+[ 28%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/language.cpp.o
+[ 32%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/atomicfile.cpp.o
+[ 32%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/compiler/msvc.cpp.o
+[ 34%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/mainoptions.cpp.o
+[ 32%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/manifest.cpp.o
+[ 35%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/result.cpp.o
+[ 36%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/resultretriever.cpp.o
+[ 38%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/resultinspector.cpp.o
+[ 39%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/storage/local/localstorage.cpp.o
+[ 40%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/storage/local/statsfile.cpp.o
+[ 42%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/types.cpp.o
+[ 43%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/storage/local/util.cpp.o
+[ 44%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/resultextractor.cpp.o
+[ 46%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/statistics.cpp.o
+[ 47%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/statisticscounters.cpp.o
+[ 48%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/storage/remote/client.cpp.o
+[ 50%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/core/statslog.cpp.o
+[ 51%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/storage/remote/filestorage.cpp.o
+[ 52%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/storage/remote/helper.cpp.o
+[ 53%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/storage/remote/remotestorage.cpp.o
+[ 55%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/storage/remote/redisstorage.cpp.o
+[ 56%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/storage/storage.cpp.o
+[ 57%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/storage/remote/httpstorage.cpp.o
+[ 59%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/args.cpp.o
+[ 60%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/assertions.cpp.o
+[ 61%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/bytes.cpp.o
+[ 63%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/configreader.cpp.o
+[ 64%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/cpu.cpp.o
+[ 65%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/direntry.cpp.o
+[ 67%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/environment.cpp.o
+[ 68%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/error.cpp.o
+[ 69%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/exec.cpp.o
+[ 71%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/file.cpp.o
+[ 72%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/filelock.cpp.o
+[ 73%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/lockfile.cpp.o
+[ 75%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/filesystem.cpp.o
+[ 76%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/logging.cpp.o
+[ 77%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/longlivedlockfilemanager.cpp.o
+[ 78%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/memorymap.cpp.o
+[ 80%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/path.cpp.o
+[ 81%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/process.cpp.o
+[ 82%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/string.cpp.o
+[ 84%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/temporaryfile.cpp.o
+[ 85%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/texttable.cpp.o
+[ 86%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/threadpool.cpp.o
+[ 88%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/time.cpp.o
+[ 89%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/tokenizer.cpp.o
+[ 90%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/umaskscope.cpp.o
+[ 92%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/zstd.cpp.o
+[ 93%] Building CXX object src/ccache/CMakeFiles/ccache_framework.dir/util/unixsocketclient.cpp.o
+[ 94%] Linking CXX static library libccache_framework.a
+make[3]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+[ 94%] Built target ccache_framework
+make[3]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[3]: Entering directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+[ 97%] Building CXX object src/ccache/CMakeFiles/test-lockfile.dir/test_lockfile.cpp.o
+[ 97%] Building CXX object CMakeFiles/ccache.dir/src/ccache/main.cpp.o
+[ 98%] Linking CXX executable ccache
+make[3]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+[ 98%] Built target ccache
+[100%] Linking CXX executable test-lockfile
+make[3]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+[100%] Built target test-lockfile
+make[2]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+make[1]: Leaving directory '/home/oldzhu/buildroot/output/build/host-ccache-4.13.6'
+[7m>>> host-ccache 4.13.6 Installing to host directory[27m
+GIT_DIR=. PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig"  /usr/bin/cmake --install /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/ 
+-- Install configuration: "Release"
+-- Installing: /home/oldzhu/buildroot/output/host/bin/ccache
+mkdir -p /work/.ccache
+mkdir: cannot create directory ‘/work’: Permission denied
+make: *** [package/pkg-generic.mk:284: /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/.stamp_host_installed] Error 1
+
+=== Build resumed after ccache dir fix: Mon Jun 15 07:20:59 CST 2026 ===
+/usr/bin/make -j1  O=/home/oldzhu/buildroot/output HOSTCC="/usr/bin/gcc" HOSTCXX="/usr/bin/g++" syncconfig
+make[1]: Entering directory '/home/oldzhu/buildroot'
+make[1]: Leaving directory '/home/oldzhu/buildroot'
+[7m>>> host-ccache 4.13.6 Installing to host directory[27m
+GIT_DIR=. PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig"  /usr/bin/cmake --install /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/ 
+-- Install configuration: "Release"
+-- Installing: /home/oldzhu/buildroot/output/host/bin/ccache
+mkdir -p /home/oldzhu/.cache/4dotnet-ccache
+[7m>>> host-m4 1.4.21 Downloading[27m
+wget -nd -t 3 --connect-timeout=10 -O '/home/oldzhu/buildroot/output/build/.m4-1.4.21.tar.xz.P0QfKn/output' 'https://ftpmirror.gnu.org/m4/m4-1.4.21.tar.xz' 
+--2026-06-15 07:21:07--  https://ftpmirror.gnu.org/m4/m4-1.4.21.tar.xz
+Connecting to 172.20.32.1:10808... connected.
+Proxy request sent, awaiting response... 502 Bad Gateway
+2026-06-15 07:21:08 ERROR 502: Bad Gateway.
+
+wget -nd -t 3 --connect-timeout=10 -O '/home/oldzhu/buildroot/output/build/.m4-1.4.21.tar.xz.Jin53r/output' 'https://sources.buildroot.net/m4/m4-1.4.21.tar.xz' 
+--2026-06-15 07:21:08--  https://sources.buildroot.net/m4/m4-1.4.21.tar.xz
+Connecting to 172.20.32.1:10808... connected.
+Proxy request sent, awaiting response... 200 OK
+Length: 2080016 (2.0M) [application/x-xz]
+Saving to: ‘/home/oldzhu/buildroot/output/build/.m4-1.4.21.tar.xz.Jin53r/output’
+
+     0K .......... .......... .......... .......... ..........  2%  135K 15s
+    50K .......... .......... .......... .......... ..........  4%  268K 11s
+   100K .......... .......... .......... .......... ..........  7% 78.9M 7s
+   150K .......... .......... .......... .......... ..........  9%  276K 7s
+   200K .......... .......... .......... .......... .......... 12%  104M 5s
+   250K .......... .......... .......... .......... .......... 14% 31.9M 4s
+   300K .......... .......... .......... .......... .......... 17%  222M 4s
+   350K .......... .......... .......... .......... .......... 19%  270K 4s
+   400K .......... .......... .......... .......... .......... 22% 3.59M 3s
+   450K .......... .......... .......... .......... .......... 24%  163M 3s
+   500K .......... .......... .......... .......... .......... 27%  232M 3s
+   550K .......... .......... .......... .......... .......... 29% 17.0M 2s
+   600K .......... .......... .......... .......... .......... 31%  185M 2s
+   650K .......... .......... .......... .......... .......... 34%  189M 2s
+   700K .......... .......... .......... .......... .......... 36%  224M 2s
+   750K .......... .......... .......... .......... .......... 39%  136M 1s
+   800K .......... .......... .......... .......... .......... 41%  295K 2s
+   850K .......... .......... .......... .......... .......... 44% 4.26M 1s
+   900K .......... .......... .......... .......... .......... 46%  228M 1s
+   950K .......... .......... .......... .......... .......... 49%  212M 1s
+  1000K .......... .......... .......... .......... .......... 51% 20.9M 1s
+  1050K .......... .......... .......... .......... .......... 54%  186M 1s
+  1100K .......... .......... .......... .......... .......... 56%  156M 1s
+  1150K .......... .......... .......... .......... .......... 59%  213M 1s
+  1200K .......... .......... .......... .......... .......... 61%  151M 1s
+  1250K .......... .......... .......... .......... .......... 63%  236M 1s
+  1300K .......... .......... .......... .......... .......... 66% 60.9M 1s
+  1350K .......... .......... .......... .......... .......... 68% 6.95M 1s
+  1400K .......... .......... .......... .......... .......... 71%  185M 0s
+  1450K .......... .......... .......... .......... .......... 73%  236M 0s
+  1500K .......... .......... .......... .......... .......... 76%  170M 0s
+  1550K .......... .......... .......... .......... .......... 78%  237M 0s
+  1600K .......... .......... .......... .......... .......... 81% 85.0M 0s
+  1650K .......... .......... .......... .......... .......... 83%  277K 0s
+  1700K .......... .......... .......... .......... .......... 86%  189M 0s
+  1750K .......... .......... .......... .......... .......... 88%  280M 0s
+  1800K .......... .......... .......... .......... .......... 91%  169M 0s
+  1850K .......... .......... .......... .......... .......... 93%  224M 0s
+  1900K .......... .......... .......... .......... .......... 95%  242M 0s
+  1950K .......... .......... .......... .......... .......... 98%  237M 0s
+  2000K .......... .......... .......... .                    100%  225M=1.3s
+
+2026-06-15 07:21:11 (1.50 MB/s) - ‘/home/oldzhu/buildroot/output/build/.m4-1.4.21.tar.xz.Jin53r/output’ saved [2080016/2080016]
+
+m4-1.4.21.tar.xz: OK (sha256: f25c6ab51548a73a75558742fb031e0625d6485fe5f9155949d6486a2408ab66)
+[7m>>> host-m4 1.4.21 Extracting[27m
+xzcat /home/oldzhu/buildroot/dl/m4/m4-1.4.21.tar.xz | tar --strip-components=1 -C /home/oldzhu/buildroot/output/build/host-m4-1.4.21   -xf -
+[7m>>> host-m4 1.4.21 Patching[27m
+[7m>>> host-m4 1.4.21 Updating config.sub and config.guess[27m
+for file in config.guess config.sub; do for i in $(find /home/oldzhu/buildroot/output/build/host-m4-1.4.21 -name $file); do cp support/gnuconfig/$file $i; done; done
+[7m>>> host-m4 1.4.21 Patching libtool[27m
+[7m>>> host-m4 1.4.21 Configuring[27m
+(cd /home/oldzhu/buildroot/output/build/host-m4-1.4.21/ && rm -rf config.cache; GIT_DIR=. PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig" AR="/usr/bin/ar" AS="/usr/bin/as" LD="/usr/bin/ld" NM="/usr/bin/nm" CC="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc" GCC="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc" CXX="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/g++" CPP="/usr/bin/cpp" OBJCOPY="/usr/bin/objcopy" RANLIB="/usr/bin/ranlib" CPPFLAGS="-I/home/oldzhu/buildroot/output/host/include" CFLAGS="-O2 -I/home/oldzhu/buildroot/output/host/include" CXXFLAGS="-O2 -I/home/oldzhu/buildroot/output/host/include" LDFLAGS="-L/home/oldzhu/buildroot/output/host/lib -Wl,-rpath,/home/oldzhu/buildroot/output/host/lib" INTLTOOL_PERL=/usr/bin/perl  CONFIG_SITE=/dev/null ./configure --prefix="/home/oldzhu/buildroot/output/host" --sysconfdir="/home/oldzhu/buildroot/output/host/etc" --localstatedir="/home/oldzhu/buildroot/output/host/var" --enable-shared --disable-static --disable-gtk-doc --disable-gtk-doc-html --disable-doc --disable-docs --disable-documentation --disable-debug --with-xmlto=no --with-fop=no --disable-nls --disable-dependency-tracking   )
+configure: WARNING: unrecognized options: --enable-shared, --disable-static, --disable-gtk-doc, --disable-gtk-doc-html, --disable-doc, --disable-docs, --disable-documentation, --disable-debug, --with-xmlto, --with-fop
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether sleep supports fractional seconds... yes
+checking filesystem timestamp resolution... 0.01
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking xargs -n works... yes
+checking whether UID '1000' is supported by ustar format... yes
+checking whether GID '1000' is supported by ustar format... yes
+checking how to create a ustar tar archive... gnutar
+checking for gcc... /home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether /home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc accepts -g... yes
+checking for /home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc option to enable C23 features... unsupported
+checking for /home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc option to enable C11 features... none needed
+checking whether /home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc understands -c and -o together... yes
+checking whether the compiler is clang... no
+checking for compiler option needed when checking for declarations... none
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of /home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc... none
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for wchar.h... yes
+checking for minix/config.h... no
+checking for stdbool.h... yes
+checking for uchar.h... yes
+checking for sys/param.h... yes
+checking for sys/socket.h... yes
+checking for dirent.h... yes
+checking for error.h... yes
+checking for stdio_ext.h... yes
+checking for threads.h... yes
+checking for xlocale.h... no
+checking for langinfo.h... yes
+checking for getopt.h... yes
+checking for sys/process.h... no
+checking for iconv.h... yes
+checking for limits.h... yes
+checking for crtdefs.h... no
+checking for wctype.h... yes
+checking for math.h... yes
+checking for sys/mman.h... yes
+checking for obstack.h... yes
+checking for pthread.h... yes
+checking for malloc.h... yes
+checking for spawn.h... yes
+checking for libcx/spawn2.h... no
+checking for sys/time.h... yes
+checking for stdckdint.h... no
+checking for sys/random.h... yes
+checking for sys/wait.h... yes
+checking for features.h... yes
+checking for arpa/inet.h... yes
+checking for semaphore.h... yes
+checking for netdb.h... yes
+checking for netinet/in.h... yes
+checking for sys/select.h... yes
+checking for sys/ioctl.h... 
