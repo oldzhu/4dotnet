@@ -1,0 +1,263 @@
+=== Build started: Mon Jun 15 07:09:16 CST 2026 ===
+[7m>>> host-zstd 1.5.7 Downloading[27m
+wget -nd -t 3 --connect-timeout=10 -O '/home/oldzhu/buildroot/output/build/.zstd-1.5.7.tar.gz.6UzoDE/output' 'https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz' 
+--2026-06-15 07:09:21--  https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz
+Connecting to 172.20.32.1:10808... connected.
+Proxy request sent, awaiting response... 302 Found
+Location: https://release-assets.githubusercontent.com/github-production-release-asset/29759715/99c899ba-527a-4d01-94e1-4b246cc9b551?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-06-15T00%3A04%3A21Z&rscd=attachment%3B+filename%3Dzstd-1.5.7.tar.gz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-06-14T23%3A04%3A13Z&ske=2026-06-15T00%3A04%3A21Z&sks=b&skv=2018-11-09&sig=keLaiH5NEIwE7nIggAZZ%2BGwmQ0Oz80OhRBm4mixvRwQ%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc4MTQ3ODc1MSwibmJmIjoxNzgxNDc4NDUxLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.LqJAsn7D8D75xih6jkheygoDx3V5m7uLT8qImytg_4k&response-content-disposition=attachment%3B%20filename%3Dzstd-1.5.7.tar.gz&response-content-type=application%2Foctet-stream [following]
+--2026-06-15 07:09:22--  https://release-assets.githubusercontent.com/github-production-release-asset/29759715/99c899ba-527a-4d01-94e1-4b246cc9b551?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-06-15T00%3A04%3A21Z&rscd=attachment%3B+filename%3Dzstd-1.5.7.tar.gz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-06-14T23%3A04%3A13Z&ske=2026-06-15T00%3A04%3A21Z&sks=b&skv=2018-11-09&sig=keLaiH5NEIwE7nIggAZZ%2BGwmQ0Oz80OhRBm4mixvRwQ%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc4MTQ3ODc1MSwibmJmIjoxNzgxNDc4NDUxLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.LqJAsn7D8D75xih6jkheygoDx3V5m7uLT8qImytg_4k&response-content-disposition=attachment%3B%20filename%3Dzstd-1.5.7.tar.gz&response-content-type=application%2Foctet-stream
+Connecting to 172.20.32.1:10808... connected.
+Proxy request sent, awaiting response... 200 OK
+Length: 2434947 (2.3M) [application/octet-stream]
+Saving to: ‘/home/oldzhu/buildroot/output/build/.zstd-1.5.7.tar.gz.6UzoDE/output’
+
+     0K .......... .......... .......... .......... ..........  2%  134K 17s
+    50K .......... .......... .......... .......... ..........  4%  270K 13s
+   100K .......... .......... .......... .......... ..........  6%  145M 8s
+   150K .......... .......... .......... .......... ..........  8%  185M 6s
+   200K .......... .......... .......... .......... .......... 10%  270K 6s
+   250K .......... .......... .......... .......... .......... 12%  129M 5s
+   300K .......... .......... .......... .......... .......... 14% 25.1M 4s
+   350K .......... .......... .......... .......... .......... 16% 56.7M 4s
+   400K .......... .......... .......... .......... .......... 18%  138M 3s
+   450K .......... .......... .......... .......... .......... 21%  277K 3s
+   500K .......... .......... .......... .......... .......... 23% 13.1M 3s
+   550K .......... .......... .......... .......... .......... 25% 20.8M 3s
+   600K .......... .......... .......... .......... .......... 27%  127M 2s
+   650K .......... .......... .......... .......... .......... 29%  136M 2s
+   700K .......... .......... .......... .......... .......... 31%  123M 2s
+   750K .......... .......... .......... .......... .......... 33%  125M 2s
+   800K .......... .......... .......... .......... .......... 35%  173M 2s
+   850K .......... .......... .......... .......... .......... 37%  214M 2s
+   900K .......... .......... .......... .......... .......... 39%  283K 2s
+   950K .......... .......... .......... .......... .......... 42% 12.5M 2s
+  1000K .......... .......... .......... .......... .......... 44%  171M 1s
+  1050K .......... .......... .......... .......... .......... 46% 10.0M 1s
+  1100K .......... .......... .......... .......... .......... 48% 35.0M 1s
+  1150K .......... .......... .......... .......... .......... 50% 63.8M 1s
+  1200K .......... .......... .......... .......... .......... 52%  172M 1s
+  1250K .......... .......... .......... .......... .......... 54%  193M 1s
+  1300K .......... .......... .......... .......... .......... 56%  166M 1s
+  1350K .......... .......... .......... .......... .......... 58%  165M 1s
+  1400K .......... .......... .......... .......... .......... 60%  192M 1s
+  1450K .......... .......... .......... .......... .......... 63% 20.1M 1s
+  1500K .......... .......... .......... .......... .......... 65%  175M 1s
+  1550K .......... .......... .......... .......... .......... 67%  191M 1s
+  1600K .......... .......... .......... .......... .......... 69%  164M 0s
+  1650K .......... .......... .......... .......... .......... 71%  143M 0s
+  1700K .......... .......... .......... .......... .......... 73% 93.3M 0s
+  1750K .......... .......... .......... .......... .......... 75%  202M 0s
+  1800K .......... .......... .......... .......... .......... 77%  120M 0s
+  1850K .......... .......... .......... .......... .......... 79% 88.5M 0s
+  1900K .......... .......... .......... .......... .......... 82%  298K 0s
+  1950K .......... .......... .......... .......... .......... 84% 9.29M 0s
+  2000K .......... .......... .......... .......... .......... 86% 10.8M 0s
+  2050K .......... .......... .......... .......... .......... 88% 22.7M 0s
+  2100K .......... .......... .......... .......... .......... 90%  208M 0s
+  2150K .......... .......... .......... .......... .......... 92% 25.7M 0s
+  2200K .......... .......... .......... .......... .......... 94%  223M 0s
+  2250K .......... .......... .......... .......... .......... 96%  158M 0s
+  2300K .......... .......... .......... .......... .......... 98% 62.4M 0s
+  2350K .......... .......... .......                         100%  326M=1.3s
+
+2026-06-15 07:09:24 (1.77 MB/s) - ‘/home/oldzhu/buildroot/output/build/.zstd-1.5.7.tar.gz.6UzoDE/output’ saved [2434947/2434947]
+
+zstd-1.5.7.tar.gz: OK (sha256: eb33e51f49a15e023950cd7825ca74a4a2b43db8354825ac24fc1b7ee09e6fa3)
+[7m>>> host-zstd 1.5.7 Extracting[27m
+gzip -d -c /home/oldzhu/buildroot/dl/zstd/zstd-1.5.7.tar.gz | tar --strip-components=1 -C /home/oldzhu/buildroot/output/build/host-zstd-1.5.7   -xf -
+[7m>>> host-zstd 1.5.7 Patching[27m
+[7m>>> host-zstd 1.5.7 Configuring[27m
+[7m>>> host-zstd 1.5.7 Building[27m
+GIT_DIR=. PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig" GIT_DIR=. PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig" AR="/usr/bin/ar" AS="/usr/bin/as" LD="/usr/bin/ld" NM="/usr/bin/nm" CC="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc" GCC="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc" CXX="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/g++" CPP="/usr/bin/cpp" OBJCOPY="/usr/bin/objcopy" RANLIB="/usr/bin/ranlib" CPPFLAGS="-I/home/oldzhu/buildroot/output/host/include" CFLAGS="-O2 -I/home/oldzhu/buildroot/output/host/include" CXXFLAGS="-O2 -I/home/oldzhu/buildroot/output/host/include" LDFLAGS="-L/home/oldzhu/buildroot/output/host/lib -Wl,-rpath,/home/oldzhu/buildroot/output/host/lib" INTLTOOL_PERL=/usr/bin/perl CC="/usr/bin/gcc" CXX="/usr/bin/g++" /usr/bin/make -j33 PREFIX=/home/oldzhu/buildroot/output/host -C /home/oldzhu/buildroot/output/build/host-zstd-1.5.7 zstd-release lib-release
+make[1]: Entering directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7'
+make[2]: Entering directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7/programs'
+make[2]: Entering directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7/lib'
+creating pkgconfig
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/debug.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/entropy_common.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/error_private.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/fse_decompress.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/debug.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/entropy_common.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/pool.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/error_private.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/threading.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/fse_decompress.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/xxhash.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/pool.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_common.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_v05.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_v06.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_v07.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/fse_compress.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/huf_compress.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_compress.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/hist.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_compress_literals.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/threading.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_compress_sequences.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/xxhash.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_compress_superblock.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_double_fast.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_lazy.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_v06.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_preSplit.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstdmt_compress.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/huf_decompress.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_common.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_ldm.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_ddict.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_v05.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_v07.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_fast.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/fse_compress.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_opt.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/hist.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/huf_compress.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_decompress_block.o
+AS obj/conf_d29bda81afe339258466e69663109973/dynamic/huf_decompress_amd64.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zstd_decompress.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_compress.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_compress_literals.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_compress_sequences.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/cover.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/divsufsort.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_compress_superblock.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/zdict.o
+CC obj/conf_d29bda81afe339258466e69663109973/dynamic/fastcover.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_double_fast.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_fast.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_lazy.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_ldm.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_opt.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_preSplit.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstdmt_compress.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/huf_decompress.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_ddict.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_decompress.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zstd_decompress_block.o
+AS obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/huf_decompress_amd64.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/cover.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/divsufsort.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/fastcover.o
+CC obj/conf_8c74e7b0cf9f37e4f56fef610a51139e/static/zdict.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/debug.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/entropy_common.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/error_private.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/fse_decompress.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/pool.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/threading.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/xxhash.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_common.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/fse_compress.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/hist.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/huf_compress.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_compress_literals.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_compress_sequences.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_compress_superblock.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_double_fast.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_fast.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_lazy.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_ldm.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_opt.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_preSplit.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstdmt_compress.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/huf_decompress.o
+AS obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/huf_decompress_amd64.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_compress.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_ddict.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_decompress.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_decompress_block.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/fastcover.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/divsufsort.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/cover.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zdict.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_v05.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_v06.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd_v07.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/benchfn.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/benchzstd.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/datagen.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/dibio.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/fileio.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/fileio_asyncio.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/lorem.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/timefn.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/util.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstdcli.o
+CC obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstdcli_trace.o
+compiling single-threaded static library 1.5.7
+compiling multi-threaded dynamic library 1.5.7
+creating versioned links
+release build completed
+make[2]: Leaving directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7/lib'
+==> building with threading support
+==> building zstd with .gz compression support
+==> building zstd with .xz/.lzma compression support
+==> no liblz4, building zstd without .lz4 support
+LINK obj/conf_d98bf5fbce31bf33558c9cbffc241ab6/zstd
+zstd build completed
+make[2]: Leaving directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7/programs'
+make[1]: Leaving directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7'
+[7m>>> host-zstd 1.5.7 Installing to host directory[27m
+GIT_DIR=. PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig" GIT_DIR=. PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig" AR="/usr/bin/ar" AS="/usr/bin/as" LD="/usr/bin/ld" NM="/usr/bin/nm" CC="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc" GCC="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/gcc" CXX="/home/oldzhu/buildroot/output/host/bin/ccache /usr/bin/g++" CPP="/usr/bin/cpp" OBJCOPY="/usr/bin/objcopy" RANLIB="/usr/bin/ranlib" CPPFLAGS="-I/home/oldzhu/buildroot/output/host/include" CFLAGS="-O2 -I/home/oldzhu/buildroot/output/host/include" CXXFLAGS="-O2 -I/home/oldzhu/buildroot/output/host/include" LDFLAGS="-L/home/oldzhu/buildroot/output/host/lib -Wl,-rpath,/home/oldzhu/buildroot/output/host/lib" INTLTOOL_PERL=/usr/bin/perl CC="/usr/bin/gcc" CXX="/usr/bin/g++" /usr/bin/make -j33 PREFIX=/home/oldzhu/buildroot/output/host -C /home/oldzhu/buildroot/output/build/host-zstd-1.5.7 install
+make[1]: Entering directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7'
+make[2]: Entering directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7/lib'
+creating pkgconfig
+Installing includes
+Installing static library
+Installing shared library
+zstd static and shared library installed
+make[2]: Leaving directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7/lib'
+make[2]: Entering directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7/programs'
+Installing binaries
+Installing man pages
+zstd installation completed
+make[2]: Leaving directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7/programs'
+make[1]: Leaving directory '/home/oldzhu/buildroot/output/build/host-zstd-1.5.7'
+[7m>>> host-ccache 4.13.6 Downloading[27m
+wget -nd -t 3 --connect-timeout=10 -O '/home/oldzhu/buildroot/output/build/.ccache-4.13.6.tar.xz.rnwAgj/output' 'https://github.com/ccache/ccache/releases/download/v4.13.6/ccache-4.13.6.tar.xz' 
+--2026-06-15 07:09:33--  https://github.com/ccache/ccache/releases/download/v4.13.6/ccache-4.13.6.tar.xz
+Connecting to 172.20.32.1:10808... connected.
+Proxy request sent, awaiting response... 302 Found
+Location: https://release-assets.githubusercontent.com/github-production-release-asset/461102/011dffa9-4450-4a17-9b34-ea0f42fc4b8d?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-06-15T00%3A01%3A14Z&rscd=attachment%3B+filename%3Dccache-4.13.6.tar.xz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-06-14T23%3A00%3A37Z&ske=2026-06-15T00%3A01%3A14Z&sks=b&skv=2018-11-09&sig=1xDEL692q4AprRcSAxsRKjSUxihkaTJK5lAV%2F4xb2pQ%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc4MTQ3ODg3NCwibmJmIjoxNzgxNDc4NTc0LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.UFKoxg4gbfEgFQ1hvs1Q64ZFKypmRCAyleyHpFnTOqQ&response-content-disposition=attachment%3B%20filename%3Dccache-4.13.6.tar.xz&response-content-type=application%2Foctet-stream [following]
+--2026-06-15 07:09:34--  https://release-assets.githubusercontent.com/github-production-release-asset/461102/011dffa9-4450-4a17-9b34-ea0f42fc4b8d?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-06-15T00%3A01%3A14Z&rscd=attachment%3B+filename%3Dccache-4.13.6.tar.xz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-06-14T23%3A00%3A37Z&ske=2026-06-15T00%3A01%3A14Z&sks=b&skv=2018-11-09&sig=1xDEL692q4AprRcSAxsRKjSUxihkaTJK5lAV%2F4xb2pQ%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc4MTQ3ODg3NCwibmJmIjoxNzgxNDc4NTc0LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.UFKoxg4gbfEgFQ1hvs1Q64ZFKypmRCAyleyHpFnTOqQ&response-content-disposition=attachment%3B%20filename%3Dccache-4.13.6.tar.xz&response-content-type=application%2Foctet-stream
+Connecting to 172.20.32.1:10808... connected.
+Proxy request sent, awaiting response... 200 OK
+Length: 538628 (526K) [application/octet-stream]
+Saving to: ‘/home/oldzhu/buildroot/output/build/.ccache-4.13.6.tar.xz.rnwAgj/output’
+
+     0K .......... .......... .......... .......... ..........  9%  133K 4s
+    50K .......... .......... .......... .......... .......... 19%  181M 2s
+   100K .......... .......... .......... .......... .......... 28%  273K 1s
+   150K .......... .......... .......... .......... .......... 38%  272K 1s
+   200K .......... .......... .......... .......... .......... 47%  133M 1s
+   250K .......... .......... .......... .......... .......... 57%  182M 1s
+   300K .......... .......... .......... .......... .......... 66%  138M 0s
+   350K .......... .......... .......... .......... .......... 76%  219M 0s
+   400K .......... .......... .......... .......... .......... 85% 10.4M 0s
+   450K .......... .......... .......... .......... .......... 95%  279K 0s
+   500K .......... .......... ......                          100% 14.6M=0.9s
+
+2026-06-15 07:09:36 (565 KB/s) - ‘/home/oldzhu/buildroot/output/build/.ccache-4.13.6.tar.xz.rnwAgj/output’ saved [538628/538628]
+
+ccache-4.13.6.tar.xz: OK (sha256: a7de667ca08cf67c3c8af9f213f6aa701a1188a2b3163fb74483858ce5e79fbb)
+[7m>>> host-ccache 4.13.6 Extracting[27m
+xzcat /home/oldzhu/buildroot/dl/ccache/ccache-4.13.6.tar.xz | tar --strip-components=1 -C /home/oldzhu/buildroot/output/build/host-ccache-4.13.6   -xf -
+[7m>>> host-ccache 4.13.6 Patching[27m
+sed -i 's,getenv("CCACHE_DIR"),getenv("BR_CACHE_DIR"),' /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/src/ccache/config.cpp
+sed -i 's,".ccache","/work/.ccache",' /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/src/ccache/config.cpp
+sed -i 's,"/.cache/ccache","//work/.ccache",' /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/src/ccache/config.cpp
+sed -i 's,"/.config/ccache","//work/.ccache",' /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/src/ccache/config.cpp
+sed -i 's,getenv("XDG_CACHE_HOME"),nullptr,' /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/src/ccache/config.cpp
+sed -i 's,getenv("XDG_CONFIG_HOME"),nullptr,' /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/src/ccache/config.cpp
+[7m>>> host-ccache 4.13.6 Configuring[27m
+(mkdir -p /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/ && cd /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/ && rm -f CMakeCache.txt && PATH="/home/oldzhu/buildroot/output/host/bin:/home/oldzhu/buildroot/output/host/sbin:/home/oldzhu/.local/bin:/home/oldzhu/bin:/home/oldzhu/android-sdk/cmdline-tools/latest/bin:/home/oldzhu/android-sdk/platform-tools:/home/oldzhu/.bun/bin:/home/oldzhu/.local/bin:/home/oldzhu/.nvm/versions/node/v22.22.0/bin:/home/oldzhu/.opencode/bin:/home/oldzhu/.local/go1.24.4/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramFiles/WindowsApps/MicrosoftCorporationII.WindowsSubsystemForLinux_2.7.8.0_x64__8wekyb3d8bbwe:/mnt/c/ProgramFiles/EclipseAdoptium/jdk-21.0.9.10-hotspot/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Recovery/OEM/Backup/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/ProgramFiles(x86)/WindowsKits/10/WindowsPerformanceToolkit/:/mnt/c/ProgramFiles/CMake/bin:/mnt/c/ProgramFiles/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/ProgramFiles/Git/cmd:/mnt/c/ProgramFiles/dotnet/:/mnt/c/ProgramFiles/Docker/Docker/resources/bin:/mnt/c/Users/orien/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/orien/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/orien/AppData/Local/Programs/MicrosoftVSCode/bin:/mnt/c/gradle/gradle-9.2.1/bin:/mnt/c/Users/orien/AppData/Local/Python/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Scripts:/mnt/c/ProgramFiles/Git/bin:/mnt/c/Users/orien/go/bin:/mnt/c/Users/orien/AppData/Local/Python/pythoncore-3.14-64/Lib/site-packages/_rocm_sdk_libraries_custom/bin:/mnt/c/Users/orien/.dotnet/tools:/mnt/c/Users/orien/AppData/Local/Microsoft/WinGet/Packages/SST.opencode_Microsoft.Winget.Source_8wekyb3d8bbwe:/mnt/c/Users/orien/AppData/Local/AMD/AI_Bundle/Ollama:/mnt/c/Users/orien/.lmstudio/bin:/snap/bin:/opt/gradle/gradle-9.2.1/bin" PKG_CONFIG="/home/oldzhu/buildroot/output/host/bin/pkg-config" PKG_CONFIG_SYSROOT_DIR="/" PKG_CONFIG_LIBDIR="/home/oldzhu/buildroot/output/host/lib/pkgconfig:/home/oldzhu/buildroot/output/host/share/pkgconfig" PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 PKG_CONFIG_ALLOW_SYSTEM_LIBS=1  /usr/bin/cmake /home/oldzhu/buildroot/output/build/host-ccache-4.13.6/ -G"Unix Makefiles" -DCMAKE_MAKE_PROGRAM="/usr/bin/make" -DCMAKE_INSTALL_SO_NO_EXE=0 -DCMAKE_FIND_ROOT_PATH="/home/oldzhu/buildroot/output/host" -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM="BOTH" -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY="BOTH" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE="BOTH" -DCMAKE_INSTALL_PREFIX="/home/oldzhu/buildroot/output/host" -DCMAKE_C_FLAGS="-O2 -I/home/oldzhu/buildroot/output/host/include" -DCMAKE_CXX_FLAGS="-O2 -I/home/oldzhu/buildroot/output/host/include" -DCMAKE_EXE_LINKER_FLAGS="-L/home/oldzhu/buildroot/output/host/lib -Wl,-rpath,/home/oldzhu/buildroot/output/host/lib" -DCMAKE_SHARED_LINKER_FLAGS="-L/home/oldzhu/buildroot/output/host/lib -Wl,-rpath,/home/oldzhu/buildroot/output/host/lib" -DCMAKE_C_COMPILER="/usr/bin/gcc" -DCMAKE_CXX_COMPILER="/usr/bin/g++"  -DCMAKE_C_COMPILER_LAUNCHER="/home/oldzhu/buildroot/output/host/bin/ccache" -DCMAKE_CXX_COMPILER_LAUNCHER="/home/oldzhu/buildroot/output/host/bin/ccache"  -DCMAKE_COLOR_MAKEFILE=OFF -DBUILD_DOC=OFF -DBUILD_DOCS=OFF -DBUILD_EXAMPLE=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TEST=OFF -DBUILD_TESTS=OFF -DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=ON  -UCMAKE_C_COMPILER_LAUNCHER -UCMAKE_CXX_COMPILER_LAUNCHER -DCCACHE_DEV_MODE=OFF -DDEP_BLAKE3=SYSTEM -DDEP_FMT=BUNDLED -DDEP_CPPHTTPLIB=BUNDLED -DDEP_HIREDIS=SYSTEM -DDEP_NONSTDSPAN=BUNDLED -DDEP_TLEXPECTED=BUNDLED -DDEP_XXHASH=SYSTEM -DDEP_ZSTD=SYSTEM -DENABLE_DOCUMENTATION=OFF -DENABLE_TESTING=OFF )
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
