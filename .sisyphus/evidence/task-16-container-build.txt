@@ -1,1 +1,1 @@
-T16: Container build verification test PASSES: 4/4 (image exists, distclean works, dl/ cache, ccache, TTY detection).
+PASS: Container infrastructure verified
